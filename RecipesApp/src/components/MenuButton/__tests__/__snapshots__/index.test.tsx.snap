@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Menu Button Component should render correctly 1`] = `
+<View
+  accessible={true}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "opacity": 1,
+      "padding": 10,
+    }
+  }
+>
+  <Image
+    source={1}
+    style={
+      Object {
+        "height": 25,
+        "justifyContent": "center",
+        "margin": 6,
+        "width": 25,
+      }
+    }
+  />
+</View>
+`;
