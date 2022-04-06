@@ -11,17 +11,17 @@ type Props = {
 };
 
 const DrawerContainer = ({ navigation }: Props) => {
-  const handleNavigateHome = useCallback(() => {
+  const handlePressHome = useCallback(() => {
     navigation.navigate(Screens.Home.name);
     navigation.closeDrawer();
   }, []);
 
-  const handleNavigateCategories = useCallback(() => {
+  const handlePressCategories = useCallback(() => {
     navigation.navigate(Screens.Categories.name);
     navigation.closeDrawer();
   }, []);
 
-  const handleNavigateSearch = useCallback(() => {
+  const handlePressSearch = useCallback(() => {
     navigation.navigate(Screens.Search.name);
     navigation.closeDrawer();
   }, []);
@@ -29,13 +29,13 @@ const DrawerContainer = ({ navigation }: Props) => {
   return (
     <View style={styles.content}>
       <View style={styles.container}>
-        <MenuItem title={Screens.Home.label} source={HomeIcon} onPress={handleNavigateHome} />
+        <MenuItem title={Screens.Home.label} source={HomeIcon} onPress={handlePressHome} />
         <MenuItem
           title={Screens.Categories.label}
           source={CategoryIcon}
-          onPress={handleNavigateCategories}
+          onPress={handlePressCategories}
         />
-        <MenuItem title={Screens.Search.label} source={SearchIcon} onPress={handleNavigateSearch} />
+        <MenuItem title={Screens.Search.label} source={SearchIcon} onPress={handlePressSearch} />
       </View>
     </View>
   );

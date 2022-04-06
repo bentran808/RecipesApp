@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Recipe Card Component should render correctly 1`] = `
+<View
+  accessible={true}
+  focusable={false}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "opacity": 1,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "borderColor": "#ccc",
+        "borderRadius": 15,
+        "borderWidth": 0.5,
+        "flex": 1,
+        "height": 225,
+        "justifyContent": "center",
+        "marginLeft": 20,
+        "marginTop": 20,
+        "width": 345,
+      }
+    }
+  >
+    <Image
+      source={
+        Object {
+          "uri": "https://www.texanerin.com/content/uploads/2019/06/nobake-chocolate-cookies-1-650x975.jpg",
+        }
+      }
+      style={
+        Object {
+          "borderBottomLeftRadius": 0,
+          "borderBottomRightRadius": 0,
+          "borderRadius": 15,
+          "height": 150,
+          "width": 345,
+        }
+      }
+    />
+    <Text
+      style={
+        Object {
+          "color": "#444",
+          "flex": 1,
+          "fontSize": 17,
+          "fontWeight": "bold",
+          "marginHorizontal": 5,
+          "marginTop": 3,
+          "textAlign": "center",
+        }
+      }
+    >
+      Oatmeal Cookies
+    </Text>
+    <Text
+      style={
+        Object {
+          "marginVertical": 5,
+        }
+      }
+    >
+      Cookies
+    </Text>
+  </View>
+</View>
+`;

@@ -3,9 +3,7 @@ import renderer from 'react-test-renderer';
 
 describe('Button Component', () => {
   test('should render correctly', () => {
-    const tree = renderer
-      .create(<Button title="Test" onPress={jest.fn()} />)
-      .toJSON();
+    const tree = renderer.create(<Button title="Test" onPress={jest.fn()} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });
