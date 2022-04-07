@@ -17,8 +17,8 @@ exports[`Back Button Component should render correctly 1`] = `
       "backgroundColor": "#fff",
       "borderRadius": 180,
       "elevation": 3,
-      "flex": 1,
       "margin": 10,
+      "opacity": 1,
       "padding": 8,
       "shadowColor": "#000",
       "shadowOffset": Object {

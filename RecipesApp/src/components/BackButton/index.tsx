@@ -1,7 +1,6 @@
 import React from 'react';
-import { Image, TouchableHighlight } from 'react-native';
+import { Image, TouchableOpacity } from 'react-native';
 import { BackArrow } from 'theme';
-
 import styles from './styles';
 
 type Props = {
@@ -10,9 +9,9 @@ type Props = {
 
 const BackButton = ({ onPress }: Props) => {
   return (
-    <TouchableHighlight onPress={onPress} style={styles.btnContainer}>
+    <TouchableOpacity onPress={onPress} style={styles.btnContainer}>
       <Image source={BackArrow} style={styles.btnIcon} />
-    </TouchableHighlight>
+    </TouchableOpacity>
   );
 };
 

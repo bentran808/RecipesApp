@@ -10,6 +10,9 @@ export const recipesApi = {
   fetchRecipesRequest() {
     return axiosInstance.get('recipes?_expand=category');
   },
+  fetchRecipesByCategoryIdRequest(id: number) {
+    return axiosInstance.get(`recipes?_expand=category&categoryId=${id}`);
+  },
   searchByCategoryNameRequest(keyword: string) {
     return axiosInstance.get(`categories?name_like=${keyword}&_embed=recipes`);
   },

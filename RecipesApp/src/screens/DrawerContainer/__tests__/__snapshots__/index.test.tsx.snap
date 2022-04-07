@@ -1,0 +1,172 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Drawer Container should render correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "flex": 1,
+      "flexDirection": "row",
+      "justifyContent": "center",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "flex-start",
+        "flex": 1,
+        "paddingHorizontal": 20,
+      }
+    }
+  >
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "flexDirection": "row",
+          "marginVertical": 5,
+          "padding": 5,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "alignItems": "flex-start",
+            "flex": 1,
+            "flexDirection": "row",
+          }
+        }
+      >
+        <Image
+          source={1}
+          style={
+            Object {
+              "height": 25,
+              "width": 25,
+            }
+          }
+        />
+        <Text
+          style={
+            Object {
+              "fontSize": 16,
+              "marginLeft": 10,
+              "marginTop": 2,
+            }
+          }
+        >
+          HOME
+        </Text>
+      </View>
+    </View>
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "flexDirection": "row",
+          "marginVertical": 5,
+          "padding": 5,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "alignItems": "flex-start",
+            "flex": 1,
+            "flexDirection": "row",
+          }
+        }
+      >
+        <Image
+          source={1}
+          style={
+            Object {
+              "height": 25,
+              "width": 25,
+            }
+          }
+        />
+        <Text
+          style={
+            Object {
+              "fontSize": 16,
+              "marginLeft": 10,
+              "marginTop": 2,
+            }
+          }
+        >
+          CATEGORIES
+        </Text>
+      </View>
+    </View>
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "flexDirection": "row",
+          "marginVertical": 5,
+          "padding": 5,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "alignItems": "flex-start",
+            "flex": 1,
+            "flexDirection": "row",
+          }
+        }
+      >
+        <Image
+          source={1}
+          style={
+            Object {
+              "height": 25,
+              "width": 25,
+            }
+          }
+        />
+        <Text
+          style={
+            Object {
+              "fontSize": 16,
+              "marginLeft": 10,
+              "marginTop": 2,
+            }
+          }
+        >
+          SEARCH
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;

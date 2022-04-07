@@ -1,7 +1,5 @@
-import { Dimensions, StyleSheet } from 'react-native';
-
-// screen sizing
-const { width } = Dimensions.get('window');
+import { StyleSheet } from 'react-native';
+import { width } from 'theme';
 
 const recipeColumns = 2;
 // item size

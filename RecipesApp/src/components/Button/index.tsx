@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, TouchableHighlight, View } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
 import styles from './styles';
 
 type Props = {
@@ -9,11 +9,11 @@ type Props = {
 
 const Button = ({ title, onPress }: Props) => {
   return (
-    <TouchableHighlight underlayColor="rgba(73,182,77,0.9)" onPress={onPress}>
+    <TouchableOpacity onPress={onPress}>
       <View style={styles.container}>
         <Text style={styles.text}>{title}</Text>
       </View>
-    </TouchableHighlight>
+    </TouchableOpacity>
   );
 };
 

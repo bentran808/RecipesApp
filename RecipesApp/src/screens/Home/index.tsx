@@ -1,3 +1,5 @@
+import { DrawerNavigationHelpers } from '@react-navigation/drawer/lib/typescript/src/types';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { recipesApi } from 'api';
 import MenuButton from 'components/MenuButton';
 import RecipeCard from 'components/RecipeCard';
@@ -5,8 +7,9 @@ import Screens from 'constants/Screens';
 import React, { useCallback, useEffect, useLayoutEffect, useState } from 'react';
 import { Alert, FlatList, View } from 'react-native';
 
+type HomeNavigationProp = NativeStackNavigationProp<RootStackParamList>;
 type Props = {
-  navigation: any;
+  navigation: HomeNavigationProp & DrawerNavigationHelpers;
 };
 
 const HomeScreen = ({ navigation }: Props) => {
@@ -51,7 +54,7 @@ const HomeScreen = ({ navigation }: Props) => {
 
   const handlePressRecipe = useCallback(
     (item: Recipe) => () => {
-      navigation.navigate(Screens.Recipe.name, { item });
+      navigation.navigate(Screens.Recipe.name as 'Recipe', { item });
     },
     []
   );
@@ -65,6 +68,7 @@ const HomeScreen = ({ navigation }: Props) => {
   return (
     <View>
       <FlatList
+        testID="recipesList"
         refreshing={refreshing}
         onRefresh={handleRefreshing}
         showsVerticalScrollIndicator={false}
