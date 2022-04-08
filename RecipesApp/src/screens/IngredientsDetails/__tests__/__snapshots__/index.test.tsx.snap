@@ -1,0 +1,125 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Ingredients Details Screen should render correctly 1`] = `
+<View>
+  <RCTScrollView
+    data={
+      Array [
+        Array [
+          Object {
+            "id": 0,
+            "name": "Oil",
+            "photo_url": "https://ak7.picdn.net/shutterstock/videos/27252067/thumb/11.jpg",
+          },
+          "200ml",
+        ],
+      ]
+    }
+    disableVirtualization={false}
+    getItem={[Function]}
+    getItemCount={[Function]}
+    horizontal={false}
+    initialNumToRender={10}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    onContentSizeChange={[Function]}
+    onEndReachedThreshold={2}
+    onLayout={[Function]}
+    onMomentumScrollEnd={[Function]}
+    onScroll={[Function]}
+    onScrollBeginDrag={[Function]}
+    onScrollEndDrag={[Function]}
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEventThrottle={50}
+    showsVerticalScrollIndicator={false}
+    stickyHeaderIndices={Array []}
+    updateCellsBatchingPeriod={50}
+    viewabilityConfigCallbackPairs={Array []}
+    windowSize={21}
+  >
+    <View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+            }
+          }
+        >
+          <View
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "opacity": 1,
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "flex": 1,
+                  "height": 160,
+                  "marginBottom": 10,
+                  "marginLeft": 10,
+                  "marginTop": 30,
+                  "width": 233.33333333333334,
+                }
+              }
+            >
+              <Image
+                source={
+                  Object {
+                    "uri": "https://ak7.picdn.net/shutterstock/videos/27252067/thumb/11.jpg",
+                  }
+                }
+                style={
+                  Object {
+                    "borderRadius": 60,
+                    "height": 100,
+                    "width": 233.33333333333334,
+                  }
+                }
+              />
+              <Text
+                style={
+                  Object {
+                    "color": "black",
+                    "fontSize": 13,
+                    "margin": 10,
+                    "marginBottom": 5,
+                    "textAlign": "center",
+                  }
+                }
+              >
+                Oil
+              </Text>
+              <Text
+                style={
+                  Object {
+                    "color": "grey",
+                  }
+                }
+              >
+                200ml
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </RCTScrollView>
+</View>
+`;

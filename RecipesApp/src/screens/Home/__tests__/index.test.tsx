@@ -1,10 +1,11 @@
+import { act, render } from '@testing-library/react-native';
 import { recipesApi } from 'api';
+import Screens from 'constants/Screens';
+import { recipe } from 'mocks';
 import React from 'react';
+import { Alert, TouchableOpacity } from 'react-native';
 import renderer from 'react-test-renderer';
 import HomeScreen from 'screens/Home';
-import { act, render } from '@testing-library/react-native';
-import { recipe } from 'mocks';
-import { Alert } from 'react-native';
 
 describe('Home Screen', () => {
   let navigation: any;
@@ -15,7 +16,13 @@ describe('Home Screen', () => {
       setOptions: jest.fn(),
       openDrawer: jest.fn()
     };
+    const setRefreshing = jest.fn();
+    const setRecipes = jest.fn();
     jest.spyOn(React, 'useEffect').mockImplementation((f) => f());
+    React.useState = jest
+      .fn()
+      .mockReturnValueOnce([false, setRefreshing])
+      .mockReturnValueOnce([[recipe], setRecipes]);
   });
 
   afterEach(() => {
@@ -23,8 +30,6 @@ describe('Home Screen', () => {
   });
 
   test('should render correctly', () => {
-    recipesApi.fetchRecipesRequest = jest.fn().mockReturnValue([recipe]);
-
     const tree = renderer.create(<HomeScreen navigation={navigation} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -75,5 +80,14 @@ describe('Home Screen', () => {
     });
 
     expect(Alert.alert).toHaveBeenCalledWith('Fetch data failed');
+  });
+
+  test('should call function handlePressRecipe', () => {
+    const component = renderer.create(<HomeScreen navigation={navigation} />);
+    const button = component.root.findAllByType(TouchableOpacity)[0];
+
+    button.props.onPress();
+
+    expect(navigation.navigate).toHaveBeenCalledWith(Screens.Recipe.name, { item: recipe });
   });
 });

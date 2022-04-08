@@ -26,16 +26,30 @@ const DrawerContainer = ({ navigation }: Props) => {
     navigation.closeDrawer();
   }, []);
 
+  const drawerList = [
+    {
+      title: Screens.Home.label,
+      source: HomeIcon,
+      onPress: handlePressHome
+    },
+    {
+      title: Screens.Categories.label,
+      source: CategoryIcon,
+      onPress: handlePressCategories
+    },
+    {
+      title: Screens.Search.label,
+      source: SearchIcon,
+      onPress: handlePressSearch
+    }
+  ];
+
   return (
     <View style={styles.content}>
       <View style={styles.container}>
-        <MenuItem title={Screens.Home.label} source={HomeIcon} onPress={handlePressHome} />
-        <MenuItem
-          title={Screens.Categories.label}
-          source={CategoryIcon}
-          onPress={handlePressCategories}
-        />
-        <MenuItem title={Screens.Search.label} source={SearchIcon} onPress={handlePressSearch} />
+        {drawerList.map(({ title, source, onPress }, index) => (
+          <MenuItem key={index} title={title} source={source} onPress={onPress} />
+        ))}
       </View>
     </View>
   );

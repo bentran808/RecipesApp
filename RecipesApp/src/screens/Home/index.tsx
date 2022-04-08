@@ -4,7 +4,7 @@ import { recipesApi } from 'api';
 import MenuButton from 'components/MenuButton';
 import RecipeCard from 'components/RecipeCard';
 import Screens from 'constants/Screens';
-import React, { useCallback, useEffect, useLayoutEffect, useState } from 'react';
+import React, { useCallback, useEffect, useLayoutEffect } from 'react';
 import { Alert, FlatList, View } from 'react-native';
 
 type HomeNavigationProp = NativeStackNavigationProp<RootStackParamList>;
@@ -13,8 +13,8 @@ type Props = {
 };
 
 const HomeScreen = ({ navigation }: Props) => {
-  const [refreshing, setRefreshing] = useState(false);
-  const [recipes, setRecipes] = useState<Recipe[]>();
+  const [refreshing, setRefreshing] = React.useState(false);
+  const [recipes, setRecipes] = React.useState<Recipe[]>();
 
   useLayoutEffect(() => {
     navigation.setOptions({

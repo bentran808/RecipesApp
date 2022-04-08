@@ -1,4 +1,5 @@
 import React from 'react';
+import isEqual from 'react-fast-compare';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
 import { styles } from './styles';
 
@@ -19,4 +20,4 @@ const RecipeCard = ({ item, onPressRecipe }: Props) => {
   );
 };
 
-export default React.memo(RecipeCard);
+export default React.memo(RecipeCard, isEqual);

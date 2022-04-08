@@ -2,7 +2,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { recipesApi } from 'api';
 import RecipeCard from 'components/RecipeCard';
 import Screens from 'constants/Screens';
-import React, { useCallback, useEffect, useLayoutEffect, useState } from 'react';
+import React, { useCallback, useEffect, useLayoutEffect } from 'react';
 import { Alert, FlatList, View } from 'react-native';
 
 type RecipesListNavigationProp = NativeStackNavigationProp<RootStackParamList>;
@@ -16,8 +16,8 @@ type Props = {
 };
 
 const RecipesListScreen = ({ navigation, route }: Props) => {
-  const [refreshing, setRefreshing] = useState(false);
-  const [recipes, setRecipes] = useState<Recipe[]>();
+  const [refreshing, setRefreshing] = React.useState(false);
+  const [recipes, setRecipes] = React.useState<Recipe[]>();
   const { category } = route.params;
   const title = category.name;
   const categoryId = category.id;
@@ -68,6 +68,7 @@ const RecipesListScreen = ({ navigation, route }: Props) => {
   return (
     <View>
       <FlatList
+        testID="recipesList"
         refreshing={refreshing}
         onRefresh={handleRefreshing}
         showsVerticalScrollIndicator={false}

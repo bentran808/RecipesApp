@@ -1,8 +1,51 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Home Screen should render correctly 1`] = `
+exports[`Ingredient Screen should render correctly 1`] = `
 <View>
   <RCTScrollView
+    ListHeaderComponent={
+      <React.Fragment>
+        <View
+          style={
+            Object {
+              "borderBottomColor": "grey",
+              "borderBottomWidth": 0.4,
+              "marginBottom": 10,
+            }
+          }
+        >
+          <Image
+            source={
+              Object {
+                "uri": "https://ak7.picdn.net/shutterstock/videos/27252067/thumb/11.jpg",
+              }
+            }
+            style={
+              Object {
+                "alignSelf": "center",
+                "height": 250,
+                "width": "100%",
+              }
+            }
+          />
+        </View>
+        <Text
+          style={
+            Object {
+              "color": "black",
+              "fontSize": 19,
+              "fontWeight": "bold",
+              "margin": 10,
+              "textAlign": "left",
+            }
+          }
+        >
+          Recipes with 
+          Oil
+          :
+        </Text>
+      </React.Fragment>
+    }
     data={
       Array [
         Object {
@@ -83,6 +126,49 @@ exports[`Home Screen should render correctly 1`] = `
   >
     <RCTRefreshControl />
     <View>
+      <View
+        onLayout={[Function]}
+      >
+        <View
+          style={
+            Object {
+              "borderBottomColor": "grey",
+              "borderBottomWidth": 0.4,
+              "marginBottom": 10,
+            }
+          }
+        >
+          <Image
+            source={
+              Object {
+                "uri": "https://ak7.picdn.net/shutterstock/videos/27252067/thumb/11.jpg",
+              }
+            }
+            style={
+              Object {
+                "alignSelf": "center",
+                "height": 250,
+                "width": "100%",
+              }
+            }
+          />
+        </View>
+        <Text
+          style={
+            Object {
+              "color": "black",
+              "fontSize": 19,
+              "fontWeight": "bold",
+              "margin": 10,
+              "textAlign": "left",
+            }
+          }
+        >
+          Recipes with 
+          Oil
+          :
+        </Text>
+      </View>
       <View
         onLayout={[Function]}
         style={null}

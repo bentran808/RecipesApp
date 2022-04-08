@@ -1,13 +1,13 @@
 import { act, render } from '@testing-library/react-native';
 import { recipesApi } from 'api';
 import Screens from 'constants/Screens';
-import { category, recipe } from 'mocks';
+import { ingredient, recipe } from 'mocks';
 import React from 'react';
 import { Alert, TouchableOpacity } from 'react-native';
 import renderer from 'react-test-renderer';
-import RecipesListScreen from 'screens/RecipesList';
+import IngredientScreen from 'screens/Ingredient';
 
-describe('Recipes List Screen', () => {
+describe('Ingredient Screen', () => {
   let navigation: any;
 
   beforeEach(() => {
@@ -30,35 +30,35 @@ describe('Recipes List Screen', () => {
 
   test('should render correctly', () => {
     const tree = renderer
-      .create(<RecipesListScreen navigation={navigation} route={{ params: { category } }} />)
+      .create(<IngredientScreen navigation={navigation} route={{ params: { ingredient } }} />)
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
 
-  test('should call function recipesApi.fetchRecipesByCategoryIdRequest successful', () => {
-    recipesApi.fetchRecipesByCategoryIdRequest = jest.fn().mockReturnValue([recipe]);
+  test('should call function recipesApi.fetchRecipesRequest successful', () => {
+    recipesApi.fetchRecipesRequest = jest.fn().mockReturnValue([recipe]);
 
-    render(<RecipesListScreen navigation={navigation} route={{ params: { category } }} />);
+    render(<IngredientScreen navigation={navigation} route={{ params: { ingredient } }} />);
 
-    expect(recipesApi.fetchRecipesByCategoryIdRequest).toHaveBeenCalled();
+    expect(recipesApi.fetchRecipesRequest).toHaveBeenCalled();
   });
 
-  test('should call function recipesApi.fetchRecipesByCategoryIdRequest failed', () => {
+  test('should call function recipesApi.fetchRecipesRequest failed', () => {
     jest.spyOn(Alert, 'alert');
-    recipesApi.fetchRecipesByCategoryIdRequest = jest.fn().mockImplementation(() => {
+    recipesApi.fetchRecipesRequest = jest.fn().mockImplementation(() => {
       throw new Error('Network Error');
     });
 
-    render(<RecipesListScreen navigation={navigation} route={{ params: { category } }} />);
+    render(<IngredientScreen navigation={navigation} route={{ params: { ingredient } }} />);
 
     expect(Alert.alert).toHaveBeenCalledWith('Fetch data failed');
   });
 
   test('should call function handleRefreshing successful', async () => {
-    recipesApi.fetchRecipesByCategoryIdRequest = jest.fn().mockReturnValue([recipe]);
+    recipesApi.fetchRecipesRequest = jest.fn().mockReturnValue([recipe]);
 
     const { getByTestId } = render(
-      <RecipesListScreen navigation={navigation} route={{ params: { category } }} />
+      <IngredientScreen navigation={navigation} route={{ params: { ingredient } }} />
     );
     const list = getByTestId('recipesList');
 
@@ -66,17 +66,17 @@ describe('Recipes List Screen', () => {
       list.props.onRefresh();
     });
 
-    expect(recipesApi.fetchRecipesByCategoryIdRequest).toHaveBeenCalled();
+    expect(recipesApi.fetchRecipesRequest).toHaveBeenCalled();
   });
 
   test('should call function handleRefreshing failed', async () => {
     jest.spyOn(Alert, 'alert');
-    recipesApi.fetchRecipesByCategoryIdRequest = jest.fn().mockImplementation(() => {
+    recipesApi.fetchRecipesRequest = jest.fn().mockImplementation(() => {
       throw new Error('Network Error');
     });
 
     const { getByTestId } = render(
-      <RecipesListScreen navigation={navigation} route={{ params: { category } }} />
+      <IngredientScreen navigation={navigation} route={{ params: { ingredient } }} />
     );
     const list = getByTestId('recipesList');
 
@@ -89,7 +89,7 @@ describe('Recipes List Screen', () => {
 
   test('should call function handlePressRecipe', () => {
     const component = renderer.create(
-      <RecipesListScreen navigation={navigation} route={{ params: { category } }} />
+      <IngredientScreen navigation={navigation} route={{ params: { ingredient } }} />
     );
     const button = component.root.findAllByType(TouchableOpacity)[0];
 

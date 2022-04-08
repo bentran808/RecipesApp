@@ -6,7 +6,13 @@ type RootStackParamList = {
   RecipesList: {
     category: Category;
   };
-  IngredientsDetails: undefined;
+  IngredientsDetails: {
+    title: string;
+    ingredients: (number | string)[][]
+  };
+  Ingredient: {
+    ingredient: Ingredient
+  };
 };
 
 type Recipe = {
@@ -32,3 +38,5 @@ type Ingredient = {
   name: string;
   photo_url: string;
 };
+
+type IngredientsDetails = [Ingredient, number | string];

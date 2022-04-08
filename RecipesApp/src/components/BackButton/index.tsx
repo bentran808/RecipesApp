@@ -1,4 +1,5 @@
 import React from 'react';
+import isEqual from 'react-fast-compare';
 import { Image, TouchableOpacity } from 'react-native';
 import { BackArrow } from 'theme';
 import styles from './styles';
@@ -15,4 +16,4 @@ const BackButton = ({ onPress }: Props) => {
   );
 };
 
-export default React.memo(BackButton);
+export default React.memo(BackButton, isEqual);

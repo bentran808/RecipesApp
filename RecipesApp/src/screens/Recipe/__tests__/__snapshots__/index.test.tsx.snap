@@ -699,6 +699,7 @@ exports[`Recipe Screen should render correctly 1`] = `
         onGestureHandlerStateChange={[Function]}
         onHandlerStateChange={[Function]}
         rippleColor={0}
+        testID="categoryBtn"
       >
         <View
           accessible={true}
@@ -780,21 +781,26 @@ exports[`Recipe Screen should render correctly 1`] = `
               "opacity": 1,
             }
           }
+          testID="viewIngredientsBtn"
         >
           <View
             style={
-              Object {
-                "alignItems": "center",
-                "borderColor": "#2cd18a",
-                "borderRadius": 100,
-                "borderWidth": 1,
-                "flex": 1,
-                "height": 50,
-                "justifyContent": "center",
-                "marginHorizontal": 10,
-                "marginTop": 20,
-                "width": 270,
-              }
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "borderRadius": 100,
+                  "borderWidth": 1,
+                  "flex": 1,
+                  "justifyContent": "center",
+                  "marginHorizontal": 10,
+                  "marginTop": 20,
+                },
+                Object {
+                  "borderColor": "#2cd18a",
+                  "paddingHorizontal": 60,
+                  "paddingVertical": 10,
+                },
+              ]
             }
           >
             <Text

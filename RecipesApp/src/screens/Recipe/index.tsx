@@ -24,7 +24,7 @@ const RecipeScreen = ({ navigation, route }: Props) => {
   const [activeSlide, setActiveSlide] = useState(0);
   const offset = useRef(new Animated.Value(0)).current;
   const { item } = route.params;
-  const category = item.category;
+  const { category, ingredients } = item;
   const categoryName = category.name;
 
   useLayoutEffect(() => {
@@ -45,7 +45,11 @@ const RecipeScreen = ({ navigation, route }: Props) => {
   }, []);
 
   const handleViewIngredients = useCallback(() => {
-    navigation.navigate(Screens.IngredientsDetails.name as 'IngredientsDetails');
+    const title = `Ingredients for ${item.title}`;
+    navigation.navigate(Screens.IngredientsDetails.name as 'IngredientsDetails', {
+      title,
+      ingredients
+    });
   }, []);
 
   const renderImage = ({ item }: { item: string }) => (
@@ -96,7 +100,7 @@ const RecipeScreen = ({ navigation, route }: Props) => {
       </View>
       <View style={styles.infoRecipeContainer}>
         <Text style={styles.infoRecipeName}>{item.title}</Text>
-        <TouchableOpacity onPress={handlePressCategory}>
+        <TouchableOpacity testID="categoryBtn" onPress={handlePressCategory}>
           <Text style={styles.category}>{categoryName.toUpperCase()}</Text>
         </TouchableOpacity>
         <View style={styles.infoContainer}>
@@ -104,7 +108,11 @@ const RecipeScreen = ({ navigation, route }: Props) => {
           <Text style={styles.infoRecipe}>{item.time} minutes </Text>
         </View>
         <View style={styles.infoContainer}>
-          <Button title="View Ingredients" onPress={handleViewIngredients} />
+          <Button
+            testID="viewIngredientsBtn"
+            title="View Ingredients"
+            onPress={handleViewIngredients}
+          />
         </View>
         <Text style={styles.infoDescriptionRecipe}>{item.description}</Text>
       </View>

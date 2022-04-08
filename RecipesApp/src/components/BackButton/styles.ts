@@ -6,8 +6,8 @@ const styles = StyleSheet.create({
     borderRadius: 180,
     padding: 8,
     margin: 10,
-    backgroundColor: '#fff',
-    shadowColor: '#000',
+    backgroundColor: 'white',
+    shadowColor: 'black',
     shadowOffset: {
       width: 0,
       height: 2

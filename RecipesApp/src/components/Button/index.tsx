@@ -1,20 +1,36 @@
 import React from 'react';
+import isEqual from 'react-fast-compare';
 import { Text, TouchableOpacity, View } from 'react-native';
 import styles from './styles';
 
 type Props = {
+  testID: string;
   title: string;
   onPress: () => void;
+  borderColor?: string;
+  paddingVertical?: number;
+  paddingHorizontal?: number;
+  fontSize?: number;
+  textColor?: string;
 };
 
-const Button = ({ title, onPress }: Props) => {
+const Button = ({
+  testID,
+  title,
+  onPress,
+  borderColor = '#2cd18a',
+  paddingVertical = 10,
+  paddingHorizontal = 60,
+  fontSize = 14,
+  textColor = '#2cd18a'
+}: Props) => {
   return (
-    <TouchableOpacity onPress={onPress}>
-      <View style={styles.container}>
-        <Text style={styles.text}>{title}</Text>
+    <TouchableOpacity testID={testID} onPress={onPress}>
+      <View style={[styles.container, { borderColor, paddingVertical, paddingHorizontal }]}>
+        <Text style={{ fontSize, color: textColor }}>{title}</Text>
       </View>
     </TouchableOpacity>
   );
 };
 
-export default React.memo(Button);
+export default React.memo(Button, isEqual);

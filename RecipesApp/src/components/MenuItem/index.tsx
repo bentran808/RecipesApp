@@ -1,4 +1,5 @@
 import React from 'react';
+import isEqual from 'react-fast-compare';
 import { Image, ImageSourcePropType, Text, TouchableHighlight, View } from 'react-native';
 import styles from './styles';
 
@@ -23,4 +24,4 @@ const MenuItem = ({ title, onPress, source }: Props) => {
   );
 };
 
-export default React.memo(MenuItem);
+export default React.memo(MenuItem, isEqual);
