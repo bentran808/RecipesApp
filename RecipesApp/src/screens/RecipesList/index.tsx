@@ -21,6 +21,7 @@ const RecipesListScreen = ({ navigation, route }: Props) => {
   const { category } = route.params;
   const title = category.name;
   const categoryId = category.id;
+  const recipesOfCategory = category.recipes;
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -38,7 +39,11 @@ const RecipesListScreen = ({ navigation, route }: Props) => {
       }
     };
 
-    getRecipesByCategoryId();
+    if (recipesOfCategory?.length) {
+      setRecipes(recipesOfCategory);
+    } else {
+      getRecipesByCategoryId();
+    }
   }, []);
 
   const handleRefreshing = useCallback(async () => {
@@ -52,12 +57,9 @@ const RecipesListScreen = ({ navigation, route }: Props) => {
     setRefreshing(false);
   }, []);
 
-  const handlePressRecipe = useCallback(
-    (item: Recipe) => () => {
-      navigation.navigate(Screens.Recipe.name as 'Recipe', { item });
-    },
-    []
-  );
+  const handlePressRecipe = useCallback((item: Recipe) => {
+    navigation.navigate(Screens.Recipe.name as 'Recipe', { item });
+  }, []);
 
   const renderRecipes = ({ item }: { item: Recipe }) => (
     <RecipeCard item={item} onPressRecipe={handlePressRecipe} />

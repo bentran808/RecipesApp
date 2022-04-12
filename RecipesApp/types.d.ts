@@ -31,6 +31,7 @@ type Category = {
   id: number;
   name: string;
   photo_url: string;
+  recipes: Recipe[];
 };
 
 type Ingredient = {

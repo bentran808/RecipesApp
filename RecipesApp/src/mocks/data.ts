@@ -2,7 +2,8 @@ export const category = {
   id: 0,
   name: 'Cookies',
   photo_url:
-    "https://www.telegraph.co.uk/content/dam/Travel/2019/January/france-food.jpg?imw'id'th=1400"
+    "https://www.telegraph.co.uk/content/dam/Travel/2019/January/france-food.jpg?imw'id'th=1400",
+  recipes: []
 };
 
 export const recipe = {

@@ -18,11 +18,17 @@ describe('Home Screen', () => {
     };
     const setRefreshing = jest.fn();
     const setRecipes = jest.fn();
+    const setPage = jest.fn();
+    const setIsListEnd = jest.fn();
+    const setLoading = jest.fn();
     jest.spyOn(React, 'useEffect').mockImplementation((f) => f());
     React.useState = jest
       .fn()
       .mockReturnValueOnce([false, setRefreshing])
-      .mockReturnValueOnce([[recipe], setRecipes]);
+      .mockReturnValueOnce([[recipe], setRecipes])
+      .mockReturnValueOnce([1, setPage])
+      .mockReturnValueOnce([false, setIsListEnd])
+      .mockReturnValueOnce([true, setLoading]);
   });
 
   afterEach(() => {

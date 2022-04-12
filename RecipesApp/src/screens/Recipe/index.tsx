@@ -30,14 +30,12 @@ const RecipeScreen = ({ navigation, route }: Props) => {
   useLayoutEffect(() => {
     navigation.setOptions({
       headerTransparent: true,
-      headerLeft: () => (
-        <BackButton
-          onPress={() => {
-            navigation.goBack();
-          }}
-        />
-      )
+      headerLeft: () => <BackButton onPress={handlePressBack} />
     });
+  }, []);
+
+  const handlePressBack = useCallback(() => {
+    navigation.goBack();
   }, []);
 
   const handlePressCategory = useCallback(() => {

@@ -18,3 +18,13 @@ export const getRecipesByIngredient = (recipes: Recipe[], ingredientID: number) 
     (recipe) => recipe.ingredients.some((item) => item[0] === ingredientID) && recipe
   );
 };
+
+export const transformCategories = (categories: Category[]) => {
+  return categories.map((category) => ({
+    ...category,
+    recipes: category.recipes.map((recipe) => ({
+      ...recipe,
+      category
+    }))
+  }));
+};

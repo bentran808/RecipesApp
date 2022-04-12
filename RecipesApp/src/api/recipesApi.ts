@@ -7,8 +7,8 @@ export const recipesApi = {
   fetchIngredientsRequest() {
     return axiosInstance.get('ingredients');
   },
-  fetchRecipesRequest() {
-    return axiosInstance.get('recipes?_expand=category');
+  fetchRecipesRequest(page?: number) {
+    return axiosInstance.get(`recipes?_expand=category&_page=${page || 1}&_limit=6`);
   },
   fetchRecipesByCategoryIdRequest(id: number) {
     return axiosInstance.get(`recipes?_expand=category&categoryId=${id}`);
@@ -17,6 +17,6 @@ export const recipesApi = {
     return axiosInstance.get(`categories?name_like=${keyword}&_embed=recipes`);
   },
   searchByRecipeNameRequest(keyword: string) {
-    return axiosInstance.get(`recipes?title_like=${keyword}`);
+    return axiosInstance.get(`recipes?_expand=category&title_like=${keyword}`);
   }
 };

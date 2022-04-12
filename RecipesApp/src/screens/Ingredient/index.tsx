@@ -52,12 +52,9 @@ const IngredientScreen = ({ navigation, route }: Props) => {
     setRefreshing(false);
   }, []);
 
-  const handlePressRecipe = useCallback(
-    (item: Recipe) => () => {
-      navigation.navigate(Screens.Recipe.name as 'Recipe', { item });
-    },
-    []
-  );
+  const handlePressRecipe = useCallback((item: Recipe) => {
+    navigation.navigate(Screens.Recipe.name as 'Recipe', { item });
+  }, []);
 
   const renderRecipes = ({ item }: { item: Recipe }) => (
     <RecipeCard item={item} onPressRecipe={handlePressRecipe} />

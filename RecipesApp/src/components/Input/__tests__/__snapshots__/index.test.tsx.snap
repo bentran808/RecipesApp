@@ -1,0 +1,84 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input Component should render correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#EDEDED",
+      "borderRadius": 10,
+      "flexDirection": "row",
+      "justifyContent": "space-around",
+      "width": 250,
+    }
+  }
+>
+  <View
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    testID="leftIcon"
+  >
+    <Image
+      source={1}
+      style={
+        Object {
+          "height": 20,
+          "tintColor": "grey",
+          "width": 20,
+        }
+      }
+    />
+  </View>
+  <TextInput
+    allowFontScaling={true}
+    onChangeText={[MockFunction]}
+    rejectResponderTermination={true}
+    style={
+      Object {
+        "backgroundColor": "#EDEDED",
+        "color": "black",
+        "height": 50,
+        "width": 180,
+      }
+    }
+    underlineColorAndroid="transparent"
+    value=""
+  />
+  <View
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    testID="rightIcon"
+  >
+    <Image
+      source={1}
+      style={
+        Object {
+          "height": 20,
+          "tintColor": "grey",
+          "width": 20,
+        }
+      }
+    />
+  </View>
+</View>
+`;

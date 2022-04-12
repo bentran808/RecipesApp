@@ -1,0 +1,127 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Categories Screen should render correctly 1`] = `
+<View>
+  <RCTScrollView
+    data={
+      Array [
+        Object {
+          "id": 0,
+          "name": "Cookies",
+          "photo_url": "https://www.telegraph.co.uk/content/dam/Travel/2019/January/france-food.jpg?imw'id'th=1400",
+          "recipes": Array [],
+        },
+      ]
+    }
+    disableVirtualization={false}
+    getItem={[Function]}
+    getItemCount={[Function]}
+    horizontal={false}
+    initialNumToRender={10}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    onContentSizeChange={[Function]}
+    onEndReachedThreshold={2}
+    onLayout={[Function]}
+    onMomentumScrollEnd={[Function]}
+    onScroll={[Function]}
+    onScrollBeginDrag={[Function]}
+    onScrollEndDrag={[Function]}
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEventThrottle={50}
+    stickyHeaderIndices={Array []}
+    updateCellsBatchingPeriod={50}
+    viewabilityConfigCallbackPairs={Array []}
+    windowSize={21}
+  >
+    <View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "opacity": 1,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "alignItems": "center",
+                "borderColor": "#ccc",
+                "borderRadius": 20,
+                "borderWidth": 0.5,
+                "flex": 1,
+                "height": 215,
+                "justifyContent": "center",
+                "margin": 10,
+              }
+            }
+          >
+            <Image
+              source={
+                Object {
+                  "uri": "https://www.telegraph.co.uk/content/dam/Travel/2019/January/france-food.jpg?imw'id'th=1400",
+                }
+              }
+              style={
+                Object {
+                  "borderBottomLeftRadius": 0,
+                  "borderBottomRightRadius": 0,
+                  "borderRadius": 20,
+                  "height": 155,
+                  "shadowColor": "blue",
+                  "shadowOffset": Object {
+                    "height": 3,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 1,
+                  "shadowRadius": 5,
+                  "width": "100%",
+                }
+              }
+            />
+            <Text
+              style={
+                Object {
+                  "color": "#333",
+                  "flex": 1,
+                  "fontSize": 20,
+                  "fontWeight": "bold",
+                  "marginTop": 8,
+                  "textAlign": "center",
+                }
+              }
+            >
+              Cookies
+            </Text>
+            <Text
+              style={
+                Object {
+                  "marginBottom": 5,
+                  "marginTop": 3,
+                }
+              }
+            >
+              0
+               recipes
+            </Text>
+          </View>
+        </View>
+      </View>
+    </View>
+  </RCTScrollView>
+</View>
+`;

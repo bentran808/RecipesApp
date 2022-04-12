@@ -1,7 +1,6 @@
 import { fireEvent, render } from '@testing-library/react-native';
 import Screens from 'constants/Screens';
 import { category, recipe } from 'mocks';
-import { TouchableOpacity } from 'react-native';
 import renderer from 'react-test-renderer';
 import RecipeScreen from 'screens/Recipe';
 
