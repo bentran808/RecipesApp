@@ -1,4 +1,5 @@
 import React, { useCallback } from 'react';
+import isEqual from 'react-fast-compare';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
 import styles from './styles';
 
@@ -23,4 +24,4 @@ const CategoryCard = ({ item, onPressCategory }: Props) => {
   );
 };
 
-export default CategoryCard;
+export default React.memo(CategoryCard, isEqual);

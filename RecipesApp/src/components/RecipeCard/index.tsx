@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import isEqual from 'react-fast-compare';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
-import { styles } from './styles';
+import styles from './styles';
 
 type Props = {
   item: Recipe;

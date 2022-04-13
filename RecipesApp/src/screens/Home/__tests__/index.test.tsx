@@ -1,4 +1,4 @@
-import { act, render } from '@testing-library/react-native';
+import { render } from '@testing-library/react-native';
 import { recipesApi } from 'api';
 import Screens from 'constants/Screens';
 import { recipe } from 'mocks';
@@ -28,7 +28,7 @@ describe('Home Screen', () => {
       .mockReturnValueOnce([[recipe], setRecipes])
       .mockReturnValueOnce([1, setPage])
       .mockReturnValueOnce([false, setIsListEnd])
-      .mockReturnValueOnce([true, setLoading]);
+      .mockReturnValueOnce([false, setLoading]);
   });
 
   afterEach(() => {
@@ -65,9 +65,7 @@ describe('Home Screen', () => {
     const { getByTestId } = render(<HomeScreen navigation={navigation} />);
     const list = getByTestId('recipesList');
 
-    await act(async () => {
-      list.props.onRefresh();
-    });
+    list.props.onRefresh();
 
     expect(recipesApi.fetchRecipesRequest).toHaveBeenCalled();
   });
@@ -81,9 +79,7 @@ describe('Home Screen', () => {
     const { getByTestId } = render(<HomeScreen navigation={navigation} />);
     const list = getByTestId('recipesList');
 
-    await act(async () => {
-      list.props.onRefresh();
-    });
+    list.props.onRefresh();
 
     expect(Alert.alert).toHaveBeenCalledWith('Fetch data failed');
   });
@@ -95,5 +91,41 @@ describe('Home Screen', () => {
     button.props.onPress();
 
     expect(navigation.navigate).toHaveBeenCalledWith(Screens.Recipe.name, { item: recipe });
+  });
+
+  test('should call function getRecipes successful', async () => {
+    recipesApi.fetchRecipesRequest = jest.fn().mockReturnValue({ data: [recipe] });
+
+    const { getByTestId } = render(<HomeScreen navigation={navigation} />);
+    const list = getByTestId('recipesList');
+
+    list.props.onEndReached();
+
+    expect(recipesApi.fetchRecipesRequest).toHaveBeenCalled();
+  });
+
+  test('should call function getRecipes successful with empty data', async () => {
+    recipesApi.fetchRecipesRequest = jest.fn().mockReturnValue({ data: [] });
+
+    const { getByTestId } = render(<HomeScreen navigation={navigation} />);
+    const list = getByTestId('recipesList');
+
+    list.props.onEndReached();
+
+    expect(recipesApi.fetchRecipesRequest).toHaveBeenCalled();
+  });
+
+  test('should call function getRecipes failed', () => {
+    jest.spyOn(Alert, 'alert');
+    recipesApi.fetchRecipesRequest = jest.fn().mockImplementation(() => {
+      throw new Error('Network Error');
+    });
+
+    const { getByTestId } = render(<HomeScreen navigation={navigation} />);
+    const list = getByTestId('recipesList');
+
+    list.props.onEndReached();
+
+    expect(Alert.alert).toHaveBeenCalledWith('Fetch data failed');
   });
 });

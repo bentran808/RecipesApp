@@ -17,8 +17,8 @@ const HomeScreen = ({ navigation }: Props) => {
   const [refreshing, setRefreshing] = React.useState(false);
   const [recipes, setRecipes] = React.useState<Recipe[]>([]);
   const [page, setPage] = React.useState(1);
-  const [isListEnd, setIsListEnd] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [isListEnd, setIsListEnd] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -48,8 +48,8 @@ const HomeScreen = ({ navigation }: Props) => {
     setRefreshing(true);
     try {
       const response = await recipesApi.fetchRecipesRequest();
-      setPage(2);
       setRecipes(response.data);
+      setPage(2);
     } catch (error) {
       Alert.alert('Fetch data failed');
     }

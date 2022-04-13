@@ -7,7 +7,7 @@ const RECIPE_ITEM_HEIGHT = 150;
 const RECIPE_ITEM_MARGIN = 20;
 const RECIPE_ITEM_WIDTH = (width - (recipeColumns + 1) * RECIPE_ITEM_MARGIN) / recipeColumns;
 
-export const styles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -40,3 +40,5 @@ export const styles = StyleSheet.create({
     marginVertical: 5
   }
 });
+
+export default styles;

@@ -31,13 +31,13 @@ const Input = ({
   return (
     <View style={styles.searchContainer}>
       {leftIcon && (
-        <Pressable testID='leftIcon' onPress={handlePressLeftIcon}>
+        <Pressable testID="leftIcon" onPress={handlePressLeftIcon}>
           <Image style={styles.searchIcon} source={leftIcon} />
         </Pressable>
       )}
       <TextInput style={styles.searchInput} onChangeText={onChangeText} value={keyword} />
       {rightIcon && (
-        <Pressable testID='rightIcon' onPress={handlePressRightIcon}>
+        <Pressable testID="rightIcon" onPress={handlePressRightIcon}>
           <Image style={styles.searchIcon} source={rightIcon} />
         </Pressable>
       )}
