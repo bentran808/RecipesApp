@@ -3,10 +3,10 @@ import isEqual from 'react-fast-compare';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
 import styles from './styles';
 
-type Props = {
+interface Props {
   item: Recipe;
   onPressRecipe: (item: Recipe) => void;
-};
+}
 
 const RecipeCard = ({ item, onPressRecipe }: Props) => {
   const handlePress = useCallback(() => {

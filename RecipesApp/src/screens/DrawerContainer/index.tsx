@@ -6,9 +6,9 @@ import { View } from 'react-native';
 import { CategoryIcon, HomeIcon, SearchIcon } from 'theme';
 import styles from './styles';
 
-type Props = {
+interface Props {
   navigation: DrawerNavigationHelpers;
-};
+}
 
 const DrawerContainer = ({ navigation }: Props) => {
   const handlePressHome = useCallback(() => {

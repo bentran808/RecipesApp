@@ -3,11 +3,11 @@ import isEqual from 'react-fast-compare';
 import { Image, ImageSourcePropType, Text, TouchableHighlight, View } from 'react-native';
 import styles from './styles';
 
-type Props = {
+interface Props {
   title: string;
   onPress: () => void;
   source: ImageSourcePropType;
-};
+}
 
 const MenuItem = ({ title, onPress, source }: Props) => {
   return (

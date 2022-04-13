@@ -4,9 +4,9 @@ import { Image, TouchableOpacity } from 'react-native';
 import { BackArrow } from 'theme';
 import styles from './styles';
 
-type Props = {
+interface Props {
   onPress: () => void;
-};
+}
 
 const BackButton = ({ onPress }: Props) => {
   return (

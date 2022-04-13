@@ -3,10 +3,10 @@ import isEqual from 'react-fast-compare';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
 import styles from './styles';
 
-type Props = {
+interface Props {
   item: IngredientsDetails;
   onPressIngredient: () => void;
-};
+}
 
 const IngredientItem = ({ item, onPressIngredient }: Props) => {
   return (

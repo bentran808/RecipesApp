@@ -3,7 +3,7 @@ import isEqual from 'react-fast-compare';
 import { Text, TouchableOpacity, View } from 'react-native';
 import styles from './styles';
 
-type Props = {
+interface Props {
   testID: string;
   title: string;
   onPress: () => void;
@@ -12,7 +12,7 @@ type Props = {
   paddingHorizontal?: number;
   fontSize?: number;
   textColor?: string;
-};
+}
 
 const Button = ({
   testID,

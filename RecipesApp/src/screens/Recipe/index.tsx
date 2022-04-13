@@ -10,14 +10,14 @@ import { TimeIcon, width } from 'theme';
 import styles from './styles';
 
 type RecipeNavigationProp = NativeStackNavigationProp<RootStackParamList>;
-type Props = {
+interface Props {
   navigation: RecipeNavigationProp;
   route: {
     params: {
       item: Recipe;
     };
   };
-};
+}
 
 const RecipeScreen = ({ navigation, route }: Props) => {
   const sliderRef = useRef<any>();

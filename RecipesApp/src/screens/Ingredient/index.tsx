@@ -8,14 +8,14 @@ import { getRecipesByIngredient } from 'utils';
 import styles from './styles';
 
 type IngredientNavigationProp = NativeStackNavigationProp<RootStackParamList>;
-type Props = {
+interface Props {
   navigation: IngredientNavigationProp;
   route: {
     params: {
       ingredient: Ingredient;
     };
   };
-};
+}
 
 const IngredientScreen = ({ navigation, route }: Props) => {
   const [refreshing, setRefreshing] = React.useState(false);

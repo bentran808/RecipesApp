@@ -10,9 +10,9 @@ import { Alert, FlatList, View } from 'react-native';
 import { CloseIcon, SearchIcon } from 'theme';
 
 type SearchNavigationProp = NativeStackNavigationProp<RootStackParamList>;
-type Props = {
+interface Props {
   navigation: SearchNavigationProp & DrawerNavigationHelpers;
-};
+}
 
 const SearchScreen = ({ navigation }: Props) => {
   const [keyword, setKeyword] = React.useState<string>('');

@@ -4,9 +4,9 @@ import { Image, TouchableOpacity } from 'react-native';
 import { MenuIcon } from 'theme';
 import styles from './styles';
 
-type Props = {
+interface Props {
   onPress: () => void;
-};
+}
 
 const MenuButton = ({ onPress }: Props) => {
   return (

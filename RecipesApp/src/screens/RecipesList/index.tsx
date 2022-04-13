@@ -6,14 +6,14 @@ import React, { useCallback, useEffect, useLayoutEffect } from 'react';
 import { Alert, FlatList, View } from 'react-native';
 
 type RecipesListNavigationProp = NativeStackNavigationProp<RootStackParamList>;
-type Props = {
+interface Props {
   navigation: RecipesListNavigationProp;
   route: {
     params: {
       category: Category;
     };
   };
-};
+}
 
 const RecipesListScreen = ({ navigation, route }: Props) => {
   const [refreshing, setRefreshing] = React.useState(false);

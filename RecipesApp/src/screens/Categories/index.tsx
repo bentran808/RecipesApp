@@ -9,9 +9,9 @@ import { Alert, FlatList, View } from 'react-native';
 import { transformCategories } from 'utils';
 
 type CategoriesNavigationProp = NativeStackNavigationProp<RootStackParamList>;
-type Props = {
+interface Props {
   navigation: CategoriesNavigationProp & DrawerNavigationHelpers;
-};
+}
 
 const CategoriesScreen = ({ navigation }: Props) => {
   const [categories, setCategories] = React.useState<Category[]>();

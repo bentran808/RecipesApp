@@ -3,14 +3,14 @@ import isEqual from 'react-fast-compare';
 import { Image, ImageSourcePropType, Pressable, TextInput, View } from 'react-native';
 import styles from './styles';
 
-type Props = {
+interface Props {
   keyword: string;
   onChangeText: (text: string) => void;
   leftIcon?: ImageSourcePropType;
   rightIcon?: ImageSourcePropType;
   onPressLeftIcon?: () => void;
   onPressRightIcon?: () => void;
-};
+}
 
 const Input = ({
   keyword,

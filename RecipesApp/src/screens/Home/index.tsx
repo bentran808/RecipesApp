@@ -1,17 +1,17 @@
 import { DrawerNavigationHelpers } from '@react-navigation/drawer/lib/typescript/src/types';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { recipesApi } from 'api';
-import styles from './styles';
 import MenuButton from 'components/MenuButton';
 import RecipeCard from 'components/RecipeCard';
 import Screens from 'constants/Screens';
-import React, { useCallback, useEffect, useLayoutEffect, useState } from 'react';
+import React, { useCallback, useEffect, useLayoutEffect } from 'react';
 import { ActivityIndicator, Alert, FlatList, View } from 'react-native';
+import styles from './styles';
 
 type HomeNavigationProp = NativeStackNavigationProp<RootStackParamList>;
-type Props = {
+interface Props {
   navigation: HomeNavigationProp & DrawerNavigationHelpers;
-};
+}
 
 const HomeScreen = ({ navigation }: Props) => {
   const [refreshing, setRefreshing] = React.useState(false);

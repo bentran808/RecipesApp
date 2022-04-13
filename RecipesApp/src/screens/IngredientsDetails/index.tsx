@@ -7,7 +7,7 @@ import IngredientItem from 'screens/IngredientsDetails/components/IngredientItem
 import { mappingIngredientsDetails } from 'utils';
 
 type IngredientsDetailsNavigationProp = NativeStackNavigationProp<RootStackParamList>;
-type Props = {
+interface Props {
   navigation: IngredientsDetailsNavigationProp;
   route: {
     params: {
@@ -15,7 +15,7 @@ type Props = {
       ingredients: (number | string)[][];
     };
   };
-};
+}
 
 const IngredientsDetailsScreen = ({ navigation, route }: Props) => {
   const [ingredientsDetails, setIngredientsDetails] = React.useState<IngredientsDetails[]>();
