@@ -27,7 +27,7 @@ const RecipesListScreen = ({ navigation, route }: Props) => {
     navigation.setOptions({
       title
     });
-  }, []);
+  }, [title]);
 
   useEffect(() => {
     const getRecipesByCategoryId = async () => {
@@ -39,12 +39,8 @@ const RecipesListScreen = ({ navigation, route }: Props) => {
       }
     };
 
-    if (recipesOfCategory?.length) {
-      setRecipes(recipesOfCategory);
-    } else {
-      getRecipesByCategoryId();
-    }
-  }, []);
+    getRecipesByCategoryId();
+  }, [categoryId]);
 
   const handleRefreshing = useCallback(async () => {
     setRefreshing(true);
@@ -55,7 +51,7 @@ const RecipesListScreen = ({ navigation, route }: Props) => {
       Alert.alert('Fetch data failed');
     }
     setRefreshing(false);
-  }, []);
+  }, [categoryId]);
 
   const handlePressRecipe = useCallback((item: Recipe) => {
     navigation.navigate(Screens.Recipe.name as 'Recipe', { item });

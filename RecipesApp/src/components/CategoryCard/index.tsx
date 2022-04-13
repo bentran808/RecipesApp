@@ -11,7 +11,7 @@ interface Props {
 const CategoryCard = ({ item, onPressCategory }: Props) => {
   const handlePress = useCallback(() => {
     onPressCategory(item);
-  }, []);
+  }, [item]);
 
   return (
     <TouchableOpacity onPress={handlePress}>

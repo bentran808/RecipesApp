@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     width: 250,
     justifyContent: 'space-around'
   },
-  searchIcon: {
+  icon: {
     width: 20,
     height: 20,
     tintColor: 'grey'
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#EDEDED',
     color: 'black',
     width: 180,
-    height: 50
+    paddingVertical: 10
   }
 });
 

@@ -23,9 +23,13 @@ const IngredientsDetailsScreen = ({ navigation, route }: Props) => {
 
   useLayoutEffect(() => {
     navigation.setOptions({
-      title
+      title,
+      headerTitleStyle: {
+        fontSize: 16,
+        fontWeight: 'bold'
+      }
     });
-  }, []);
+  }, [title]);
 
   useEffect(() => {
     const getAllIngredients = async () => {
@@ -40,14 +44,12 @@ const IngredientsDetailsScreen = ({ navigation, route }: Props) => {
     getAllIngredients();
   }, []);
 
-  const handlePressIngredient = useCallback(
-    (item: IngredientsDetails) => () => {
-      navigation.navigate(Screens.Ingredient.name as 'Ingredient', { ingredient: item[0] });
-    },
-    []
-  );
+  const handlePressIngredient = useCallback((item: IngredientsDetails) => {
+    navigation.navigate(Screens.Ingredient.name as 'Ingredient', { ingredient: item[0] });
+  }, []);
+
   const renderIngredient = ({ item }: { item: IngredientsDetails }) => (
-    <IngredientItem item={item} onPressIngredient={handlePressIngredient(item)} />
+    <IngredientItem item={item} onPressIngredient={handlePressIngredient} />
   );
 
   const renderKeyExtractor = (item: IngredientsDetails) => `${item[0].id}`;

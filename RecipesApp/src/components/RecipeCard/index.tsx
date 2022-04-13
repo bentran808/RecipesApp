@@ -11,7 +11,7 @@ interface Props {
 const RecipeCard = ({ item, onPressRecipe }: Props) => {
   const handlePress = useCallback(() => {
     onPressRecipe(item);
-  }, []);
+  }, [item]);
 
   return (
     <TouchableOpacity onPress={handlePress}>

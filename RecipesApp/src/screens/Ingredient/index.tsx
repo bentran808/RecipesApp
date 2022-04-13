@@ -26,7 +26,7 @@ const IngredientScreen = ({ navigation, route }: Props) => {
     navigation.setOptions({
       title: name
     });
-  }, []);
+  }, [name]);
 
   useEffect(() => {
     const getAllRecipes = async () => {
@@ -39,7 +39,7 @@ const IngredientScreen = ({ navigation, route }: Props) => {
     };
 
     getAllRecipes();
-  }, []);
+  }, [id]);
 
   const handleRefreshing = useCallback(async () => {
     setRefreshing(true);

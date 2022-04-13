@@ -47,7 +47,7 @@ exports[`Input Component should render correctly 1`] = `
       Object {
         "backgroundColor": "#EDEDED",
         "color": "black",
-        "height": 50,
+        "paddingVertical": 10,
         "width": 180,
       }
     }

@@ -48,7 +48,7 @@ const RecipeScreen = ({ navigation, route }: Props) => {
       title,
       ingredients
     });
-  }, []);
+  }, [item]);
 
   const renderImage = ({ item }: { item: string }) => (
     <TouchableOpacity>
