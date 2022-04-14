@@ -716,6 +716,9 @@ exports[`Recipe Screen should render correctly 1`] = `
                 "marginHorizontal": 10,
               },
               Object {},
+              Object {
+                "margin": 10,
+              },
             ]
           }
         >
@@ -804,9 +807,11 @@ exports[`Recipe Screen should render correctly 1`] = `
                 Object {
                   "borderColor": "#2cd18a",
                   "borderWidth": 1,
-                  "marginTop": 20,
                   "paddingHorizontal": 60,
                   "paddingVertical": 10,
+                },
+                Object {
+                  "marginTop": 20,
                 },
               ]
             }

@@ -14,6 +14,7 @@ interface Props {
   fontSize?: number;
   color?: string;
   bold?: boolean;
+  style?: any;
 }
 
 const Button = ({
@@ -26,7 +27,8 @@ const Button = ({
   paddingHorizontal = 60,
   fontSize = 14,
   color = '#2cd18a',
-  bold = false
+  bold = false,
+  style
 }: Props) => {
   const textColor = type === 'contained' ? 'white' : color;
   const fontWeight = bold ? 'bold' : 'normal';
@@ -38,8 +40,7 @@ const Button = ({
         borderWidth: 1,
         borderColor,
         paddingVertical,
-        paddingHorizontal,
-        marginTop: 20
+        paddingHorizontal
       };
       break;
     case 'contained':
@@ -57,7 +58,7 @@ const Button = ({
 
   return (
     <TouchableOpacity testID={testID} onPress={onPress}>
-      <View style={[styles.btn, additionalStyles]}>
+      <View style={[styles.btn, additionalStyles, style]}>
         <Text style={[{ fontSize, color: textColor, fontWeight }]}>{title}</Text>
       </View>
     </TouchableOpacity>

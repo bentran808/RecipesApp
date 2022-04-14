@@ -2,7 +2,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import BackButton from 'components/BackButton';
 import MenuButton from 'components/MenuButton';
 import Screens from 'constants/Screens';
-import { useCallback } from 'react';
 import CategoriesScreen from 'screens/Categories';
 import HomeScreen from 'screens/Home';
 import IngredientScreen from 'screens/Ingredient';
@@ -27,9 +26,9 @@ const MainNavigator = () => {
         name={Screens.Home.name}
         component={HomeScreen}
         options={({ navigation }) => {
-          const handlePressMenu = useCallback(() => {
+          const handlePressMenu = () => {
             navigation.openDrawer();
-          }, []);
+          };
 
           return {
             headerLeft: () => <MenuButton onPress={handlePressMenu} />
@@ -40,9 +39,9 @@ const MainNavigator = () => {
         name={Screens.Categories.name}
         component={CategoriesScreen}
         options={({ navigation }) => {
-          const handlePressMenu = useCallback(() => {
+          const handlePressMenu = () => {
             navigation.openDrawer();
-          }, []);
+          };
 
           return {
             headerLeft: () => <MenuButton onPress={handlePressMenu} />

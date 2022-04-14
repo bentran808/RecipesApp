@@ -91,6 +91,9 @@ const RecipeScreen = ({ navigation, route }: Props) => {
           title={categoryName.toUpperCase()}
           onPress={handlePressCategory}
           bold
+          style={{
+            margin: 10
+          }}
         />
         <View style={styles.infoContainer}>
           <Image style={styles.infoPhoto} source={TimeIcon} />
@@ -102,6 +105,9 @@ const RecipeScreen = ({ navigation, route }: Props) => {
             title="View Ingredients"
             onPress={handleViewIngredients}
             type="outlined"
+            style={{
+              marginTop: 20
+            }}
           />
         </View>
         <Text style={styles.infoDescriptionRecipe}>{item.description}</Text>
