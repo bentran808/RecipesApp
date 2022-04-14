@@ -28,3 +28,15 @@ export const transformCategories = (categories: Category[]) => {
     }))
   }));
 };
+
+let timeoutId: ReturnType<typeof setTimeout>;
+export const debounce = (func: (text: string) => void, delay: number) => {
+  return (...args: any) => {
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+    timeoutId = setTimeout(() => {
+      func.apply(null, args);
+    }, delay);
+  };
+};

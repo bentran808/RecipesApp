@@ -691,38 +691,49 @@ exports[`Recipe Screen should render correctly 1`] = `
       >
         Oatmeal Cookies
       </Text>
-      <RNGestureHandlerButton
-        collapsable={false}
-        exclusive={true}
-        onGestureEvent={[Function]}
-        onGestureHandlerEvent={[Function]}
-        onGestureHandlerStateChange={[Function]}
-        onHandlerStateChange={[Function]}
-        rippleColor={0}
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "opacity": 1,
+          }
+        }
         testID="categoryBtn"
       >
         <View
-          accessible={true}
           style={
-            Object {
-              "opacity": 1,
-            }
+            Array [
+              Object {
+                "borderRadius": 100,
+                "marginHorizontal": 10,
+              },
+              Object {},
+            ]
           }
         >
           <Text
             style={
-              Object {
-                "color": "#2cd18a",
-                "fontSize": 14,
-                "fontWeight": "bold",
-                "margin": 10,
-              }
+              Array [
+                Object {
+                  "color": "#2cd18a",
+                  "fontSize": 14,
+                  "fontWeight": "bold",
+                },
+              ]
             }
           >
             COOKIES
           </Text>
         </View>
-      </RNGestureHandlerButton>
+      </View>
       <View
         style={
           Object {
@@ -787,16 +798,13 @@ exports[`Recipe Screen should render correctly 1`] = `
             style={
               Array [
                 Object {
-                  "alignItems": "center",
                   "borderRadius": 100,
-                  "borderWidth": 1,
-                  "flex": 1,
-                  "justifyContent": "center",
                   "marginHorizontal": 10,
-                  "marginTop": 20,
                 },
                 Object {
                   "borderColor": "#2cd18a",
+                  "borderWidth": 1,
+                  "marginTop": 20,
                   "paddingHorizontal": 60,
                   "paddingVertical": 10,
                 },
@@ -805,10 +813,13 @@ exports[`Recipe Screen should render correctly 1`] = `
           >
             <Text
               style={
-                Object {
-                  "color": "#2cd18a",
-                  "fontSize": 14,
-                }
+                Array [
+                  Object {
+                    "color": "#2cd18a",
+                    "fontSize": 14,
+                    "fontWeight": "normal",
+                  },
+                ]
               }
             >
               View Ingredients

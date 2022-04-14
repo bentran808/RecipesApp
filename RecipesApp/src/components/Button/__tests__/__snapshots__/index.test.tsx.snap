@@ -22,28 +22,22 @@ exports[`Button Component should render correctly 1`] = `
     style={
       Array [
         Object {
-          "alignItems": "center",
           "borderRadius": 100,
-          "borderWidth": 1,
-          "flex": 1,
-          "justifyContent": "center",
           "marginHorizontal": 10,
-          "marginTop": 20,
         },
-        Object {
-          "borderColor": "#2cd18a",
-          "paddingHorizontal": 60,
-          "paddingVertical": 10,
-        },
+        Object {},
       ]
     }
   >
     <Text
       style={
-        Object {
-          "color": "#2cd18a",
-          "fontSize": 14,
-        }
+        Array [
+          Object {
+            "color": "#2cd18a",
+            "fontSize": 14,
+            "fontWeight": "normal",
+          },
+        ]
       }
     >
       Test

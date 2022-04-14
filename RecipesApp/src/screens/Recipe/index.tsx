@@ -1,8 +1,7 @@
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import BackButton from 'components/BackButton';
 import Button from 'components/Button';
 import Screens from 'constants/Screens';
-import React, { useCallback, useLayoutEffect, useRef, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { Animated, Image, Text, View } from 'react-native';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
@@ -26,17 +25,6 @@ const RecipeScreen = ({ navigation, route }: Props) => {
   const { item } = route.params;
   const { category, ingredients } = item;
   const categoryName = category.name;
-
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      headerTransparent: true,
-      headerLeft: () => <BackButton onPress={handlePressBack} />
-    });
-  }, []);
-
-  const handlePressBack = useCallback(() => {
-    navigation.goBack();
-  }, []);
 
   const handlePressCategory = useCallback(() => {
     navigation.navigate(Screens.RecipesList.name as 'RecipesList', { category });
@@ -98,9 +86,12 @@ const RecipeScreen = ({ navigation, route }: Props) => {
       </View>
       <View style={styles.infoRecipeContainer}>
         <Text style={styles.infoRecipeName}>{item.title}</Text>
-        <TouchableOpacity testID="categoryBtn" onPress={handlePressCategory}>
-          <Text style={styles.category}>{categoryName.toUpperCase()}</Text>
-        </TouchableOpacity>
+        <Button
+          testID="categoryBtn"
+          title={categoryName.toUpperCase()}
+          onPress={handlePressCategory}
+          bold
+        />
         <View style={styles.infoContainer}>
           <Image style={styles.infoPhoto} source={TimeIcon} />
           <Text style={styles.infoRecipe}>{item.time} minutes </Text>
@@ -110,6 +101,7 @@ const RecipeScreen = ({ navigation, route }: Props) => {
             testID="viewIngredientsBtn"
             title="View Ingredients"
             onPress={handleViewIngredients}
+            type="outlined"
           />
         </View>
         <Text style={styles.infoDescriptionRecipe}>{item.description}</Text>

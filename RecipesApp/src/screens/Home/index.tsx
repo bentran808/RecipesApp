@@ -1,10 +1,9 @@
 import { DrawerNavigationHelpers } from '@react-navigation/drawer/lib/typescript/src/types';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { recipesApi } from 'api';
-import MenuButton from 'components/MenuButton';
 import RecipeCard from 'components/RecipeCard';
 import Screens from 'constants/Screens';
-import React, { useCallback, useEffect, useLayoutEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { ActivityIndicator, Alert, FlatList, View } from 'react-native';
 import styles from './styles';
 
@@ -20,12 +19,6 @@ const HomeScreen = ({ navigation }: Props) => {
   const [isListEnd, setIsListEnd] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
 
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      headerLeft: () => <MenuButton onPress={handlePressMenu} />
-    });
-  }, []);
-
   useEffect(() => {
     const getAllRecipes = async () => {
       try {
@@ -38,10 +31,6 @@ const HomeScreen = ({ navigation }: Props) => {
     };
 
     getAllRecipes();
-  }, []);
-
-  const handlePressMenu = useCallback(() => {
-    navigation.openDrawer();
   }, []);
 
   const handleRefreshing = useCallback(async () => {

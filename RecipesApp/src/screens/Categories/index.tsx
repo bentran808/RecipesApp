@@ -2,9 +2,8 @@ import { DrawerNavigationHelpers } from '@react-navigation/drawer/lib/typescript
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { recipesApi } from 'api';
 import CategoryCard from 'components/CategoryCard';
-import MenuButton from 'components/MenuButton';
 import Screens from 'constants/Screens';
-import React, { useCallback, useEffect, useLayoutEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { Alert, FlatList, View } from 'react-native';
 import { transformCategories } from 'utils';
 
@@ -15,12 +14,6 @@ interface Props {
 
 const CategoriesScreen = ({ navigation }: Props) => {
   const [categories, setCategories] = React.useState<Category[]>();
-
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      headerLeft: () => <MenuButton onPress={handlePressMenu} />
-    });
-  }, []);
 
   useEffect(() => {
     const getAllCategories = async () => {
@@ -33,10 +26,6 @@ const CategoriesScreen = ({ navigation }: Props) => {
     };
 
     getAllCategories();
-  }, []);
-
-  const handlePressMenu = useCallback(() => {
-    navigation.openDrawer();
   }, []);
 
   const handlePressCategory = useCallback((category: Category) => {

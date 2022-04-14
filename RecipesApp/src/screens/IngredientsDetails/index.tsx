@@ -23,11 +23,7 @@ const IngredientsDetailsScreen = ({ navigation, route }: Props) => {
 
   useLayoutEffect(() => {
     navigation.setOptions({
-      title,
-      headerTitleStyle: {
-        fontSize: 16,
-        fontWeight: 'bold'
-      }
+      title
     });
   }, [title]);
 

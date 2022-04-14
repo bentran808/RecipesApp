@@ -21,7 +21,6 @@ const RecipesListScreen = ({ navigation, route }: Props) => {
   const { category } = route.params;
   const title = category.name;
   const categoryId = category.id;
-  const recipesOfCategory = category.recipes;
 
   useLayoutEffect(() => {
     navigation.setOptions({
