@@ -9,7 +9,9 @@
     "web": "expo start --web",
     "eject": "expo eject",
     "test": "jest",
-    "server": "json-server --watch ./src/data/db.json"
+    "server": "json-server --watch ./src/data/db.json",
+    "storybook": "start-storybook -p 7007",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.11",
@@ -35,12 +37,20 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
+    "@storybook/addon-actions": "^5.3",
+    "@storybook/addon-knobs": "^5.3",
+    "@storybook/addon-links": "^5.3",
+    "@storybook/addon-ondevice-actions": "^5.3.23",
+    "@storybook/addon-ondevice-knobs": "^5.3.25",
+    "@storybook/react-native": "^5.3.25",
+    "@storybook/react-native-server": "^5.3.23",
     "@testing-library/react-native": "^9.1.0",
     "@types/jest": "^27.4.1",
     "@types/react": "~17.0.21",
     "@types/react-native": "~0.64.12",
     "@types/react-native-snap-carousel": "^3.8.5",
     "@types/react-test-renderer": "^17.0.1",
+    "babel-loader": "^8.2.4",
     "react-test-renderer": "17.0.0",
     "typescript": "~4.3.5"
   },
@@ -50,6 +60,9 @@
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)?$",
     "transformIgnorePatterns": [
       "node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg)"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/mocks/globalMock.js"
     ],
     "collectCoverage": true,
     "coverageReporters": [

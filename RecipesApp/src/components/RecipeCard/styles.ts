@@ -9,7 +9,6 @@ const RECIPE_ITEM_WIDTH = (width - (recipeColumns + 1) * RECIPE_ITEM_MARGIN) / r
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     marginLeft: RECIPE_ITEM_MARGIN,

@@ -204,7 +204,6 @@ exports[`Ingredient Screen should render correctly 1`] = `
                   "borderColor": "#ccc",
                   "borderRadius": 15,
                   "borderWidth": 0.5,
-                  "flex": 1,
                   "height": 225,
                   "justifyContent": "center",
                   "marginLeft": 20,

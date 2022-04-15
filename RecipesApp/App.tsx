@@ -9,3 +9,6 @@ export default function App() {
     </NavigationContainer>
   );
 }
+
+// Watch storybooks on the emulator
+// export { default } from './src/storybook';

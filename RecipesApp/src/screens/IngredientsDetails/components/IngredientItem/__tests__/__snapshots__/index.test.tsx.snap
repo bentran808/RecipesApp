@@ -21,7 +21,6 @@ exports[`Ingredient Item Component should render correctly 1`] = `
     style={
       Object {
         "alignItems": "center",
-        "flex": 1,
         "height": 160,
         "marginBottom": 10,
         "marginLeft": 10,

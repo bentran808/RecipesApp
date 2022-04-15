@@ -53,6 +53,7 @@ exports[`Categories Screen should render correctly 1`] = `
           style={
             Object {
               "opacity": 1,
+              "width": "100%",
             }
           }
         >
@@ -63,7 +64,6 @@ exports[`Categories Screen should render correctly 1`] = `
                 "borderColor": "#ccc",
                 "borderRadius": 20,
                 "borderWidth": 0.5,
-                "flex": 1,
                 "height": 215,
                 "justifyContent": "center",
                 "margin": 10,
@@ -101,7 +101,6 @@ exports[`Categories Screen should render correctly 1`] = `
                   "fontSize": 20,
                   "fontWeight": "bold",
                   "marginTop": 8,
-                  "textAlign": "center",
                 }
               }
             >

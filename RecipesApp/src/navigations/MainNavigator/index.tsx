@@ -9,6 +9,7 @@ import IngredientsDetailsScreen from 'screens/IngredientsDetails';
 import RecipeScreen from 'screens/Recipe';
 import RecipesListScreen from 'screens/RecipesList';
 import SearchScreen from 'screens/Search';
+import { BackArrow } from 'theme';
 
 const Stack = createNativeStackNavigator();
 
@@ -58,7 +59,7 @@ const MainNavigator = () => {
 
           return {
             headerTransparent: true,
-            headerLeft: () => <BackButton onPress={handlePressBack} />
+            headerLeft: () => <BackButton source={BackArrow} onPress={handlePressBack} />
           };
         }}
       />

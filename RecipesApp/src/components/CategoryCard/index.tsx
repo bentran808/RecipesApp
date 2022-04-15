@@ -14,7 +14,7 @@ const CategoryCard = ({ item, onPressCategory }: Props) => {
   }, [item]);
 
   return (
-    <TouchableOpacity onPress={handlePress}>
+    <TouchableOpacity onPress={handlePress} style={styles.categoriesItemWrapper}>
       <View style={styles.categoriesItemContainer}>
         <Image style={styles.categoriesPhoto} source={{ uri: item.photo_url }} />
         <Text style={styles.categoriesName}>{item.name}</Text>

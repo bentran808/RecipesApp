@@ -1,15 +1,17 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
+  categoriesItemWrapper: {
+    width: '100%'
+  },
   categoriesItemContainer: {
-    flex: 1,
     margin: 10,
     justifyContent: 'center',
     alignItems: 'center',
     height: 215,
     borderColor: '#ccc',
     borderWidth: 0.5,
-    borderRadius: 20,
+    borderRadius: 20
   },
   categoriesPhoto: {
     width: '100%',
@@ -23,13 +25,12 @@ const styles = StyleSheet.create({
       height: 3
     },
     shadowRadius: 5,
-    shadowOpacity: 1.0
+    shadowOpacity: 1
   },
   categoriesName: {
     flex: 1,
     fontSize: 20,
     fontWeight: 'bold',
-    textAlign: 'center',
     color: '#333',
     marginTop: 8
   },
