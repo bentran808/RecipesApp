@@ -5,3 +5,5 @@ export const CategoryIcon = require('assets/images/icons/category.png');
 export const SearchIcon = require('assets/images/icons/search.png');
 export const TimeIcon = require('assets/images/icons/time.png');
 export const CloseIcon = require('assets/images/icons/close.png');
+export const BasketIcon = require('assets/images/icons/basket.png');
+export const CartIcon = require('assets/images/icons/cart.png');

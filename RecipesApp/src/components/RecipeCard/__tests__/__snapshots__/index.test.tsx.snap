@@ -24,7 +24,7 @@ exports[`Recipe Card Component should render correctly 1`] = `
         "borderColor": "#ccc",
         "borderRadius": 15,
         "borderWidth": 0.5,
-        "height": 225,
+        "height": 260,
         "justifyContent": "center",
         "marginLeft": 20,
         "marginTop": 20,
@@ -72,6 +72,55 @@ exports[`Recipe Card Component should render correctly 1`] = `
     >
       Cookies
     </Text>
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "marginBottom": 10,
+          "paddingHorizontal": 10,
+          "width": "100%",
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "fontSize": 15,
+            "fontWeight": "bold",
+          }
+        }
+      >
+        $20
+      </Text>
+      <View
+        accessible={true}
+        focusable={false}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "opacity": 1,
+          }
+        }
+      >
+        <Image
+          source={1}
+          style={
+            Object {
+              "height": 25,
+              "width": 25,
+            }
+          }
+        />
+      </View>
+    </View>
   </View>
 </View>
 `;

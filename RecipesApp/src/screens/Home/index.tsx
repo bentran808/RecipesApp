@@ -1,10 +1,12 @@
 import { DrawerNavigationHelpers } from '@react-navigation/drawer/lib/typescript/src/types';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { recipesApi } from 'api';
 import RecipeCard from 'components/RecipeCard';
 import Screens from 'constants/Screens';
+import { useStore } from 'context';
+import { observer } from 'mobx-react-lite';
 import React, { useCallback, useEffect } from 'react';
 import { ActivityIndicator, Alert, FlatList, View } from 'react-native';
+import { RecipeModel } from 'store/RecipesStore';
 import styles from './styles';
 
 type HomeNavigationProp = NativeStackNavigationProp<RootStackParamList>;
@@ -13,65 +15,41 @@ interface Props {
 }
 
 const HomeScreen = ({ navigation }: Props) => {
-  const [refreshing, setRefreshing] = React.useState(false);
-  const [recipes, setRecipes] = React.useState<Recipe[]>([]);
   const [page, setPage] = React.useState(1);
   const [isListEnd, setIsListEnd] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
+  const { recipes } = useStore();
 
   useEffect(() => {
-    const getAllRecipes = async () => {
-      try {
-        const response = await recipesApi.fetchRecipesRequest();
-        setRecipes(response.data);
-        setPage(2);
-      } catch (error) {
-        Alert.alert('Fetch data failed');
-      }
-    };
-
-    getAllRecipes();
+    recipes.fetchRecipes();
   }, []);
 
   const handleRefreshing = useCallback(async () => {
-    setRefreshing(true);
-    try {
-      const response = await recipesApi.fetchRecipesRequest();
-      setRecipes(response.data);
-      setPage(2);
-    } catch (error) {
-      Alert.alert('Fetch data failed');
-    }
-    setRefreshing(false);
+    recipes.fetchRecipes();
   }, []);
 
   const getRecipes = async () => {
     if (!loading && !isListEnd) {
       setLoading(true);
-      try {
-        const response = await recipesApi.fetchRecipesRequest(page);
-        if (response.data.length) {
-          setPage(page + 1);
-          setRecipes((prevState) => [...prevState, ...response.data]);
-        } else {
-          setIsListEnd(true);
-        }
-      } catch (error) {
-        Alert.alert('Fetch data failed');
+      recipes.fetchRecipes(page);
+      if (recipes.recipesJS.length) {
+        setPage(page + 1);
+      } else {
+        setIsListEnd(true);
       }
       setLoading(false);
     }
   };
 
-  const handlePressRecipe = useCallback((item: Recipe) => {
+  const handlePressRecipe = useCallback((item: RecipeModel) => {
     navigation.navigate(Screens.Recipe.name as 'Recipe', { item });
   }, []);
 
-  const renderRecipes = ({ item }: { item: Recipe }) => (
+  const renderRecipes = ({ item }: { item: RecipeModel }) => (
     <RecipeCard item={item} onPressRecipe={handlePressRecipe} />
   );
 
-  const renderKeyExtractor = (item: Recipe) => `${item.id}`;
+  const renderKeyExtractor = (item: RecipeModel) => `${item.id}`;
 
   const renderFooter = () => {
     return (
@@ -85,11 +63,11 @@ const HomeScreen = ({ navigation }: Props) => {
     <View>
       <FlatList
         testID="recipesList"
-        refreshing={refreshing}
+        refreshing={recipes.state === 'pending'}
         onRefresh={handleRefreshing}
         showsVerticalScrollIndicator={false}
         numColumns={2}
-        data={recipes}
+        data={recipes.recipesJS}
         renderItem={renderRecipes}
         keyExtractor={renderKeyExtractor}
         ListFooterComponent={renderFooter}
@@ -100,4 +78,4 @@ const HomeScreen = ({ navigation }: Props) => {
   );
 };
 
-export default HomeScreen;
+export default observer(HomeScreen);

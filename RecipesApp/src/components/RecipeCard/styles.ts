@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     marginLeft: RECIPE_ITEM_MARGIN,
     marginTop: 20,
     width: RECIPE_ITEM_WIDTH,
-    height: RECIPE_ITEM_HEIGHT + 75,
+    height: RECIPE_ITEM_HEIGHT + 110,
     borderColor: '#ccc',
     borderWidth: 0.5,
     borderRadius: 15
@@ -37,6 +37,22 @@ const styles = StyleSheet.create({
   },
   category: {
     marginVertical: 5
+  },
+  priceWrapper: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: '100%',
+    paddingHorizontal: 10,
+    marginBottom: 10
+  },
+  price: {
+    fontSize: 15,
+    fontWeight: 'bold'
+  },
+  cart: {
+    width: 25,
+    height: 25
   }
 });
 

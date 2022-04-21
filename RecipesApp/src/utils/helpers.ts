@@ -1,3 +1,5 @@
+import { CategoryModel } from "store/CategoriesStore";
+
 export const mappingIngredientsDetails = (
   ingredientsOfRecipe: (number | string)[][],
   ingredientsData: Ingredient[]
@@ -19,7 +21,7 @@ export const getRecipesByIngredient = (recipes: Recipe[], ingredientID: number) 
   );
 };
 
-export const transformCategories = (categories: Category[]) => {
+export const transformCategories = (categories: CategoryModel[]) => {
   return categories.map((category) => ({
     ...category,
     recipes: category.recipes.map((recipe) => ({

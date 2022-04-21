@@ -1,11 +1,12 @@
 import React, { useCallback } from 'react';
 import isEqual from 'react-fast-compare';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
+import { CategoryModel } from 'store/CategoriesStore';
 import styles from './styles';
 
 interface Props {
-  item: Category;
-  onPressCategory: (item: Category) => void;
+  item: CategoryModel;
+  onPressCategory: (item: CategoryModel) => void;
 }
 
 const CategoryCard = ({ item, onPressCategory }: Props) => {

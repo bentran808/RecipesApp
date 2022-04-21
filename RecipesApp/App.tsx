@@ -1,11 +1,15 @@
-import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
+import { StoreProvider } from 'context';
 import DrawerStack from 'navigations/DrawerStack';
+import 'react-native-gesture-handler';
+import store from 'store/store';
 
 export default function App() {
   return (
     <NavigationContainer>
-      <DrawerStack />
+      <StoreProvider value={store}>
+        <DrawerStack />
+      </StoreProvider>
     </NavigationContainer>
   );
 }

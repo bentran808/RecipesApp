@@ -3,6 +3,11 @@
   "jsx": "react",
   "compilerOptions": {
     "strict": true,
-    "baseUrl": "./src"
+    "baseUrl": "./src",
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true
   }
 }

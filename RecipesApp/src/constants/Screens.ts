@@ -6,5 +6,6 @@ export default {
   RecipesList: { name: 'RecipesList' },
   Ingredient: { name: 'Ingredient' },
   IngredientsDetails: { name: 'IngredientsDetails' },
-  Search: { name: 'Search', label: 'SEARCH' }
+  Search: { name: 'Search', label: 'SEARCH' },
+  Cart: { name: 'Cart' }
 };

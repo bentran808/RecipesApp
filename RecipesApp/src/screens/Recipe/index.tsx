@@ -47,72 +47,109 @@ const RecipeScreen = ({ navigation, route }: Props) => {
   );
 
   return (
-    <ScrollView
-      style={styles.container}
-      showsVerticalScrollIndicator={false}
-      scrollEventThrottle={16}
-      onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: offset } } }], {
-        useNativeDriver: false
-      })}
-    >
-      <View style={styles.carouselContainer}>
-        <Carousel
-          ref={sliderRef}
-          data={item.photosArray}
-          renderItem={renderImage}
-          sliderWidth={width}
-          itemWidth={width}
-          inactiveSlideScale={1}
-          inactiveSlideOpacity={1}
-          firstItem={0}
-          loop={false}
-          autoplay={true}
-          autoplayDelay={500}
-          autoplayInterval={3000}
-          onSnapToItem={(index) => setActiveSlide(index)}
-        />
-        <Pagination
-          dotsLength={item.photosArray.length}
-          activeDotIndex={activeSlide}
-          containerStyle={styles.paginationContainer}
-          dotColor="rgba(255, 255, 255, 0.92)"
-          dotStyle={styles.paginationDot}
-          inactiveDotColor="white"
-          inactiveDotOpacity={0.4}
-          inactiveDotScale={0.6}
-          carouselRef={sliderRef.current}
-          tappableDots={!!sliderRef.current}
-        />
-      </View>
-      <View style={styles.infoRecipeContainer}>
-        <Text style={styles.infoRecipeName}>{item.title}</Text>
-        <Button
-          testID="categoryBtn"
-          title={categoryName.toUpperCase()}
-          onPress={handlePressCategory}
-          bold
-          style={{
-            margin: 10
-          }}
-        />
-        <View style={styles.infoContainer}>
-          <Image style={styles.infoPhoto} source={TimeIcon} />
-          <Text style={styles.infoRecipe}>{item.time} minutes </Text>
-        </View>
-        <View style={styles.infoContainer}>
-          <Button
-            testID="viewIngredientsBtn"
-            title="View Ingredients"
-            onPress={handleViewIngredients}
-            type="outlined"
-            style={{
-              marginTop: 20
-            }}
+    <>
+      <ScrollView
+        style={styles.container}
+        showsVerticalScrollIndicator={false}
+        scrollEventThrottle={16}
+        onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: offset } } }], {
+          useNativeDriver: false
+        })}
+      >
+        <View style={styles.carouselContainer}>
+          <Carousel
+            ref={sliderRef}
+            data={item.photosArray}
+            renderItem={renderImage}
+            sliderWidth={width}
+            itemWidth={width}
+            inactiveSlideScale={1}
+            inactiveSlideOpacity={1}
+            firstItem={0}
+            loop={false}
+            autoplay={true}
+            autoplayDelay={500}
+            autoplayInterval={3000}
+            onSnapToItem={(index) => setActiveSlide(index)}
+          />
+          <Pagination
+            dotsLength={item.photosArray.length}
+            activeDotIndex={activeSlide}
+            containerStyle={styles.paginationContainer}
+            dotColor="rgba(255, 255, 255, 0.92)"
+            dotStyle={styles.paginationDot}
+            inactiveDotColor="white"
+            inactiveDotOpacity={0.4}
+            inactiveDotScale={0.6}
+            carouselRef={sliderRef.current}
+            tappableDots={!!sliderRef.current}
           />
         </View>
-        <Text style={styles.infoDescriptionRecipe}>{item.description}</Text>
+        <View style={styles.infoRecipeContainer}>
+          <Text style={styles.infoRecipeName}>{item.title}</Text>
+          <Button
+            testID="categoryBtn"
+            title={categoryName.toUpperCase()}
+            onPress={handlePressCategory}
+            bold
+            style={{
+              margin: 10
+            }}
+          />
+          <View style={styles.infoContainer}>
+            <Image style={styles.infoPhoto} source={TimeIcon} />
+            <Text style={styles.infoRecipe}>{item.time} minutes </Text>
+          </View>
+          <View style={styles.infoContainer}>
+            <Button
+              testID="viewIngredientsBtn"
+              title="View Ingredients"
+              onPress={handleViewIngredients}
+              type="outlined"
+              style={{
+                marginTop: 20
+              }}
+            />
+          </View>
+          <Text style={styles.infoDescriptionRecipe}>{item.description}</Text>
+        </View>
+      </ScrollView>
+      <View
+        style={{
+          position: 'absolute',
+          bottom: 0,
+          flexDirection: 'row',
+          width: '100%',
+          justifyContent: 'space-around',
+          backgroundColor: 'white',
+          alignItems: 'flex-end',
+          height: 40
+        }}
+      >
+        <View
+          style={{
+            flexDirection: 'row',
+            borderWidth: 1,
+            borderColor: '#2cd18a',
+            alignItems: 'center',
+            width: 150,
+            justifyContent: 'space-around',
+            marginHorizontal: 10,
+            borderRadius: 75
+          }}
+        >
+          <Button testID="decreaseBtn" title="+" onPress={handleViewIngredients} fontSize={30} />
+          <Text>1</Text>
+          <Button testID="increaseBtn" title="-" onPress={handleViewIngredients} fontSize={30} />
+        </View>
+        <Button
+          testID="addToCartBtn"
+          title="Add to cart"
+          onPress={handleViewIngredients}
+          type="contained"
+        />
       </View>
-    </ScrollView>
+    </>
   );
 };
 

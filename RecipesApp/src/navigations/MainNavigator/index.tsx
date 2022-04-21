@@ -2,6 +2,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import BackButton from 'components/BackButton';
 import MenuButton from 'components/MenuButton';
 import Screens from 'constants/Screens';
+import CartScreen from 'screens/Cart';
 import CategoriesScreen from 'screens/Categories';
 import HomeScreen from 'screens/Home';
 import IngredientScreen from 'screens/Ingredient';
@@ -9,7 +10,7 @@ import IngredientsDetailsScreen from 'screens/IngredientsDetails';
 import RecipeScreen from 'screens/Recipe';
 import RecipesListScreen from 'screens/RecipesList';
 import SearchScreen from 'screens/Search';
-import { BackArrow } from 'theme';
+import { BackArrow, BasketIcon } from 'theme';
 
 const Stack = createNativeStackNavigator();
 
@@ -30,9 +31,13 @@ const MainNavigator = () => {
           const handlePressMenu = () => {
             navigation.openDrawer();
           };
+          const handlePressCart = () => {
+            navigation.navigate(Screens.Cart.name);
+          };
 
           return {
-            headerLeft: () => <MenuButton onPress={handlePressMenu} />
+            headerLeft: () => <MenuButton onPress={handlePressMenu} />,
+            headerRight: () => <MenuButton source={BasketIcon} onPress={handlePressCart} badge />
           };
         }}
       />
@@ -56,10 +61,14 @@ const MainNavigator = () => {
           const handlePressBack = () => {
             navigation.goBack();
           };
+          const handlePressCart = () => {
+            navigation.navigate(Screens.Cart.name);
+          };
 
           return {
             headerTransparent: true,
-            headerLeft: () => <BackButton source={BackArrow} onPress={handlePressBack} />
+            headerLeft: () => <BackButton source={BackArrow} onPress={handlePressBack} />,
+            headerRight: () => <BackButton source={BasketIcon} onPress={handlePressCart} />
           };
         }}
       />
@@ -89,6 +98,7 @@ const MainNavigator = () => {
           };
         }}
       />
+      <Stack.Screen name={Screens.Cart.name} component={CartScreen} />
     </Stack.Navigator>
   );
 };
