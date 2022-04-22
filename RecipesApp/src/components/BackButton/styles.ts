@@ -19,6 +19,17 @@ const styles = StyleSheet.create({
   btnIcon: {
     height: 17,
     width: 17
+  },
+  badge: {
+    position: 'absolute',
+    right: 0,
+    top: 0,
+    backgroundColor: 'red',
+    borderRadius: 8,
+    width: 16,
+    height: 16,
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 });
 

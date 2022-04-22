@@ -1,4 +1,5 @@
 import { CategoryModel } from "store/CategoriesStore";
+import { RecipeModel } from "store/RecipesStore";
 
 export const mappingIngredientsDetails = (
   ingredientsOfRecipe: (number | string)[][],
@@ -15,7 +16,7 @@ export const mappingIngredientsDetails = (
   return results;
 };
 
-export const getRecipesByIngredient = (recipes: Recipe[], ingredientID: number) => {
+export const getRecipesByIngredient = (recipes: RecipeModel[], ingredientID: number) => {
   return recipes.filter(
     (recipe) => recipe.ingredients.some((item) => item[0] === ingredientID) && recipe
   );
@@ -24,7 +25,7 @@ export const getRecipesByIngredient = (recipes: Recipe[], ingredientID: number) 
 export const transformCategories = (categories: CategoryModel[]) => {
   return categories.map((category) => ({
     ...category,
-    recipes: category.recipes.map((recipe) => ({
+    recipes: (category.recipes || []).map((recipe) => ({
       ...recipe,
       category
     }))

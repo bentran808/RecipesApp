@@ -5,7 +5,7 @@ import Screens from 'constants/Screens';
 import { useStore } from 'context';
 import { observer } from 'mobx-react-lite';
 import React, { useCallback, useEffect } from 'react';
-import { Alert, FlatList, View } from 'react-native';
+import { FlatList, View } from 'react-native';
 import { CategoryModel } from 'store/CategoriesStore';
 
 type CategoriesNavigationProp = NativeStackNavigationProp<RootStackParamList>;
@@ -14,21 +14,10 @@ interface Props {
 }
 
 const CategoriesScreen = ({ navigation }: Props) => {
-  // const [categories, setCategories] = React.useState<Category[]>();
   const { categories } = useStore();
-  console.log('categories', categories);
+
   useEffect(() => {
-    const getAllCategories = async () => {
-      try {
-        // const response = await recipesApi.fetchCategoriesRequest();
-        // setCategories(transformCategories(response.data));
-        categories.fetchCategories();
-      } catch (error) {
-        Alert.alert('Fetch data failed');
-      }
-    };
     categories.fetchCategories();
-    getAllCategories();
   }, []);
 
   const handlePressCategory = useCallback((category: CategoryModel) => {

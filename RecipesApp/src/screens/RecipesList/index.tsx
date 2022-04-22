@@ -1,10 +1,17 @@
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { recipesApi } from 'api';
 import RecipeCard from 'components/RecipeCard';
 import Screens from 'constants/Screens';
+import { useStore } from 'context';
+import { observer } from 'mobx-react-lite';
 import React, { useCallback, useEffect, useLayoutEffect } from 'react';
-import { Alert, FlatList, View } from 'react-native';
+import { FlatList, View } from 'react-native';
+import { RecipeModel } from 'store/RecipesStore';
 
+type RootStackParamList = {
+  Recipe: {
+    item: RecipeModel;
+  };
+};
 type RecipesListNavigationProp = NativeStackNavigationProp<RootStackParamList>;
 interface Props {
   navigation: RecipesListNavigationProp;
@@ -16,8 +23,7 @@ interface Props {
 }
 
 const RecipesListScreen = ({ navigation, route }: Props) => {
-  const [refreshing, setRefreshing] = React.useState(false);
-  const [recipes, setRecipes] = React.useState<Recipe[]>();
+  const { recipes, cart } = useStore();
   const { category } = route.params;
   const title = category.name;
   const categoryId = category.id;
@@ -29,48 +35,36 @@ const RecipesListScreen = ({ navigation, route }: Props) => {
   }, [title]);
 
   useEffect(() => {
-    const getRecipesByCategoryId = async () => {
-      try {
-        const response = await recipesApi.fetchRecipesByCategoryIdRequest(categoryId);
-        setRecipes(response.data);
-      } catch (error) {
-        Alert.alert('Fetch data failed');
-      }
-    };
-
-    getRecipesByCategoryId();
+    recipes.fetchRecipesByCategoryId(categoryId);
   }, [categoryId]);
 
   const handleRefreshing = useCallback(async () => {
-    setRefreshing(true);
-    try {
-      const response = await recipesApi.fetchRecipesByCategoryIdRequest(categoryId);
-      setRecipes(response.data);
-    } catch (error) {
-      Alert.alert('Fetch data failed');
-    }
-    setRefreshing(false);
+    recipes.fetchRecipesByCategoryId(categoryId);
   }, [categoryId]);
 
-  const handlePressRecipe = useCallback((item: Recipe) => {
+  const handlePressRecipe = useCallback((item: RecipeModel) => {
     navigation.navigate(Screens.Recipe.name as 'Recipe', { item });
   }, []);
 
-  const renderRecipes = ({ item }: { item: Recipe }) => (
-    <RecipeCard item={item} onPressRecipe={handlePressRecipe} />
+  const handleAddToCart = useCallback((item: RecipeModel) => {
+    cart.addToCart(item);
+  }, []);
+
+  const renderRecipes = ({ item }: { item: RecipeModel }) => (
+    <RecipeCard item={item} onPressRecipe={handlePressRecipe} onPressCart={handleAddToCart} />
   );
 
-  const renderKeyExtractor = (item: Recipe) => `${item.id}`;
+  const renderKeyExtractor = (item: RecipeModel) => `${item.id}`;
 
   return (
     <View>
       <FlatList
         testID="recipesList"
-        refreshing={refreshing}
+        refreshing={recipes.state === 'pending'}
         onRefresh={handleRefreshing}
         showsVerticalScrollIndicator={false}
         numColumns={2}
-        data={recipes}
+        data={recipes.recipesOfCategoryJS}
         renderItem={renderRecipes}
         keyExtractor={renderKeyExtractor}
       />
@@ -78,4 +72,4 @@ const RecipesListScreen = ({ navigation, route }: Props) => {
   );
 };
 
-export default RecipesListScreen;
+export default observer(RecipesListScreen);

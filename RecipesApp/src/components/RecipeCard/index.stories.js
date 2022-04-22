@@ -7,4 +7,10 @@ import RecipeCard from '.';
 
 storiesOf('Recipe Card', module)
   .addDecorator((getStory) => <CenterView>{getStory()}</CenterView>)
-  .add('default', () => <RecipeCard item={recipe} onPressRecipe={action('clicked-card')} />);
+  .add('default', () => (
+    <RecipeCard
+      item={recipe}
+      onPressRecipe={action('clicked-card')}
+      onPressCart={action('clicked-cart-icon')}
+    />
+  ));

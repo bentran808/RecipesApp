@@ -8,15 +8,16 @@ interface Props {
   source?: ImageSourcePropType;
   onPress: () => void;
   badge?: boolean;
+  badgeCount?: number;
 }
 
-const MenuButton = ({ source = MenuIcon, onPress, badge = false }: Props) => {
+const MenuButton = ({ source = MenuIcon, onPress, badge = false, badgeCount = 0 }: Props) => {
   return (
     <TouchableOpacity style={styles.headerButtonContainer} onPress={onPress}>
       <Image style={styles.headerButtonImage} source={source} />
       {badge ? (
         <View style={styles.badge}>
-          <Text style={{ fontSize: 10 }}>1</Text>
+          <Text style={{ fontSize: 10 }}>{badgeCount}</Text>
         </View>
       ) : null}
     </TouchableOpacity>

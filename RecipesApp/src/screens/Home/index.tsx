@@ -1,13 +1,14 @@
 import { DrawerNavigationHelpers } from '@react-navigation/drawer/lib/typescript/src/types';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import MenuButton from 'components/MenuButton';
 import RecipeCard from 'components/RecipeCard';
 import Screens from 'constants/Screens';
 import { useStore } from 'context';
 import { observer } from 'mobx-react-lite';
-import React, { useCallback, useEffect } from 'react';
-import { ActivityIndicator, Alert, FlatList, View } from 'react-native';
+import React, { useCallback, useEffect, useLayoutEffect } from 'react';
+import { FlatList, View } from 'react-native';
 import { RecipeModel } from 'store/RecipesStore';
-import styles from './styles';
+import { BasketIcon } from 'theme';
 
 type HomeNavigationProp = NativeStackNavigationProp<RootStackParamList>;
 interface Props {
@@ -15,49 +16,51 @@ interface Props {
 }
 
 const HomeScreen = ({ navigation }: Props) => {
-  const [page, setPage] = React.useState(1);
-  const [isListEnd, setIsListEnd] = React.useState(false);
-  const [loading, setLoading] = React.useState(false);
-  const { recipes } = useStore();
+  const { recipes, cart } = useStore();
+  const badgeCount = cart.inCartCount;
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <MenuButton
+          source={BasketIcon}
+          onPress={handlePressCart}
+          badge={!!badgeCount}
+          badgeCount={badgeCount}
+        />
+      )
+    });
+  }, [badgeCount]);
 
   useEffect(() => {
-    recipes.fetchRecipes();
+    recipes.fetchRecipes(1);
   }, []);
 
   const handleRefreshing = useCallback(async () => {
-    recipes.fetchRecipes();
+    recipes.fetchRecipes(1);
   }, []);
 
   const getRecipes = async () => {
-    if (!loading && !isListEnd) {
-      setLoading(true);
-      recipes.fetchRecipes(page);
-      if (recipes.recipesJS.length) {
-        setPage(page + 1);
-      } else {
-        setIsListEnd(true);
-      }
-      setLoading(false);
-    }
+    recipes.fetchRecipes(recipes.currentPage);
+  };
+
+  const handlePressCart = () => {
+    navigation.navigate(Screens.Cart.name);
   };
 
   const handlePressRecipe = useCallback((item: RecipeModel) => {
     navigation.navigate(Screens.Recipe.name as 'Recipe', { item });
   }, []);
 
+  const handleAddToCart = useCallback((item: RecipeModel) => {
+    cart.addToCart(item);
+  }, []);
+
   const renderRecipes = ({ item }: { item: RecipeModel }) => (
-    <RecipeCard item={item} onPressRecipe={handlePressRecipe} />
+    <RecipeCard item={item} onPressRecipe={handlePressRecipe} onPressCart={handleAddToCart} />
   );
 
   const renderKeyExtractor = (item: RecipeModel) => `${item.id}`;
-
-  const renderFooter = () => {
-    return (
-      <View style={styles.footerContainer}>
-        {loading ? <ActivityIndicator color="black" style={styles.indicator} /> : null}
-      </View>
-    );
-  };
 
   return (
     <View>
@@ -70,7 +73,6 @@ const HomeScreen = ({ navigation }: Props) => {
         data={recipes.recipesJS}
         renderItem={renderRecipes}
         keyExtractor={renderKeyExtractor}
-        ListFooterComponent={renderFooter}
         onEndReached={getRecipes}
         onEndReachedThreshold={0.5}
       />

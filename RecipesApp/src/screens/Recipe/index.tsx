@@ -1,11 +1,13 @@
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import BackButton from 'components/BackButton';
 import Button from 'components/Button';
 import Screens from 'constants/Screens';
-import React, { useCallback, useRef, useState } from 'react';
+import { useStore } from 'context';
+import React, { useCallback, useLayoutEffect, useRef, useState } from 'react';
 import { Animated, Image, Text, View } from 'react-native';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
-import { TimeIcon, width } from 'theme';
+import { BasketIcon, TimeIcon, width } from 'theme';
 import styles from './styles';
 
 type RecipeNavigationProp = NativeStackNavigationProp<RootStackParamList>;
@@ -22,9 +24,28 @@ const RecipeScreen = ({ navigation, route }: Props) => {
   const sliderRef = useRef<any>();
   const [activeSlide, setActiveSlide] = useState(0);
   const offset = useRef(new Animated.Value(0)).current;
+  const { cart } = useStore();
+  const badgeCount = cart.inCartCount;
   const { item } = route.params;
   const { category, ingredients } = item;
   const categoryName = category.name;
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <BackButton
+          source={BasketIcon}
+          onPress={handlePressCart}
+          badge={!!badgeCount}
+          badgeCount={badgeCount}
+        />
+      )
+    });
+  }, []);
+
+  const handlePressCart = () => {
+    navigation.navigate(Screens.Cart.name as 'Cart');
+  };
 
   const handlePressCategory = useCallback(() => {
     navigation.navigate(Screens.RecipesList.name as 'RecipesList', { category });
@@ -114,33 +135,11 @@ const RecipeScreen = ({ navigation, route }: Props) => {
           <Text style={styles.infoDescriptionRecipe}>{item.description}</Text>
         </View>
       </ScrollView>
-      <View
-        style={{
-          position: 'absolute',
-          bottom: 0,
-          flexDirection: 'row',
-          width: '100%',
-          justifyContent: 'space-around',
-          backgroundColor: 'white',
-          alignItems: 'flex-end',
-          height: 40
-        }}
-      >
-        <View
-          style={{
-            flexDirection: 'row',
-            borderWidth: 1,
-            borderColor: '#2cd18a',
-            alignItems: 'center',
-            width: 150,
-            justifyContent: 'space-around',
-            marginHorizontal: 10,
-            borderRadius: 75
-          }}
-        >
-          <Button testID="decreaseBtn" title="+" onPress={handleViewIngredients} fontSize={30} />
-          <Text>1</Text>
+      <View style={styles.cartControl}>
+        <View style={styles.quantityContainer}>
           <Button testID="increaseBtn" title="-" onPress={handleViewIngredients} fontSize={30} />
+          <Text>1</Text>
+          <Button testID="decreaseBtn" title="+" onPress={handleViewIngredients} fontSize={30} />
         </View>
         <Button
           testID="addToCartBtn"

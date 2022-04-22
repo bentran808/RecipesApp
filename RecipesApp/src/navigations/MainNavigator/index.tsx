@@ -31,13 +31,9 @@ const MainNavigator = () => {
           const handlePressMenu = () => {
             navigation.openDrawer();
           };
-          const handlePressCart = () => {
-            navigation.navigate(Screens.Cart.name);
-          };
 
           return {
-            headerLeft: () => <MenuButton onPress={handlePressMenu} />,
-            headerRight: () => <MenuButton source={BasketIcon} onPress={handlePressCart} badge />
+            headerLeft: () => <MenuButton onPress={handlePressMenu} />
           };
         }}
       />
@@ -61,14 +57,10 @@ const MainNavigator = () => {
           const handlePressBack = () => {
             navigation.goBack();
           };
-          const handlePressCart = () => {
-            navigation.navigate(Screens.Cart.name);
-          };
 
           return {
             headerTransparent: true,
-            headerLeft: () => <BackButton source={BackArrow} onPress={handlePressBack} />,
-            headerRight: () => <BackButton source={BasketIcon} onPress={handlePressCart} />
+            headerLeft: () => <BackButton source={BackArrow} onPress={handlePressBack} />
           };
         }}
       />

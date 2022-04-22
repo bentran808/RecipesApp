@@ -78,6 +78,26 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'black',
     textAlign: 'center'
+  },
+  cartControl: {
+    position: 'absolute',
+    bottom: 0,
+    flexDirection: 'row',
+    width: '100%',
+    justifyContent: 'space-around',
+    backgroundColor: 'white',
+    alignItems: 'flex-end',
+    height: 40
+  },
+  quantityContainer: {
+    flexDirection: 'row',
+    borderWidth: 1,
+    borderColor: '#2cd18a',
+    alignItems: 'center',
+    width: 150,
+    justifyContent: 'space-around',
+    marginHorizontal: 10,
+    borderRadius: 75
   }
 });
 

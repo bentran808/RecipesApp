@@ -8,11 +8,16 @@ import styles from './styles';
 interface Props {
   item: RecipeModel;
   onPressRecipe: (item: RecipeModel) => void;
+  onPressCart: (item: RecipeModel) => void;
 }
 
-const RecipeCard = ({ item, onPressRecipe }: Props) => {
+const RecipeCard = ({ item, onPressRecipe, onPressCart }: Props) => {
   const handlePress = useCallback(() => {
     onPressRecipe(item);
+  }, [item]);
+
+  const handlePressCart = useCallback(() => {
+    onPressCart(item);
   }, [item]);
 
   return (
@@ -20,10 +25,10 @@ const RecipeCard = ({ item, onPressRecipe }: Props) => {
       <View style={styles.container}>
         <Image style={styles.photo} source={{ uri: item.photo_url }} />
         <Text style={styles.title}>{item.title}</Text>
-        <Text style={styles.category}>{item.category.name}</Text>
+        <Text style={styles.category}>{item?.category?.name || ''}</Text>
         <View style={styles.priceWrapper}>
           <Text style={styles.price}>$20</Text>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={handlePressCart}>
             <Image style={styles.cart} source={CartIcon} />
           </TouchableOpacity>
         </View>

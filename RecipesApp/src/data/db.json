@@ -502,7 +502,7 @@
         "https://littlespicejar.com/wp-content/uploads/2018/07/Best-Ever-Chicken-Fajitas-17.jpg",
         "https://www.allchickenrecipes.com/wp-content/uploads/2019/12/keto-chicken-fajitas.jpg"
       ],
-      "time": 35,
+      "time": "35",
       "ingredients": [
         [9, "1/2 teaspoons"],
         [0, "4 tablespoons"],
@@ -531,7 +531,7 @@
         "http://pizzachoicema.com/wp-content/uploads/2018/08/Buffalo-Chicken-Pizza.jpg",
         "https://static1.squarespace.com/static/565bb41ae4b0509ba9fdf769/t/5b9a8e80aa4a998b0be0fcf4/1536855690622/pizza.gif"
       ],
-      "time": 50,
+      "time": "50",
       "ingredients": [
         [39, "1 lb"],
         [40, "1 cup"],
@@ -579,7 +579,7 @@
         "https://static01.nyt.com/images/2021/02/14/dining/carbonara-horizontal/carbonara-horizontal-articleLarge-v2.jpg",
         "https://cdn-image.foodandwine.com/sites/default/files/HD-201104-r-spaghetti-with-anchovy.jpg"
       ],
-      "time": 15,
+      "time": "15",
       "ingredients": [
         [48, "50g"],
         [49, "100g"],
@@ -602,7 +602,7 @@
         "https://images.tv9bangla.com/wp-content/uploads/2021/12/lasagna.jpg",
         "https://images4.alphacoders.com/817/817350.jpg"
       ],
-      "time": 60,
+      "time": "60",
       "ingredients": [
         [36, "1 large"],
         [25, "1 pound"],

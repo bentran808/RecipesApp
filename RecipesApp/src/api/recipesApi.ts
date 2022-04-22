@@ -8,7 +8,8 @@ export const recipesApi = {
     return axiosInstance.get('ingredients');
   },
   fetchRecipesRequest(page?: number) {
-    return axiosInstance.get(`recipes?_expand=category&_page=${page || 1}&_limit=6`);
+    const endpoint = page ? `&_page=${page}&_limit=6` : ''
+    return axiosInstance.get(`recipes?_expand=category${endpoint}`);
   },
   fetchRecipesByCategoryIdRequest(id: number) {
     return axiosInstance.get(`recipes?_expand=category&categoryId=${id}`);

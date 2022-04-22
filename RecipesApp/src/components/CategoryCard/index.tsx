@@ -19,7 +19,7 @@ const CategoryCard = ({ item, onPressCategory }: Props) => {
       <View style={styles.categoriesItemContainer}>
         <Image style={styles.categoriesPhoto} source={{ uri: item.photo_url }} />
         <Text style={styles.categoriesName}>{item.name}</Text>
-        <Text style={styles.categoriesInfo}>{item.recipes.length} recipes</Text>
+        <Text style={styles.categoriesInfo}>{(item.recipes || []).length} recipes</Text>
       </View>
     </TouchableOpacity>
   );

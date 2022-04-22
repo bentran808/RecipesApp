@@ -1,11 +1,13 @@
 import { DrawerNavigationHelpers } from '@react-navigation/drawer/lib/typescript/src/types';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { recipesApi } from 'api';
 import Input from 'components/Input';
 import RecipeCard from 'components/RecipeCard';
 import Screens from 'constants/Screens';
+import { useStore } from 'context';
+import { observer } from 'mobx-react-lite';
 import React, { useCallback, useLayoutEffect } from 'react';
-import { Alert, FlatList, View } from 'react-native';
+import { FlatList, View } from 'react-native';
+import { RecipeModel } from 'store/RecipesStore';
 import { CloseIcon, SearchIcon } from 'theme';
 import { debounce } from 'utils';
 
@@ -15,14 +17,16 @@ interface Props {
 }
 
 const SearchScreen = ({ navigation }: Props) => {
-  const [keyword, setKeyword] = React.useState<string>('');
-  const [recipes, setRecipes] = React.useState<Recipe[]>();
+  const { recipes, cart } = useStore();
+  const uniqueRecipes = [
+    ...new Map(recipes.recipesResultsJS.map((item: RecipeModel) => [item['id'], item])).values()
+  ];
 
   useLayoutEffect(() => {
     navigation.setOptions({
       headerTitle: () => (
         <Input
-          keyword={keyword}
+          keyword={recipes.keyword}
           onChangeText={handleChange}
           leftIcon={SearchIcon}
           rightIcon={CloseIcon}
@@ -30,55 +34,43 @@ const SearchScreen = ({ navigation }: Props) => {
         />
       )
     });
-  }, [keyword]);
+  }, [recipes.keyword]);
 
   const handleClose = useCallback(() => {
-    setKeyword('');
-    setRecipes([]);
+    recipes.setKeyword('');
+    recipes.setEmptyRecipes();
   }, []);
 
   const handleSearch = async (text: string) => {
     if (!text) {
-      setRecipes([]);
+      recipes.setEmptyRecipes();
       return;
     }
-    try {
-      const responses = await Promise.all([
-        recipesApi.searchByCategoryNameRequest(text),
-        recipesApi.searchByRecipeNameRequest(text)
-      ]);
-      const recipesOfCategory = responses[0].data
-        .map((category: Category) => category.recipes.map((recipe) => ({ ...recipe, category })))
-        .flat(1);
-      const recipesData = responses[1].data;
-      const uniqueRecipes = [
-        ...new Map(
-          [...recipesOfCategory, ...recipesData].map((item: Recipe) => [item['id'], item])
-        ).values()
-      ];
 
-      setRecipes(uniqueRecipes);
-    } catch (error) {
-      Alert.alert('Search failed');
-    }
+    recipes.searchRecipeName(text);
+    recipes.searchCategoryName(text);
   };
 
   const debounceHandleSearch = debounce(handleSearch, 1000);
 
   const handleChange = useCallback((text: string) => {
-    setKeyword(text);
+    recipes.setKeyword(text);
     debounceHandleSearch(text);
   }, []);
 
-  const handlePressRecipe = useCallback((item: Recipe) => {
+  const handlePressRecipe = useCallback((item: RecipeModel) => {
     navigation.navigate(Screens.Recipe.name as 'Recipe', { item });
   }, []);
 
-  const renderRecipes = ({ item }: { item: Recipe }) => (
-    <RecipeCard item={item} onPressRecipe={handlePressRecipe} />
+  const handleAddToCart = useCallback((item: RecipeModel) => {
+    cart.addToCart(item);
+  }, []);
+
+  const renderRecipes = ({ item }: { item: RecipeModel }) => (
+    <RecipeCard item={item} onPressRecipe={handlePressRecipe} onPressCart={handleAddToCart} />
   );
 
-  const renderKeyExtractor = (item: Recipe) => `${item.id}`;
+  const renderKeyExtractor = (item: RecipeModel) => `${item.id}`;
 
   return (
     <View>
@@ -86,7 +78,7 @@ const SearchScreen = ({ navigation }: Props) => {
         testID="recipesList"
         showsVerticalScrollIndicator={false}
         numColumns={2}
-        data={recipes}
+        data={uniqueRecipes}
         renderItem={renderRecipes}
         keyExtractor={renderKeyExtractor}
       />
@@ -94,4 +86,4 @@ const SearchScreen = ({ navigation }: Props) => {
   );
 };
 
-export default SearchScreen;
+export default observer(SearchScreen);

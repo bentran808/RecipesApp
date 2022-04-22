@@ -96,7 +96,7 @@ exports[`Recipe Card Component should render correctly 1`] = `
       </Text>
       <View
         accessible={true}
-        focusable={false}
+        focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}

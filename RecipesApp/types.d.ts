@@ -13,6 +13,7 @@ type RootStackParamList = {
   Ingredient: {
     ingredient: Ingredient
   };
+  Cart: undefined;
 };
 
 type Recipe = {

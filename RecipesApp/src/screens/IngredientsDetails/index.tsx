@@ -1,8 +1,9 @@
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { recipesApi } from 'api';
 import Screens from 'constants/Screens';
+import { useStore } from 'context';
+import { observer } from 'mobx-react-lite';
 import React, { useCallback, useEffect, useLayoutEffect } from 'react';
-import { Alert, FlatList, View } from 'react-native';
+import { FlatList, View } from 'react-native';
 import IngredientItem from 'screens/IngredientsDetails/components/IngredientItem';
 import { mappingIngredientsDetails } from 'utils';
 
@@ -18,8 +19,8 @@ interface Props {
 }
 
 const IngredientsDetailsScreen = ({ navigation, route }: Props) => {
-  const [ingredientsDetails, setIngredientsDetails] = React.useState<IngredientsDetails[]>();
   const { title, ingredients } = route.params;
+  const { ingredients: lists } = useStore();
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -28,16 +29,9 @@ const IngredientsDetailsScreen = ({ navigation, route }: Props) => {
   }, [title]);
 
   useEffect(() => {
-    const getAllIngredients = async () => {
-      try {
-        const response = await recipesApi.fetchIngredientsRequest();
-        setIngredientsDetails(mappingIngredientsDetails(ingredients, response.data));
-      } catch (error) {
-        Alert.alert('Fetch data failed');
-      }
-    };
-
-    getAllIngredients();
+    if (!lists.ingredientsJS.length) {
+      lists.fetchIngredients();
+    }
   }, []);
 
   const handlePressIngredient = useCallback((item: IngredientsDetails) => {
@@ -55,7 +49,7 @@ const IngredientsDetailsScreen = ({ navigation, route }: Props) => {
       <FlatList
         showsVerticalScrollIndicator={false}
         numColumns={3}
-        data={ingredientsDetails}
+        data={mappingIngredientsDetails(ingredients, lists.ingredientsJS)}
         renderItem={renderIngredient}
         keyExtractor={renderKeyExtractor}
       />
@@ -63,4 +57,4 @@ const IngredientsDetailsScreen = ({ navigation, route }: Props) => {
   );
 };
 
-export default IngredientsDetailsScreen;
+export default observer(IngredientsDetailsScreen);

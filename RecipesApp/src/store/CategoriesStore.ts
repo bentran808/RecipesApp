@@ -8,7 +8,7 @@ export const CategoriesEntry = types.model('CategoriesEntry', {
   id: types.number,
   name: types.string,
   photo_url: types.string,
-  recipes: types.array(RecipesEntry)
+  recipes: types.maybe(types.array(RecipesEntry))
 });
 
 export type CategoryModel = SnapshotOut<typeof CategoriesEntry>;
@@ -34,6 +34,7 @@ const CategoriesStore = types
         self.lists = response.data;
         self.state = 'done';
       } catch (error) {
+        console.log(error)
         self.state = 'error';
       }
     })
