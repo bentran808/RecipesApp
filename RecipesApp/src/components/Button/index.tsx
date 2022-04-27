@@ -15,6 +15,7 @@ interface Props {
   color?: string;
   bold?: boolean;
   style?: any;
+  disabled?: boolean;
 }
 
 const Button = ({
@@ -28,10 +29,11 @@ const Button = ({
   fontSize = 14,
   color = '#2cd18a',
   bold = false,
-  style
+  style,
+  disabled = false
 }: Props) => {
-  const textColor = type === 'contained' ? 'white' : color;
   const fontWeight = bold ? 'bold' : 'normal';
+  let textColor = disabled ? 'gray' : color;
   let additionalStyles;
 
   switch (type) {
@@ -45,10 +47,11 @@ const Button = ({
       break;
     case 'contained':
       additionalStyles = {
-        backgroundColor: color,
+        backgroundColor: disabled ? 'gray' : color,
         paddingVertical,
         paddingHorizontal
       };
+      textColor = 'white';
       break;
 
     default:
@@ -57,9 +60,11 @@ const Button = ({
   }
 
   return (
-    <TouchableOpacity testID={testID} onPress={onPress}>
+    <TouchableOpacity disabled={disabled} testID={testID} onPress={onPress}>
       <View style={[styles.btn, additionalStyles, style]}>
-        <Text style={[{ fontSize, color: textColor, fontWeight }]}>{title}</Text>
+        <Text style={[{ fontSize, color: textColor, fontWeight, textAlign: 'center' }]}>
+          {title}
+        </Text>
       </View>
     </TouchableOpacity>
   );

@@ -7,5 +7,6 @@ export default {
   Ingredient: { name: 'Ingredient' },
   IngredientsDetails: { name: 'IngredientsDetails' },
   Search: { name: 'Search', label: 'SEARCH' },
-  Cart: { name: 'Cart' }
+  Cart: { name: 'Cart' },
+  Checkout: { name: 'Checkout', label: 'CHECK OUT' }
 };

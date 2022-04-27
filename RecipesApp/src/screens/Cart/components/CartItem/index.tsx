@@ -1,20 +1,26 @@
 import Button from 'components/Button';
+import { useStore } from 'context';
+import { observer } from 'mobx-react-lite';
 import React, { useCallback } from 'react';
 import { Image, Text, View } from 'react-native';
-import { CartInstance } from 'store/CartStore';
+import { CartModel } from 'store/CartStore';
 import styles from './styles';
 
 type Props = {
-  item: CartInstance;
+  item: CartModel;
 };
 
 const CartItem = ({ item }: Props) => {
+  const { cart } = useStore();
+
   const handleIncrease = useCallback(() => {
-    item.increase && item.increase();
+    const itemInCart = cart.hasInCart(item.item)
+    itemInCart?.increase && itemInCart.increase();
   }, [item]);
 
   const handleDecrease = useCallback(() => {
-    item.decrease && item.decrease();
+    const itemInCart = cart.hasInCart(item.item)
+    itemInCart?.decrease && itemInCart.decrease();
   }, [item]);
 
   return (
@@ -54,4 +60,4 @@ const CartItem = ({ item }: Props) => {
   );
 };
 
-export default React.memo(CartItem);
+export default (observer(CartItem));

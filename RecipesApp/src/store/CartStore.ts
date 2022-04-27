@@ -1,6 +1,7 @@
 import { toJS } from 'mobx';
 import { destroy, getRoot, Instance, SnapshotOut, types } from 'mobx-state-tree';
 import { RecipeModel, RecipesEntry } from 'store/RecipesStore';
+import { RootStore } from 'store/store';
 
 const CartEntry = types
   .model('CartEntry', {
@@ -10,13 +11,13 @@ const CartEntry = types
   })
   .actions((self) => ({
     remove() {
-      console.log(getRoot(self));
+      getRoot<typeof RootStore>(self).cart.removeItem(self);
     },
-    increase() {
-      self.quantity++;
+    increase(quantity?: number) {
+      self.quantity = quantity ? self.quantity + quantity : ++self.quantity;
     },
     decrease() {
-      self.quantity--;
+      self.quantity === 1 ? this.remove() : --self.quantity;
     },
     toggle() {
       self.inCart = !self.inCart;
@@ -34,16 +35,26 @@ const CartStore = types
     get recipes() {
       return toJS(self.items);
     },
+    get recipesInCart() {
+      return self.items.filter((item) => item.inCart);
+    },
     get inCartCount() {
-      return self.items.filter((item) => item.inCart).length;
+      return this.recipesInCart.length;
+    },
+    get total() {
+      return this.recipesInCart.reduce((sum, item) => sum + item.quantity * 20, 0);
     }
   }))
   .actions((self) => ({
-    addToCart(item: RecipeModel) {
-      self.items.push({ item });
+    addToCart(item: RecipeModel, quantity?: number) {
+      const itemInCart = this.hasInCart(item);
+      itemInCart ? itemInCart.increase(quantity) : self.items.push({ item, quantity });
     },
-    removeItem(item: RecipeModel) {
+    removeItem(item: CartModel) {
       destroy(item);
+    },
+    hasInCart(recipe: RecipeModel) {
+      return self.items.find((item) => item.item.id === recipe.id);
     }
   }));
 

@@ -1,21 +1,30 @@
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import Button from 'components/Button';
+import Screens from 'constants/Screens';
 import { useStore } from 'context';
 import { observer } from 'mobx-react-lite';
-import React from 'react';
+import React, { useCallback } from 'react';
 import { FlatList, Text, View } from 'react-native';
-import { CartInstance } from 'store/CartStore';
+import { CartModel } from 'store/CartStore';
 import CartItem from './components/CartItem';
 import styles from './styles';
 
-type Props = {};
+type CartNavigationProp = NativeStackNavigationProp<RootStackParamList>;
+type Props = {
+  navigation: CartNavigationProp;
+};
 
-const CartScreen = (props: Props) => {
+const CartScreen = ({ navigation }: Props) => {
   const { cart } = useStore();
   const totalCount = cart.inCartCount;
 
-  const renderCartItem = ({ item }: { item: CartInstance }) => <CartItem item={item} />;
+  const handlePressCheckout = useCallback(() => {
+    navigation.navigate(Screens.Checkout.name as 'Checkout');
+  }, []);
 
-  const renderKeyExtractor = (item: CartInstance) => `${item.item.id}`;
+  const renderCartItem = ({ item }: { item: CartModel }) => <CartItem item={item} />;
+
+  const renderKeyExtractor = (item: CartModel) => `${item.item.id}`;
 
   return (
     <View style={styles.container}>
@@ -31,7 +40,7 @@ const CartScreen = (props: Props) => {
           <View>
             <View style={styles.infoContainer}>
               <Text style={styles.infoText}>{totalCount} Item</Text>
-              <Text style={styles.priceText}>${totalCount * 20}</Text>
+              <Text style={styles.priceText}>${cart.total}</Text>
             </View>
             <Text style={styles.subTitle}>Extra charges may apply</Text>
           </View>
@@ -45,7 +54,7 @@ const CartScreen = (props: Props) => {
             style={{
               borderRadius: 10
             }}
-            onPress={() => {}}
+            onPress={handlePressCheckout}
           />
         </View>
       ) : null}

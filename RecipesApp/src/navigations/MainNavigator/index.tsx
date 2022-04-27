@@ -4,13 +4,14 @@ import MenuButton from 'components/MenuButton';
 import Screens from 'constants/Screens';
 import CartScreen from 'screens/Cart';
 import CategoriesScreen from 'screens/Categories';
+import CheckoutScreen from 'screens/Checkout';
 import HomeScreen from 'screens/Home';
 import IngredientScreen from 'screens/Ingredient';
 import IngredientsDetailsScreen from 'screens/IngredientsDetails';
 import RecipeScreen from 'screens/Recipe';
 import RecipesListScreen from 'screens/RecipesList';
 import SearchScreen from 'screens/Search';
-import { BackArrow, BasketIcon } from 'theme';
+import { BackArrow } from 'theme';
 
 const Stack = createNativeStackNavigator();
 
@@ -91,6 +92,13 @@ const MainNavigator = () => {
         }}
       />
       <Stack.Screen name={Screens.Cart.name} component={CartScreen} />
+      <Stack.Screen
+        name={Screens.Checkout.name}
+        component={CheckoutScreen}
+        options={{
+          title: Screens.Checkout.label
+        }}
+      />
     </Stack.Navigator>
   );
 };

@@ -3,7 +3,7 @@ import BackButton from 'components/BackButton';
 import Button from 'components/Button';
 import Screens from 'constants/Screens';
 import { useStore } from 'context';
-import React, { useCallback, useLayoutEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { Animated, Image, Text, View } from 'react-native';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
@@ -23,6 +23,7 @@ interface Props {
 const RecipeScreen = ({ navigation, route }: Props) => {
   const sliderRef = useRef<any>();
   const [activeSlide, setActiveSlide] = useState(0);
+  const [quantity, setQuantity] = useState(1);
   const offset = useRef(new Animated.Value(0)).current;
   const { cart } = useStore();
   const badgeCount = cart.inCartCount;
@@ -41,7 +42,7 @@ const RecipeScreen = ({ navigation, route }: Props) => {
         />
       )
     });
-  }, []);
+  }, [badgeCount]);
 
   const handlePressCart = () => {
     navigation.navigate(Screens.Cart.name as 'Cart');
@@ -58,6 +59,18 @@ const RecipeScreen = ({ navigation, route }: Props) => {
       ingredients
     });
   }, [item]);
+
+  const handleIncrease = useCallback(() => {
+    setQuantity((prevState) => ++prevState);
+  }, []);
+
+  const handleDecrease = useCallback(() => {
+    setQuantity((prevState) => (prevState > 1 ? --prevState : prevState));
+  }, []);
+
+  const handleAddToCart = useCallback(() => {
+    cart.addToCart(item, quantity);
+  }, [item, quantity]);
 
   const renderImage = ({ item }: { item: string }) => (
     <TouchableOpacity>
@@ -137,14 +150,20 @@ const RecipeScreen = ({ navigation, route }: Props) => {
       </ScrollView>
       <View style={styles.cartControl}>
         <View style={styles.quantityContainer}>
-          <Button testID="increaseBtn" title="-" onPress={handleViewIngredients} fontSize={30} />
-          <Text>1</Text>
-          <Button testID="decreaseBtn" title="+" onPress={handleViewIngredients} fontSize={30} />
+          <Button
+            testID="increaseBtn"
+            disabled={quantity === 1}
+            title="-"
+            onPress={handleDecrease}
+            fontSize={30}
+          />
+          <Text>{quantity}</Text>
+          <Button testID="decreaseBtn" title="+" onPress={handleIncrease} fontSize={30} />
         </View>
         <Button
           testID="addToCartBtn"
           title="Add to cart"
-          onPress={handleViewIngredients}
+          onPress={handleAddToCart}
           type="contained"
         />
       </View>

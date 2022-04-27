@@ -41,6 +41,7 @@ exports[`Button Component should render contained button correctly 1`] = `
             "color": "white",
             "fontSize": 14,
             "fontWeight": "normal",
+            "textAlign": "center",
           },
         ]
       }
@@ -88,6 +89,7 @@ exports[`Button Component should render correctly 1`] = `
             "color": "#2cd18a",
             "fontSize": 14,
             "fontWeight": "normal",
+            "textAlign": "center",
           },
         ]
       }

@@ -4,7 +4,7 @@ import IngredientsStore from 'store/IngredientsStore';
 import RecipesStore from 'store/RecipesStore';
 import CategoriesStore from './CategoriesStore';
 
-const RootStore = types.model('RootStore', {
+export const RootStore = types.model('RootStore', {
   categories: CategoriesStore,
   recipes: RecipesStore,
   ingredients: IngredientsStore,
