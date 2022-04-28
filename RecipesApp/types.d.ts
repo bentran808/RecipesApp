@@ -15,6 +15,8 @@ type RootStackParamList = {
   };
   Cart: undefined;
   Checkout: undefined;
+  Address: undefined;
+  Orders: undefined;
 };
 
 type Recipe = {

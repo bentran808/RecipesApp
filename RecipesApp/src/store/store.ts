@@ -1,21 +1,24 @@
 import { Instance, types } from 'mobx-state-tree';
-import CartStore from 'store/CartStore';
-import IngredientsStore from 'store/IngredientsStore';
-import RecipesStore from 'store/RecipesStore';
+import AddressStore from './AddressStore';
+import CartStore from './CartStore';
 import CategoriesStore from './CategoriesStore';
+import IngredientsStore from './IngredientsStore';
+import RecipesStore from './RecipesStore';
 
 export const RootStore = types.model('RootStore', {
   categories: CategoriesStore,
   recipes: RecipesStore,
   ingredients: IngredientsStore,
-  cart: CartStore
+  cart: CartStore,
+  address: AddressStore
 });
 
 const store = RootStore.create({
-    categories: {},
-    recipes: {},
-    ingredients: {},
-    cart: {}
+  categories: {},
+  recipes: {},
+  ingredients: {},
+  cart: {},
+  address: {}
 });
 
 export type RootStoreModel = Instance<typeof RootStore>;

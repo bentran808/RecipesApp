@@ -1,15 +1,11 @@
 import { StyleSheet } from 'react-native';
+import { width } from 'theme';
 
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20
-  },
-  separator: {
-    borderBottomWidth: 1,
-    marginHorizontal: 30,
-    borderBottomColor: 'gray'
   },
   footer: {
     paddingHorizontal: 20
@@ -23,12 +19,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingVertical: 5
-  },
-  subText: {
-    color: 'gray'
-  },
-  textBold: {
-    fontWeight: 'bold'
   },
   toPayWrapper: {
     flexDirection: 'row',
@@ -59,6 +49,27 @@ const styles = StyleSheet.create({
   addressText: {
     color: 'gray',
     paddingVertical: 10
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0,0,0,0.5)'
+  },
+  modalView: {
+    width: width - 50,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    paddingVertical: 20,
+    alignItems: 'center',
+    shadowColor: 'black',
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5
   }
 });
 

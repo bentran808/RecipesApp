@@ -3,7 +3,7 @@ import MenuItem from 'components/MenuItem';
 import Screens from 'constants/Screens';
 import React, { useCallback } from 'react';
 import { View } from 'react-native';
-import { CategoryIcon, HomeIcon, SearchIcon } from 'theme';
+import { AddressIcon, CategoryIcon, HomeIcon, InvoiceIcon, SearchIcon } from 'theme';
 import styles from './styles';
 
 interface Props {
@@ -26,6 +26,16 @@ const DrawerContainer = ({ navigation }: Props) => {
     navigation.closeDrawer();
   }, []);
 
+  const handlePressAddress = useCallback(() => {
+    navigation.navigate(Screens.Address.name);
+    navigation.closeDrawer();
+  }, []);
+
+  const handlePressOrders = useCallback(() => {
+    navigation.navigate(Screens.Orders.name);
+    navigation.closeDrawer();
+  }, []);
+
   const drawerList = [
     {
       title: Screens.Home.label,
@@ -41,6 +51,16 @@ const DrawerContainer = ({ navigation }: Props) => {
       title: Screens.Search.label,
       source: SearchIcon,
       onPress: handlePressSearch
+    },
+    {
+      title: Screens.Address.label,
+      source: AddressIcon,
+      onPress: handlePressAddress
+    },
+    {
+      title: Screens.Orders.label,
+      source: InvoiceIcon,
+      onPress: handlePressOrders
     }
   ];
 

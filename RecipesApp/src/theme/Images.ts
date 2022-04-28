@@ -7,3 +7,6 @@ export const TimeIcon = require('assets/images/icons/time.png');
 export const CloseIcon = require('assets/images/icons/close.png');
 export const BasketIcon = require('assets/images/icons/basket.png');
 export const CartIcon = require('assets/images/icons/cart.png');
+export const AddressIcon = require('assets/images/icons/address.png');
+export const InvoiceIcon = require('assets/images/icons/invoice.png');
+export const SuitcaseIcon = require('assets/images/icons/suitcase.png');
