@@ -2,6 +2,7 @@ import Button from 'components/Button';
 import { useStore } from 'context';
 import { observer } from 'mobx-react-lite';
 import React, { useCallback } from 'react';
+import isEqual from 'react-fast-compare';
 import { Image, Text, View } from 'react-native';
 import { CartModel } from 'store/CartStore';
 import styles from './styles';
@@ -60,4 +61,4 @@ const CartItem = ({ item }: Props) => {
   );
 };
 
-export default (observer(CartItem));
+export default React.memo(observer(CartItem), isEqual);

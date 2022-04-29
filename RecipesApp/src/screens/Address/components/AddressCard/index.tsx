@@ -1,6 +1,7 @@
 import AppStyles from 'AppStyles';
 import Button from 'components/Button';
 import React, { useCallback } from 'react';
+import isEqual from 'react-fast-compare';
 import { Image, ImageSourcePropType, Text, View } from 'react-native';
 import { AddressModel } from 'store/AddressStore';
 import styles from './styles';
@@ -59,4 +60,4 @@ const AddressCard = ({ item, source, onPressEdit, onPressDelete }: Props) => {
   );
 };
 
-export default React.memo(AddressCard);
+export default React.memo(AddressCard, isEqual);

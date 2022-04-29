@@ -1,4 +1,5 @@
 import React from 'react';
+import isEqual from 'react-fast-compare';
 import { Text, View } from 'react-native';
 import { CartModel } from 'store/CartStore';
 import styles from './styles';
@@ -22,4 +23,4 @@ const CheckoutItem = ({ item }: Props) => {
   );
 };
 
-export default React.memo(CheckoutItem);
+export default React.memo(CheckoutItem, isEqual);

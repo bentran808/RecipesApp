@@ -24,12 +24,20 @@ const CartEntry = types
     }
   }));
 
+const BillEntry = types.model('BillEntry', {
+  type: types.optional(types.string, ''),
+  name: types.optional(types.string, ''),
+  price: types.optional(types.number, 0)
+});
+
 export type CartInstance = Instance<typeof CartEntry>;
 export type CartModel = SnapshotOut<typeof CartEntry>;
+export type BillModel = SnapshotOut<typeof BillEntry>;
 
 const CartStore = types
   .model('CartStore', {
-    items: types.array(CartEntry)
+    items: types.array(CartEntry),
+    billItems: types.array(BillEntry)
   })
   .views((self) => ({
     get recipes() {
@@ -43,7 +51,13 @@ const CartStore = types
     },
     get total() {
       return this.recipesInCart.reduce((sum, item) => sum + item.quantity * 20, 0);
+    },
+    get billDetails() {
+      return toJS(self.billItems);
     }
+  }))
+  .volatile(() => ({
+    discountInput: ''
   }))
   .actions((self) => ({
     addToCart(item: RecipeModel, quantity?: number) {
@@ -55,6 +69,12 @@ const CartStore = types
     },
     hasInCart(recipe: RecipeModel) {
       return self.items.find((item) => item.item.id === recipe.id);
+    },
+    setDiscountInput(text: string) {
+      self.discountInput = text;
+    },
+    applyCoupon(item: BillModel) {
+      self.billItems.push(item)
     }
   }));
 
