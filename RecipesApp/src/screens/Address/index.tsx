@@ -1,7 +1,5 @@
 import AppStyles from 'AppStyles';
-import styles from './styles';
 import Button from 'components/Button';
-import Input from 'components/Input';
 import { useStore } from 'context';
 import { observer } from 'mobx-react-lite';
 import React, { useCallback } from 'react';
@@ -11,6 +9,7 @@ import { TextInput } from 'react-native-gesture-handler';
 import { AddressModel } from 'store/AddressStore';
 import { HomeIcon, SuitcaseIcon } from 'theme';
 import AddressCard from './components/AddressCard';
+import styles from './styles';
 
 type Props = {};
 
@@ -44,6 +43,7 @@ const AddressScreen = (props: Props) => {
     setModalVisible(true);
     setValue(item.type);
     setItemEditing(item);
+    address.setAddress(item.address);
   }, []);
 
   const handlePressDelete = useCallback((item: AddressModel) => {

@@ -20,16 +20,20 @@ const CartScreen = ({ navigation }: Props) => {
 
   const handlePressCheckout = useCallback(() => {
     navigation.navigate(Screens.Checkout.name as 'Checkout');
-    cart.applyCoupon({
-      type: 'total',
-      name: 'Item Total',
-      price: cart.total
-    })
-    cart.applyCoupon({
-      type: 'fee',
-      name: 'Delivery Fee',
-      price: 5
-    })
+    if (!cart.billDetails.length) {
+      cart.applyCoupon({
+        type: 'total',
+        name: 'Item Total',
+        code: 'TOTAL',
+        price: cart.total
+      });
+      cart.applyCoupon({
+        type: 'fee',
+        name: 'Delivery Fee',
+        code: 'DELIVER',
+        price: 5
+      });
+    }
   }, []);
 
   const renderCartItem = ({ item }: { item: CartModel }) => <CartItem item={item} />;

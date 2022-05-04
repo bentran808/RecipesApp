@@ -104,15 +104,8 @@ const MainNavigator = () => {
       <Stack.Screen
         name={Screens.Address.name}
         component={AddressScreen}
-        options={({ navigation }) => {
-          const handlePressMenu = () => {
-            navigation.openDrawer();
-          };
-
-          return {
-            title: Screens.Address.label,
-            headerLeft: () => <MenuButton onPress={handlePressMenu} />
-          };
+        options={{
+          title: Screens.Address.label
         }}
       />
       <Stack.Screen

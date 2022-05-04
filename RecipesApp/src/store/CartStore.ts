@@ -1,5 +1,5 @@
 import { toJS } from 'mobx';
-import { destroy, getRoot, Instance, SnapshotOut, types } from 'mobx-state-tree';
+import { applySnapshot, destroy, getRoot, SnapshotOut, types } from 'mobx-state-tree';
 import { RecipeModel, RecipesEntry } from 'store/RecipesStore';
 import { RootStore } from 'store/store';
 
@@ -27,17 +27,30 @@ const CartEntry = types
 const BillEntry = types.model('BillEntry', {
   type: types.optional(types.string, ''),
   name: types.optional(types.string, ''),
+  code: types.optional(types.string, ''),
   price: types.optional(types.number, 0)
 });
 
-export type CartInstance = Instance<typeof CartEntry>;
+const OrderedEntry = types.model('OrderedEntry', {
+  items: types.array(
+    types.model({
+      name: types.optional(types.string, ''),
+      quantity: types.optional(types.number, 0)
+    })
+  ),
+  total: types.number,
+  createdAt: types.string
+});
+
 export type CartModel = SnapshotOut<typeof CartEntry>;
 export type BillModel = SnapshotOut<typeof BillEntry>;
+export type OrderedModel = SnapshotOut<typeof OrderedEntry>;
 
 const CartStore = types
   .model('CartStore', {
     items: types.array(CartEntry),
-    billItems: types.array(BillEntry)
+    billItems: types.array(BillEntry),
+    orderedItems: types.array(OrderedEntry)
   })
   .views((self) => ({
     get recipes() {
@@ -54,6 +67,15 @@ const CartStore = types
     },
     get billDetails() {
       return toJS(self.billItems);
+    },
+    get toPay() {
+      return this.billDetails.reduce(
+        (sum, item) => (item.type === 'discount' ? sum - item.price : sum + item.price),
+        0
+      );
+    },
+    get orderedList() {
+      return toJS(self.orderedItems);
     }
   }))
   .volatile(() => ({
@@ -74,7 +96,20 @@ const CartStore = types
       self.discountInput = text;
     },
     applyCoupon(item: BillModel) {
-      self.billItems.push(item)
+      const existItem = self.billItems.findIndex((bill) => bill.type === 'discount');
+      if (existItem > -1) {
+        self.billItems.splice(existItem, 1, item);
+      } else {
+        self.billItems.push(item);
+      }
+    },
+    payment(order: OrderedModel) {
+      self.orderedItems.unshift(order);
+      applySnapshot(self, {
+        ...self,
+        items: [],
+        billItems: []
+      });
     }
   }));
 

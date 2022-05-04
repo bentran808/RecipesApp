@@ -34,7 +34,16 @@ const styles = StyleSheet.create({
     borderColor: 'red',
     borderRadius: 5
   },
-  quantityText: { color: 'red' }
+  quantityText: { color: 'red' },
+  actionText: {
+    color: 'white',
+    paddingHorizontal: 10,
+    fontWeight: '600'
+  },
+  rightAction: {
+    backgroundColor: 'red',
+    justifyContent: 'center'
+  }
 });
 
 export default styles;

@@ -1,5 +1,5 @@
 import { toJS } from 'mobx';
-import { types, destroy, SnapshotOut, getRoot, applySnapshot } from 'mobx-state-tree';
+import { applySnapshot, destroy, getRoot, SnapshotOut, types } from 'mobx-state-tree';
 import { RootStore } from 'store/store';
 
 const AddressEntry = types
@@ -21,7 +21,7 @@ const AddressEntry = types
 export type AddressModel = SnapshotOut<typeof AddressEntry>;
 
 const AddressStore = types
-  .model('', {
+  .model('AddressStore', {
     items: types.array(AddressEntry),
     itemUsing: types.optional(AddressEntry, {})
   })

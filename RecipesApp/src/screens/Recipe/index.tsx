@@ -3,7 +3,7 @@ import BackButton from 'components/BackButton';
 import Button from 'components/Button';
 import Screens from 'constants/Screens';
 import { useStore } from 'context';
-import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import React, { useCallback, useLayoutEffect, useRef, useState } from 'react';
 import { Animated, Image, Text, View } from 'react-native';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import Carousel, { Pagination } from 'react-native-snap-carousel';

@@ -1,5 +1,4 @@
 import { StyleSheet } from 'react-native';
-import { width } from 'theme';
 
 const styles = StyleSheet.create({
   container: {
