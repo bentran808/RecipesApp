@@ -1,0 +1,533 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Cart Screen Component should render correctly 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+      "paddingBottom": 60,
+    }
+  }
+>
+  <RCTScrollView
+    data={
+      Array [
+        Object {
+          "inCart": true,
+          "item": Object {
+            "category": Object {
+              "id": 0,
+              "name": "Cookies",
+              "photo_url": "https://www.telegraph.co.uk/content/dam/Travel/2019/January/france-food.jpg?imw'id'th=1400",
+            },
+            "categoryId": 0,
+            "description": "-- Start with cleaned and peeled russet potatoes that you have cut into 3/8-inch match sticks. Place in bowl of very cold water: keep rinsing and changing the water until the water is clear; drain thoroughly and dry with paper towels or a clean lint-free kitchen towel.
+
+ -- Meanwhile, you preheat your hot oil to 350 degrees F. Place prepared taters in oil and cook about 5 minutes. They will have that blond-tone color to them. 
+
+ -- Note: Once you add cold potatoes to the hot oil, the temperature of your oil is going to drop - you want it to be somewhere between 330 - 325 degrees F. 
+
+ -- Remove from oil; drain and cool. Now - either refrigerate until ready to finish cooking, or cool completely and freeze up to 3 months. To freeze properly - place completely cooled fries in single layer on tray and place in freezer until frozen. Then bag them.
+
+ -- To finish cooking - preheat your oil to 400* F. Add your cold fries (which will drop the oil temp - which is fine because you want it near the 375 degrees F. temp) and cook a few minutes until done. Lightly salt them and shake well so that the salt distributes well and they are not salty.",
+            "id": 0,
+            "ingredients": Array [
+              Array [
+                0,
+                "200ml",
+              ],
+              Array [
+                1,
+                "5g",
+              ],
+              Array [
+                2,
+                "300g",
+              ],
+            ],
+            "photo_url": "https://www.texanerin.com/content/uploads/2019/06/nobake-chocolate-cookies-1-650x975.jpg",
+            "photosArray": Array [
+              "https://www.texanerin.com/content/uploads/2019/06/nobake-chocolate-cookies-1-650x975.jpg",
+              "https://namelymarly.com/wp-content/uploads/2018/04/20180415_Beet_Lasagna_10.jpg",
+              "https://advancelocal-adapter-image-uploads.s3.amazonaws.com/image.al.com/home/bama-media/width600/img/news_impact/photo/burger-fijpg-57e7e5907630c2ad.jpg",
+              "https://img.thedailybeast.com/image/upload/c_crop,d_placeholder_euli9k,h_1439,w_2560,x_0,y_0/dpr_1.5/c_limit,w_1044/fl_lossy,q_auto/v1492718105/articles/2013/09/24/burger-king-s-new-french-fries-took-ten-years-to-develop/130923-gross-burger-tease_izz59e",
+              "https://aht.seriouseats.com/images/2012/02/20120221-193971-fast-food-fries-Burger-King-fries-2.jpg",
+            ],
+            "time": "15",
+            "title": "Oatmeal Cookies",
+          },
+          "quantity": 1,
+        },
+      ]
+    }
+    disableVirtualization={false}
+    getItem={[Function]}
+    getItemCount={[Function]}
+    horizontal={false}
+    initialNumToRender={10}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    onContentSizeChange={[Function]}
+    onEndReachedThreshold={2}
+    onLayout={[Function]}
+    onMomentumScrollEnd={[Function]}
+    onScroll={[Function]}
+    onScrollBeginDrag={[Function]}
+    onScrollEndDrag={[Function]}
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEventThrottle={50}
+    showsVerticalScrollIndicator={false}
+    stickyHeaderIndices={Array []}
+    testID="cartList"
+    updateCellsBatchingPeriod={50}
+    viewabilityConfigCallbackPairs={Array []}
+    windowSize={21}
+  >
+    <View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          collapsable={false}
+          forwardedRef={[Function]}
+          onGestureHandlerEvent={[Function]}
+          onGestureHandlerStateChange={[Function]}
+          onLayout={[Function]}
+          style={
+            Object {
+              "overflow": "hidden",
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "bottom": 0,
+                "flexDirection": "row-reverse",
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": 0,
+                "transform": Array [
+                  Object {
+                    "translateX": -10000,
+                  },
+                ],
+              }
+            }
+          >
+            <RNGestureHandlerButton
+              activeOpacity={0.105}
+              collapsable={false}
+              onActiveStateChange={[Function]}
+              onGestureEvent={[Function]}
+              onGestureHandlerEvent={[Function]}
+              onGestureHandlerStateChange={[Function]}
+              onHandlerStateChange={[Function]}
+              onPress={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "red",
+                  "justifyContent": "center",
+                }
+              }
+              underlayColor="black"
+            >
+              <View
+                style={
+                  Object {
+                    "backgroundColor": "black",
+                    "borderBottomLeftRadius": undefined,
+                    "borderBottomRightRadius": undefined,
+                    "borderRadius": undefined,
+                    "borderTopLeftRadius": undefined,
+                    "borderTopRightRadius": undefined,
+                    "bottom": 0,
+                    "left": 0,
+                    "opacity": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                  }
+                }
+              />
+              <Text
+                style={
+                  Object {
+                    "color": "white",
+                    "fontWeight": "600",
+                    "paddingHorizontal": 10,
+                    "transform": Array [
+                      Object {
+                        "scale": 0,
+                      },
+                    ],
+                  }
+                }
+              >
+                Delete
+              </Text>
+            </RNGestureHandlerButton>
+            <View
+              onLayout={[Function]}
+            />
+          </View>
+          <View
+            collapsable={false}
+            forwardedRef={[Function]}
+            onGestureHandlerEvent={[Function]}
+            onGestureHandlerStateChange={[Function]}
+            pointerEvents="auto"
+            style={
+              Object {
+                "transform": Array [
+                  Object {
+                    "translateX": -0,
+                  },
+                ],
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "backgroundColor": "white",
+                  "flex": 1,
+                  "flexDirection": "row",
+                  "margin": 10,
+                }
+              }
+            >
+              <View
+                style={
+                  Object {
+                    "padding": 5,
+                  }
+                }
+              >
+                <Image
+                  source={
+                    Object {
+                      "uri": "https://www.texanerin.com/content/uploads/2019/06/nobake-chocolate-cookies-1-650x975.jpg",
+                    }
+                  }
+                  style={
+                    Object {
+                      "borderRadius": 5,
+                      "height": 75,
+                      "width": 75,
+                    }
+                  }
+                />
+              </View>
+              <View
+                style={
+                  Object {
+                    "flex": 1,
+                    "padding": 10,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    Object {
+                      "fontSize": 18,
+                    }
+                  }
+                >
+                  Oatmeal Cookies
+                </Text>
+                <View
+                  style={
+                    Object {
+                      "flexDirection": "row",
+                      "justifyContent": "space-between",
+                    }
+                  }
+                >
+                  <Text
+                    style={
+                      Object {
+                        "fontSize": 16,
+                        "fontWeight": "bold",
+                      }
+                    }
+                  >
+                    $20
+                  </Text>
+                  <View
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "alignSelf": "flex-end",
+                        "borderColor": "red",
+                        "borderRadius": 5,
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                      }
+                    }
+                  >
+                    <View
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        Object {
+                          "opacity": 1,
+                        }
+                      }
+                      testID="decreaseBtn"
+                    >
+                      <View
+                        style={
+                          Array [
+                            Object {
+                              "borderRadius": 100,
+                              "marginHorizontal": 10,
+                            },
+                            Object {},
+                            undefined,
+                          ]
+                        }
+                      >
+                        <Text
+                          style={
+                            Array [
+                              Object {
+                                "color": "red",
+                                "fontSize": 20,
+                                "fontWeight": "normal",
+                                "textAlign": "center",
+                              },
+                            ]
+                          }
+                        >
+                          -
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        Object {
+                          "color": "red",
+                        }
+                      }
+                    >
+                      1
+                    </Text>
+                    <View
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        Object {
+                          "opacity": 1,
+                        }
+                      }
+                      testID="increaseBtn"
+                    >
+                      <View
+                        style={
+                          Array [
+                            Object {
+                              "borderRadius": 100,
+                              "marginHorizontal": 10,
+                            },
+                            Object {},
+                            undefined,
+                          ]
+                        }
+                      >
+                        <Text
+                          style={
+                            Array [
+                              Object {
+                                "color": "red",
+                                "fontSize": 20,
+                                "fontWeight": "normal",
+                                "textAlign": "center",
+                              },
+                            ]
+                          }
+                        >
+                          +
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </RCTScrollView>
+  <View
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderBottomLeftRadius": 0,
+        "borderBottomRightRadius": 0,
+        "borderRadius": 20,
+        "bottom": 0,
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+        "paddingLeft": 20,
+        "paddingVertical": 10,
+        "position": "absolute",
+        "width": "100%",
+      }
+    }
+  >
+    <View>
+      <View
+        style={
+          Object {
+            "flexDirection": "row",
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "borderRightWidth": 2,
+              "fontWeight": "bold",
+              "paddingRight": 10,
+            }
+          }
+        >
+          1
+           Item
+        </Text>
+        <Text
+          style={
+            Object {
+              "fontWeight": "bold",
+              "paddingLeft": 10,
+            }
+          }
+        >
+          $
+          20
+        </Text>
+      </View>
+      <Text
+        style={
+          Object {
+            "color": "gray",
+            "fontSize": 12,
+          }
+        }
+      >
+        Extra charges may apply
+      </Text>
+    </View>
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
+      testID="checkoutBtn"
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "borderRadius": 100,
+              "marginHorizontal": 10,
+            },
+            Object {
+              "backgroundColor": "red",
+              "paddingHorizontal": 20,
+              "paddingVertical": 10,
+            },
+            Object {
+              "borderRadius": 10,
+            },
+          ]
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "white",
+                "fontSize": 14,
+                "fontWeight": "bold",
+                "textAlign": "center",
+              },
+            ]
+          }
+        >
+          Checkout
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`Cart Screen Component should render correctly with empty 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+      "paddingBottom": 60,
+    }
+  }
+>
+  <RCTScrollView
+    data={Array []}
+    disableVirtualization={false}
+    getItem={[Function]}
+    getItemCount={[Function]}
+    horizontal={false}
+    initialNumToRender={10}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    onContentSizeChange={[Function]}
+    onEndReachedThreshold={2}
+    onLayout={[Function]}
+    onMomentumScrollEnd={[Function]}
+    onScroll={[Function]}
+    onScrollBeginDrag={[Function]}
+    onScrollEndDrag={[Function]}
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEventThrottle={50}
+    showsVerticalScrollIndicator={false}
+    stickyHeaderIndices={Array []}
+    testID="cartList"
+    updateCellsBatchingPeriod={50}
+    viewabilityConfigCallbackPairs={Array []}
+    windowSize={21}
+  >
+    <View />
+  </RCTScrollView>
+</View>
+`;

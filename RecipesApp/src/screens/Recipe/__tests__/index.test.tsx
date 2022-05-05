@@ -1,18 +1,26 @@
 import { fireEvent, render } from '@testing-library/react-native';
 import Screens from 'constants/Screens';
+import { StoreProvider } from 'context';
 import { category, recipe } from 'mocks';
+import React from 'react';
 import renderer from 'react-test-renderer';
 import RecipeScreen from 'screens/Recipe';
+import store from 'store/store';
 
 describe('Recipe Screen', () => {
+  const setActiveSlide = jest.fn();
+  const setQuantity = jest.fn();
   let navigation: any;
 
   beforeEach(() => {
     navigation = {
       navigate: jest.fn(),
-      setOptions: jest.fn(),
-      goBack: jest.fn()
+      setOptions: jest.fn()
     };
+    React.useState = jest
+      .fn()
+      .mockReturnValueOnce([0, setActiveSlide])
+      .mockReturnValueOnce([2, setQuantity]);
   });
 
   afterEach(() => {
@@ -21,14 +29,20 @@ describe('Recipe Screen', () => {
 
   test('should render correctly', () => {
     const tree = renderer
-      .create(<RecipeScreen navigation={navigation} route={{ params: { item: recipe } }} />)
+      .create(
+        <StoreProvider value={store}>
+          <RecipeScreen navigation={navigation} route={{ params: { item: recipe } }} />
+        </StoreProvider>
+      )
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   test('should call function handlePressCategory', () => {
     const { getByTestId } = render(
-      <RecipeScreen navigation={navigation} route={{ params: { item: recipe } }} />
+      <StoreProvider value={store}>
+        <RecipeScreen navigation={navigation} route={{ params: { item: recipe } }} />
+      </StoreProvider>
     );
     const button = getByTestId('categoryBtn');
 
@@ -39,7 +53,9 @@ describe('Recipe Screen', () => {
 
   test('should call function handleViewIngredients', () => {
     const { getByTestId } = render(
-      <RecipeScreen navigation={navigation} route={{ params: { item: recipe } }} />
+      <StoreProvider value={store}>
+        <RecipeScreen navigation={navigation} route={{ params: { item: recipe } }} />
+      </StoreProvider>
     );
     const button = getByTestId('viewIngredientsBtn');
 
@@ -53,5 +69,43 @@ describe('Recipe Screen', () => {
       ],
       title: 'Ingredients for Oatmeal Cookies'
     });
+  });
+
+  test('should call function handleAddToCart', () => {
+    store.cart.addToCart = jest.fn().mockImplementation(() => {});
+    const { getByTestId } = render(
+      <StoreProvider value={store}>
+        <RecipeScreen navigation={navigation} route={{ params: { item: recipe } }} />
+      </StoreProvider>
+    );
+    const button = getByTestId('addToCartBtn');
+
+    fireEvent.press(button);
+
+    expect(store.cart.addToCart).toHaveBeenCalled();
+  });
+
+  test('should call function handleIncrease', () => {
+    const { getByTestId } = render(
+      <StoreProvider value={store}>
+        <RecipeScreen navigation={navigation} route={{ params: { item: recipe } }} />
+      </StoreProvider>
+    );
+    const button = getByTestId('increaseBtn');
+
+    fireEvent.press(button);
+    expect(setQuantity).toHaveBeenCalled();
+  });
+
+  test('should call function handleDecrease', () => {
+    const { getByTestId } = render(
+      <StoreProvider value={store}>
+        <RecipeScreen navigation={navigation} route={{ params: { item: recipe } }} />
+      </StoreProvider>
+    );
+    const button = getByTestId('decreaseBtn');
+
+    fireEvent.press(button);
+    expect(setQuantity).toHaveBeenCalled();
   });
 });

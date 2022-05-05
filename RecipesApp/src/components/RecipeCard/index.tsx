@@ -28,7 +28,7 @@ const RecipeCard = ({ item, onPressRecipe, onPressCart }: Props) => {
         <Text style={styles.category}>{item?.category?.name || ''}</Text>
         <View style={styles.priceWrapper}>
           <Text style={styles.price}>$20</Text>
-          <TouchableOpacity onPress={handlePressCart}>
+          <TouchableOpacity testID='cartBtn' onPress={handlePressCart}>
             <Image style={styles.cart} source={CartIcon} />
           </TouchableOpacity>
         </View>

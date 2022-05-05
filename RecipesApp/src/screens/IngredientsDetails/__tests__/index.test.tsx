@@ -1,13 +1,23 @@
 import { render } from '@testing-library/react-native';
-import { recipesApi } from 'api';
 import Screens from 'constants/Screens';
-import { ingredient, ingredientsDetails } from 'mocks';
+import { StoreProvider } from 'context';
+import { ingredient } from 'mocks';
 import React from 'react';
-import { Alert, TouchableOpacity } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import renderer from 'react-test-renderer';
 import IngredientsDetailsScreen from 'screens/IngredientsDetails';
+import store, { RootStore } from 'store/store';
 
 describe('Ingredients Details Screen', () => {
+  const appStore = RootStore.create({
+    categories: {},
+    recipes: {},
+    ingredients: {
+      lists: [ingredient]
+    },
+    cart: {},
+    address: {}
+  });
   let navigation: any;
   const params = { title: 'Test', ingredients: [[0, '200ml']] };
 
@@ -16,9 +26,6 @@ describe('Ingredients Details Screen', () => {
       navigate: jest.fn(),
       setOptions: jest.fn()
     };
-    const setIngredientsDetails = jest.fn();
-    jest.spyOn(React, 'useEffect').mockImplementation((f) => f());
-    React.useState = jest.fn().mockReturnValue([[ingredientsDetails], setIngredientsDetails]);
   });
 
   afterEach(() => {
@@ -27,33 +34,32 @@ describe('Ingredients Details Screen', () => {
 
   test('should render correctly', () => {
     const tree = renderer
-      .create(<IngredientsDetailsScreen navigation={navigation} route={{ params }} />)
+      .create(
+        <StoreProvider value={appStore}>
+          <IngredientsDetailsScreen navigation={navigation} route={{ params }} />
+        </StoreProvider>
+      )
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
 
-  test('should call function recipesApi.fetchIngredientsRequest successful', () => {
-    recipesApi.fetchIngredientsRequest = jest.fn().mockReturnValue([ingredientsDetails]);
+  test('should call function fetchIngredients successful', () => {
+    store.ingredients.fetchIngredients = jest.fn().mockReturnValue([ingredient]);
 
-    render(<IngredientsDetailsScreen navigation={navigation} route={{ params }} />);
+    render(
+      <StoreProvider value={store}>
+        <IngredientsDetailsScreen navigation={navigation} route={{ params }} />
+      </StoreProvider>
+    );
 
-    expect(recipesApi.fetchIngredientsRequest).toHaveBeenCalled();
-  });
-
-  test('should call function recipesApi.fetchIngredientsRequest failed', () => {
-    jest.spyOn(Alert, 'alert');
-    recipesApi.fetchIngredientsRequest = jest.fn().mockImplementation(() => {
-      throw new Error('Network Error');
-    });
-
-    render(<IngredientsDetailsScreen navigation={navigation} route={{ params }} />);
-
-    expect(Alert.alert).toHaveBeenCalledWith('Fetch data failed');
+    expect(store.ingredients.fetchIngredients).toHaveBeenCalled();
   });
 
   test('should call function handlePressIngredient', () => {
     const component = renderer.create(
-      <IngredientsDetailsScreen navigation={navigation} route={{ params }} />
+      <StoreProvider value={appStore}>
+        <IngredientsDetailsScreen navigation={navigation} route={{ params }} />
+      </StoreProvider>
     );
     const button = component.root.findAllByType(TouchableOpacity)[0];
 

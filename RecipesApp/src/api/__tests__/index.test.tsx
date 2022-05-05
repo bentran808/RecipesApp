@@ -26,6 +26,12 @@ describe('Test recipes api', () => {
   test('should call function fetchRecipesRequest', async () => {
     mockedAxios.get.mockResolvedValueOnce({ data: [recipe] });
     await recipesApi.fetchRecipesRequest();
+    expect(mockedAxios.get).toHaveBeenCalledWith('recipes?_expand=category');
+  });
+
+  test('should call function fetchRecipesRequest with params', async () => {
+    mockedAxios.get.mockResolvedValueOnce({ data: [recipe] });
+    await recipesApi.fetchRecipesRequest(1);
     expect(mockedAxios.get).toHaveBeenCalledWith('recipes?_expand=category&_page=1&_limit=6');
   });
 

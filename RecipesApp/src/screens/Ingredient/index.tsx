@@ -40,7 +40,7 @@ const IngredientScreen = ({ navigation, route }: Props) => {
     }
   }, []);
 
-  const handleRefreshing = useCallback(async () => {
+  const handleRefreshing = useCallback(() => {
     recipes.fetchRecipes();
   }, []);
 

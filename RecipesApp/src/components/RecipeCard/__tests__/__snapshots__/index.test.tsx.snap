@@ -109,6 +109,7 @@ exports[`Recipe Card Component should render correctly 1`] = `
             "opacity": 1,
           }
         }
+        testID="cartBtn"
       >
         <Image
           source={1}

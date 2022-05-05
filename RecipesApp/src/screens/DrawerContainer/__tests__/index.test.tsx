@@ -38,4 +38,18 @@ describe('Drawer Container', () => {
     button.props.onPress();
     expect(navigation.navigate).toHaveBeenCalledWith(Screens.Search.name);
   });
+
+  test('should call function handlePressAddress', () => {
+    const component = renderer.create(<DrawerContainer navigation={navigation} />);
+    const button = component.root.findAllByType(TouchableHighlight)[3];
+    button.props.onPress();
+    expect(navigation.navigate).toHaveBeenCalledWith(Screens.Address.name);
+  });
+
+  test('should call function handlePressOrders', () => {
+    const component = renderer.create(<DrawerContainer navigation={navigation} />);
+    const button = component.root.findAllByType(TouchableHighlight)[4];
+    button.props.onPress();
+    expect(navigation.navigate).toHaveBeenCalledWith(Screens.Orders.name);
+  });
 });

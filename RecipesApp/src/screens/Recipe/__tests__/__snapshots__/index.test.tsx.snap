@@ -730,6 +730,7 @@ Array [
                     "color": "#2cd18a",
                     "fontSize": 14,
                     "fontWeight": "bold",
+                    "textAlign": "center",
                   },
                 ]
               }
@@ -824,6 +825,7 @@ Array [
                       "color": "#2cd18a",
                       "fontSize": 14,
                       "fontWeight": "normal",
+                      "textAlign": "center",
                     },
                   ]
                 }
@@ -920,16 +922,17 @@ Array [
                   "color": "#2cd18a",
                   "fontSize": 30,
                   "fontWeight": "normal",
+                  "textAlign": "center",
                 },
               ]
             }
           >
-            +
+            -
           </Text>
         </View>
       </View>
       <Text>
-        1
+        2
       </Text>
       <View
         accessible={true}
@@ -967,11 +970,12 @@ Array [
                   "color": "#2cd18a",
                   "fontSize": 30,
                   "fontWeight": "normal",
+                  "textAlign": "center",
                 },
               ]
             }
           >
-            -
+            +
           </Text>
         </View>
       </View>
@@ -1016,6 +1020,7 @@ Array [
                 "color": "white",
                 "fontSize": 14,
                 "fontWeight": "normal",
+                "textAlign": "center",
               },
             ]
           }

@@ -1,26 +1,28 @@
-import Screens from 'constants/Screens';
+import { StoreProvider } from 'context';
 import { recipe } from 'mocks';
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import renderer from 'react-test-renderer';
+import { RootStore } from 'store/store';
 import SearchScreen from '..';
 
 describe('Categories Screen', () => {
+  const appStore = RootStore.create({
+    categories: {},
+    recipes: {
+      resultsOfSearch: [recipe]
+    },
+    ingredients: {},
+    cart: {},
+    address: {}
+  });
   let navigation: any;
 
   beforeEach(() => {
     navigation = {
       navigate: jest.fn(),
-      setOptions: jest.fn(),
-      openDrawer: jest.fn()
+      setOptions: jest.fn()
     };
-    const setKeyword = jest.fn();
-    const setRecipes = jest.fn();
-    jest.spyOn(React, 'useEffect').mockImplementation((f) => f());
-    React.useState = jest
-      .fn()
-      .mockReturnValueOnce(['c', setKeyword])
-      .mockReturnValueOnce([[recipe], setRecipes]);
   });
 
   afterEach(() => {
@@ -28,16 +30,26 @@ describe('Categories Screen', () => {
   });
 
   test('should render correctly', () => {
-    const tree = renderer.create(<SearchScreen navigation={navigation} />).toJSON();
+    const tree = renderer
+      .create(
+        <StoreProvider value={appStore}>
+          <SearchScreen navigation={navigation} />
+        </StoreProvider>
+      )
+      .toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   test('should call function handlePressRecipe', () => {
-    const component = renderer.create(<SearchScreen navigation={navigation} />);
+    const component = renderer.create(
+      <StoreProvider value={appStore}>
+        <SearchScreen navigation={navigation} />
+      </StoreProvider>
+    );
     const button = component.root.findAllByType(TouchableOpacity)[0];
 
     button.props.onPress();
 
-    expect(navigation.navigate).toHaveBeenCalledWith(Screens.Recipe.name, { item: recipe });
+    expect(navigation.navigate).toHaveBeenCalled();
   });
 });

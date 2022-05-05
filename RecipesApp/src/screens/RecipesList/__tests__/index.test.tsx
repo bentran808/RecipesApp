@@ -1,13 +1,22 @@
 import { act, render } from '@testing-library/react-native';
-import { recipesApi } from 'api';
-import Screens from 'constants/Screens';
+import { StoreProvider } from 'context';
 import { category, recipe } from 'mocks';
 import React from 'react';
-import { Alert, TouchableOpacity } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import renderer from 'react-test-renderer';
 import RecipesListScreen from 'screens/RecipesList';
+import store, { RootStore } from 'store/store';
 
 describe('Recipes List Screen', () => {
+  const appStore = RootStore.create({
+    categories: {},
+    recipes: {
+      itemsOfCategory: [recipe]
+    },
+    ingredients: {},
+    cart: {},
+    address: {}
+  });
   let navigation: any;
 
   beforeEach(() => {
@@ -15,13 +24,6 @@ describe('Recipes List Screen', () => {
       navigate: jest.fn(),
       setOptions: jest.fn()
     };
-    const setRefreshing = jest.fn();
-    const setRecipes = jest.fn();
-    jest.spyOn(React, 'useEffect').mockImplementation((f) => f());
-    React.useState = jest
-      .fn()
-      .mockReturnValueOnce([false, setRefreshing])
-      .mockReturnValueOnce([[recipe], setRecipes]);
   });
 
   afterEach(() => {
@@ -30,35 +32,34 @@ describe('Recipes List Screen', () => {
 
   test('should render correctly', () => {
     const tree = renderer
-      .create(<RecipesListScreen navigation={navigation} route={{ params: { category } }} />)
+      .create(
+        <StoreProvider value={appStore}>
+          <RecipesListScreen navigation={navigation} route={{ params: { category } }} />
+        </StoreProvider>
+      )
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
 
-  test('should call function recipesApi.fetchRecipesByCategoryIdRequest successful', () => {
-    recipesApi.fetchRecipesByCategoryIdRequest = jest.fn().mockReturnValue([recipe]);
+  test('should call function fetchRecipesByCategoryId successful', () => {
+    store.recipes.fetchRecipesByCategoryId = jest.fn().mockReturnValue([recipe]);
 
-    render(<RecipesListScreen navigation={navigation} route={{ params: { category } }} />);
+    render(
+      <StoreProvider value={store}>
+        <RecipesListScreen navigation={navigation} route={{ params: { category } }} />
+      </StoreProvider>
+    );
 
-    expect(recipesApi.fetchRecipesByCategoryIdRequest).toHaveBeenCalled();
-  });
-
-  test('should call function recipesApi.fetchRecipesByCategoryIdRequest failed', () => {
-    jest.spyOn(Alert, 'alert');
-    recipesApi.fetchRecipesByCategoryIdRequest = jest.fn().mockImplementation(() => {
-      throw new Error('Network Error');
-    });
-
-    render(<RecipesListScreen navigation={navigation} route={{ params: { category } }} />);
-
-    expect(Alert.alert).toHaveBeenCalledWith('Fetch data failed');
+    expect(store.recipes.fetchRecipesByCategoryId).toHaveBeenCalled();
   });
 
   test('should call function handleRefreshing successful', async () => {
-    recipesApi.fetchRecipesByCategoryIdRequest = jest.fn().mockReturnValue([recipe]);
+    store.recipes.fetchRecipesByCategoryId = jest.fn().mockReturnValue([recipe]);
 
     const { getByTestId } = render(
-      <RecipesListScreen navigation={navigation} route={{ params: { category } }} />
+      <StoreProvider value={store}>
+        <RecipesListScreen navigation={navigation} route={{ params: { category } }} />
+      </StoreProvider>
     );
     const list = getByTestId('recipesList');
 
@@ -66,35 +67,33 @@ describe('Recipes List Screen', () => {
       list.props.onRefresh();
     });
 
-    expect(recipesApi.fetchRecipesByCategoryIdRequest).toHaveBeenCalled();
-  });
-
-  test('should call function handleRefreshing failed', async () => {
-    jest.spyOn(Alert, 'alert');
-    recipesApi.fetchRecipesByCategoryIdRequest = jest.fn().mockImplementation(() => {
-      throw new Error('Network Error');
-    });
-
-    const { getByTestId } = render(
-      <RecipesListScreen navigation={navigation} route={{ params: { category } }} />
-    );
-    const list = getByTestId('recipesList');
-
-    await act(async () => {
-      list.props.onRefresh();
-    });
-
-    expect(Alert.alert).toHaveBeenCalledWith('Fetch data failed');
+    expect(store.recipes.fetchRecipesByCategoryId).toHaveBeenCalled();
   });
 
   test('should call function handlePressRecipe', () => {
     const component = renderer.create(
-      <RecipesListScreen navigation={navigation} route={{ params: { category } }} />
+      <StoreProvider value={appStore}>
+        <RecipesListScreen navigation={navigation} route={{ params: { category } }} />
+      </StoreProvider>
     );
     const button = component.root.findAllByType(TouchableOpacity)[0];
 
     button.props.onPress();
 
-    expect(navigation.navigate).toHaveBeenCalledWith(Screens.Recipe.name, { item: recipe });
+    expect(navigation.navigate).toHaveBeenCalled();
   });
+
+  // test('should call function handleAddToCart', () => {
+  //   store.cart.addToCart = jest.fn().mockImplementation(() => {});
+  //   const { getByTestId } = render(
+  //     <StoreProvider value={appStore}>
+  //       <RecipesListScreen navigation={navigation} route={{ params: { category } }} />
+  //     </StoreProvider>
+  //   );
+  //   const button = getByTestId('cartBtn');
+
+  //   fireEvent.press(button);
+
+  //   expect(store.cart.addToCart).toHaveBeenCalled();
+  // });
 });

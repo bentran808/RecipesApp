@@ -1,0 +1,165 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Address Card Component should render correctly 1`] = `
+<View
+  style={
+    Object {
+      "paddingHorizontal": 20,
+      "paddingVertical": 10,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+      }
+    }
+  >
+    <Image
+      source={1}
+      style={
+        Object {
+          "height": 20,
+          "marginRight": 10,
+          "tintColor": "gray",
+          "width": 20,
+        }
+      }
+    />
+    <Text
+      style={
+        Object {
+          "fontWeight": "bold",
+        }
+      }
+    >
+      Home
+    </Text>
+  </View>
+  <Text
+    style={
+      Object {
+        "color": "gray",
+        "paddingVertical": 10,
+      }
+    }
+  >
+    448 TNV
+  </Text>
+  <View
+    style={
+      Object {
+        "flexDirection": "row",
+        "justifyContent": "space-around",
+      }
+    }
+  >
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
+      testID="editBtn"
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "borderRadius": 100,
+              "marginHorizontal": 10,
+            },
+            Object {
+              "borderColor": "red",
+              "borderWidth": 1,
+              "paddingHorizontal": 60,
+              "paddingVertical": 5,
+            },
+            Object {
+              "borderRadius": 5,
+            },
+          ]
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "red",
+                "fontSize": 14,
+                "fontWeight": "normal",
+                "textAlign": "center",
+              },
+            ]
+          }
+        >
+          EDIT
+        </Text>
+      </View>
+    </View>
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
+      testID="deleteBtn"
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "borderRadius": 100,
+              "marginHorizontal": 10,
+            },
+            Object {
+              "borderColor": "red",
+              "borderWidth": 1,
+              "paddingHorizontal": 50,
+              "paddingVertical": 5,
+            },
+            Object {
+              "borderRadius": 5,
+            },
+          ]
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "red",
+                "fontSize": 14,
+                "fontWeight": "normal",
+                "textAlign": "center",
+              },
+            ]
+          }
+        >
+          DELETE
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;

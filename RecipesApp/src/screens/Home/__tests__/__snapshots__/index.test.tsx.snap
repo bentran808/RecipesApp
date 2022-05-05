@@ -3,7 +3,6 @@
 exports[`Home Screen should render correctly 1`] = `
 <View>
   <RCTScrollView
-    ListFooterComponent={[Function]}
     data={
       Array [
         Object {
@@ -11,7 +10,6 @@ exports[`Home Screen should render correctly 1`] = `
             "id": 0,
             "name": "Cookies",
             "photo_url": "https://www.telegraph.co.uk/content/dam/Travel/2019/January/france-food.jpg?imw'id'th=1400",
-            "recipes": Array [],
           },
           "categoryId": 0,
           "description": "-- Start with cleaned and peeled russet potatoes that you have cut into 3/8-inch match sticks. Place in bowl of very cold water: keep rinsing and changing the water until the water is clear; drain thoroughly and dry with paper towels or a clean lint-free kitchen towel.
@@ -120,7 +118,7 @@ exports[`Home Screen should render correctly 1`] = `
                   "borderColor": "#ccc",
                   "borderRadius": 15,
                   "borderWidth": 0.5,
-                  "height": 225,
+                  "height": 260,
                   "justifyContent": "center",
                   "marginLeft": 20,
                   "marginTop": 20,
@@ -168,23 +166,59 @@ exports[`Home Screen should render correctly 1`] = `
               >
                 Cookies
               </Text>
+              <View
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "marginBottom": 10,
+                    "paddingHorizontal": 10,
+                    "width": "100%",
+                  }
+                }
+              >
+                <Text
+                  style={
+                    Object {
+                      "fontSize": 15,
+                      "fontWeight": "bold",
+                    }
+                  }
+                >
+                  $20
+                </Text>
+                <View
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    Object {
+                      "opacity": 1,
+                    }
+                  }
+                  testID="cartBtn"
+                >
+                  <Image
+                    source={1}
+                    style={
+                      Object {
+                        "height": 25,
+                        "width": 25,
+                      }
+                    }
+                  />
+                </View>
+              </View>
             </View>
           </View>
         </View>
-      </View>
-      <View
-        onLayout={[Function]}
-      >
-        <View
-          style={
-            Object {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "padding": 10,
-            }
-          }
-        />
       </View>
     </View>
   </RCTScrollView>

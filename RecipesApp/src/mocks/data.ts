@@ -37,3 +37,13 @@ export const ingredient = {
 };
 
 export const ingredientsDetails: [Ingredient, string] = [ingredient, '200ml'];
+
+export const address = [{
+  id: 0,
+  type: 'Home',
+  address: '448 TNV'
+},{
+  id: 1,
+  type: 'Work',
+  address: '604 NT'
+}]

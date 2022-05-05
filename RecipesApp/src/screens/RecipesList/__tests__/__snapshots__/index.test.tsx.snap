@@ -10,7 +10,6 @@ exports[`Recipes List Screen should render correctly 1`] = `
             "id": 0,
             "name": "Cookies",
             "photo_url": "https://www.telegraph.co.uk/content/dam/Travel/2019/January/france-food.jpg?imw'id'th=1400",
-            "recipes": Array [],
           },
           "categoryId": 0,
           "description": "-- Start with cleaned and peeled russet potatoes that you have cut into 3/8-inch match sticks. Place in bowl of very cold water: keep rinsing and changing the water until the water is clear; drain thoroughly and dry with paper towels or a clean lint-free kitchen towel.
@@ -190,7 +189,7 @@ exports[`Recipes List Screen should render correctly 1`] = `
                 </Text>
                 <View
                   accessible={true}
-                  focusable={false}
+                  focusable={true}
                   onClick={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}
@@ -203,6 +202,7 @@ exports[`Recipes List Screen should render correctly 1`] = `
                       "opacity": 1,
                     }
                   }
+                  testID="cartBtn"
                 >
                   <Image
                     source={1}
