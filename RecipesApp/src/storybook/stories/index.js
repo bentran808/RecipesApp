@@ -6,3 +6,8 @@ import 'components/MenuButton/index.stories';
 import 'components/MenuItem/index.stories';
 import 'components/RecipeCard/index.stories';
 import 'screens/IngredientsDetails/components/IngredientItem/index.stories';
+import 'screens/Address/components/AddressCard/index.stories';
+import 'screens/Cart/components/CartItem/index.stories';
+import 'screens/Checkout/components/AddressModal/index.stories';
+import 'screens/Checkout/components/CheckoutItem/index.stories';
+import 'screens/Orders/components/OrderedItem/index.stories';

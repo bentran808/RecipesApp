@@ -1,4 +1,4 @@
-import { fireEvent, render } from '@testing-library/react-native';
+import { render } from '@testing-library/react-native';
 import { StoreProvider } from 'context';
 import { recipe } from 'mocks';
 import React from 'react';

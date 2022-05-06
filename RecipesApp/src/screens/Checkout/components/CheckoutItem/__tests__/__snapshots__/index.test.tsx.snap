@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkout Item Component should render correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "flexDirection": "row",
+      "justifyContent": "space-between",
+      "paddingHorizontal": 20,
+      "paddingVertical": 10,
+      "width": "100%",
+    }
+  }
+>
+  <View>
+    <Text
+      style={
+        Object {
+          "fontWeight": "bold",
+        }
+      }
+    >
+      Oatmeal Cookies
+    </Text>
+    <Text
+      style={
+        Object {
+          "color": "gray",
+          "fontSize": 12,
+        }
+      }
+    >
+      Regular
+    </Text>
+  </View>
+  <View
+    style={
+      Object {
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+        "width": 150,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "borderColor": "red",
+          "borderRadius": 5,
+          "borderWidth": 1,
+          "color": "red",
+          "paddingHorizontal": 30,
+          "paddingVertical": 5,
+        }
+      }
+    >
+      1
+    </Text>
+    <Text>
+      $
+      20
+    </Text>
+  </View>
+</View>
+`;

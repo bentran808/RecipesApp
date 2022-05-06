@@ -1,0 +1,307 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Orders Screen Component should render correctly 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "white",
+      "flex": 1,
+    }
+  }
+>
+  <RCTScrollView
+    ItemSeparatorComponent={[Function]}
+    data={
+      Array [
+        Object {
+          "createdAt": "",
+          "items": Array [
+            Object {
+              "name": "test",
+              "quantity": 2,
+            },
+          ],
+          "total": 40,
+        },
+        Object {
+          "createdAt": "",
+          "items": Array [
+            Object {
+              "name": "test 2",
+              "quantity": 1,
+            },
+          ],
+          "total": 20,
+        },
+      ]
+    }
+    disableVirtualization={false}
+    getItem={[Function]}
+    getItemCount={[Function]}
+    horizontal={false}
+    initialNumToRender={10}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    onContentSizeChange={[Function]}
+    onEndReachedThreshold={2}
+    onLayout={[Function]}
+    onMomentumScrollEnd={[Function]}
+    onScroll={[Function]}
+    onScrollBeginDrag={[Function]}
+    onScrollEndDrag={[Function]}
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEventThrottle={50}
+    showsVerticalScrollIndicator={false}
+    stickyHeaderIndices={Array []}
+    testID="orderedList"
+    updateCellsBatchingPeriod={50}
+    viewabilityConfigCallbackPairs={Array []}
+    windowSize={21}
+  >
+    <View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          style={
+            Object {
+              "paddingBottom": 15,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "paddingHorizontal": 20,
+                "paddingVertical": 10,
+                "width": 750,
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "maxWidth": 200,
+                }
+              }
+            >
+              <Text
+                style={
+                  Object {
+                    "fontWeight": "bold",
+                  }
+                }
+              >
+                test x 2
+              </Text>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "gray",
+                    },
+                    Object {
+                      "fontSize": 12,
+                      "marginTop": 5,
+                    },
+                  ]
+                }
+              >
+                
+              </Text>
+            </View>
+            <Text>
+              $
+              40.00
+            </Text>
+          </View>
+          <View
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "opacity": 1,
+              }
+            }
+            testID="reorderBtn"
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "borderRadius": 100,
+                    "marginHorizontal": 10,
+                  },
+                  Object {
+                    "borderColor": "red",
+                    "borderWidth": 1,
+                    "paddingHorizontal": 30,
+                    "paddingVertical": 5,
+                  },
+                  Object {
+                    "borderRadius": 5,
+                    "marginLeft": 20,
+                    "marginTop": 10,
+                    "width": 130,
+                  },
+                ]
+              }
+            >
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "red",
+                      "fontSize": 14,
+                      "fontWeight": "bold",
+                      "textAlign": "center",
+                    },
+                  ]
+                }
+              >
+                REORDER
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            Object {
+              "borderBottomColor": "gray",
+              "borderBottomWidth": 1,
+              "marginHorizontal": 30,
+            }
+          }
+        />
+      </View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          style={
+            Object {
+              "paddingBottom": 15,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "paddingHorizontal": 20,
+                "paddingVertical": 10,
+                "width": 750,
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "maxWidth": 200,
+                }
+              }
+            >
+              <Text
+                style={
+                  Object {
+                    "fontWeight": "bold",
+                  }
+                }
+              >
+                test 2 x 1
+              </Text>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "gray",
+                    },
+                    Object {
+                      "fontSize": 12,
+                      "marginTop": 5,
+                    },
+                  ]
+                }
+              >
+                
+              </Text>
+            </View>
+            <Text>
+              $
+              20.00
+            </Text>
+          </View>
+          <View
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "opacity": 1,
+              }
+            }
+            testID="reorderBtn"
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "borderRadius": 100,
+                    "marginHorizontal": 10,
+                  },
+                  Object {
+                    "borderColor": "red",
+                    "borderWidth": 1,
+                    "paddingHorizontal": 30,
+                    "paddingVertical": 5,
+                  },
+                  Object {
+                    "borderRadius": 5,
+                    "marginLeft": 20,
+                    "marginTop": 10,
+                    "width": 130,
+                  },
+                ]
+              }
+            >
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "red",
+                      "fontSize": 14,
+                      "fontWeight": "bold",
+                      "textAlign": "center",
+                    },
+                  ]
+                }
+              >
+                REORDER
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </RCTScrollView>
+</View>
+`;

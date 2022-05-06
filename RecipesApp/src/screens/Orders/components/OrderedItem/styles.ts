@@ -1,11 +1,13 @@
 import { StyleSheet } from 'react-native';
+import { width } from 'theme';
 
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingHorizontal: 20,
-    paddingVertical: 10
+    paddingVertical: 10,
+    width: width
   },
   info: {
     maxWidth: 200

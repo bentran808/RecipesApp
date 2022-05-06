@@ -11,9 +11,7 @@ import { HomeIcon, SuitcaseIcon } from 'theme';
 import AddressCard from './components/AddressCard';
 import styles from './styles';
 
-type Props = {};
-
-const AddressScreen = (props: Props) => {
+const AddressScreen = () => {
   const { address } = useStore();
   const [modalVisible, setModalVisible] = React.useState(false);
   const [open, setOpen] = React.useState(false);

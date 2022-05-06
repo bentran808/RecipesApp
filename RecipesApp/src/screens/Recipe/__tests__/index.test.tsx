@@ -8,6 +8,7 @@ import RecipeScreen from 'screens/Recipe';
 import store from 'store/store';
 
 describe('Recipe Screen', () => {
+  const newRecipe = { ...recipe, category };
   const setActiveSlide = jest.fn();
   const setQuantity = jest.fn();
   let navigation: any;
@@ -31,7 +32,7 @@ describe('Recipe Screen', () => {
     const tree = renderer
       .create(
         <StoreProvider value={store}>
-          <RecipeScreen navigation={navigation} route={{ params: { item: recipe } }} />
+          <RecipeScreen navigation={navigation} route={{ params: { item: newRecipe } }} />
         </StoreProvider>
       )
       .toJSON();
@@ -41,7 +42,7 @@ describe('Recipe Screen', () => {
   test('should call function handlePressCategory', () => {
     const { getByTestId } = render(
       <StoreProvider value={store}>
-        <RecipeScreen navigation={navigation} route={{ params: { item: recipe } }} />
+        <RecipeScreen navigation={navigation} route={{ params: { item: newRecipe } }} />
       </StoreProvider>
     );
     const button = getByTestId('categoryBtn');
@@ -54,7 +55,7 @@ describe('Recipe Screen', () => {
   test('should call function handleViewIngredients', () => {
     const { getByTestId } = render(
       <StoreProvider value={store}>
-        <RecipeScreen navigation={navigation} route={{ params: { item: recipe } }} />
+        <RecipeScreen navigation={navigation} route={{ params: { item: newRecipe } }} />
       </StoreProvider>
     );
     const button = getByTestId('viewIngredientsBtn');
@@ -75,7 +76,7 @@ describe('Recipe Screen', () => {
     store.cart.addToCart = jest.fn().mockImplementation(() => {});
     const { getByTestId } = render(
       <StoreProvider value={store}>
-        <RecipeScreen navigation={navigation} route={{ params: { item: recipe } }} />
+        <RecipeScreen navigation={navigation} route={{ params: { item: newRecipe } }} />
       </StoreProvider>
     );
     const button = getByTestId('addToCartBtn');
@@ -88,7 +89,7 @@ describe('Recipe Screen', () => {
   test('should call function handleIncrease', () => {
     const { getByTestId } = render(
       <StoreProvider value={store}>
-        <RecipeScreen navigation={navigation} route={{ params: { item: recipe } }} />
+        <RecipeScreen navigation={navigation} route={{ params: { item: newRecipe } }} />
       </StoreProvider>
     );
     const button = getByTestId('increaseBtn');
@@ -100,7 +101,7 @@ describe('Recipe Screen', () => {
   test('should call function handleDecrease', () => {
     const { getByTestId } = render(
       <StoreProvider value={store}>
-        <RecipeScreen navigation={navigation} route={{ params: { item: recipe } }} />
+        <RecipeScreen navigation={navigation} route={{ params: { item: newRecipe } }} />
       </StoreProvider>
     );
     const button = getByTestId('decreaseBtn');

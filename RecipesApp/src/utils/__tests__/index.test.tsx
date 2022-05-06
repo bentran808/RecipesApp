@@ -20,7 +20,7 @@ describe('Test helpers', () => {
     const categories = [
       {
         ...category,
-        recipes: [recipe]
+        recipes: [{ ...recipe, category }]
       }
     ];
     const result = [

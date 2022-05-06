@@ -4,8 +4,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     backgroundColor: 'white',
-    margin: 10,
-    flex: 1
+    margin: 10
   },
   photoContainer: { padding: 5 },
   photo: {

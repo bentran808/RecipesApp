@@ -1,0 +1,333 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Address Modal Component should render correctly 1`] = `
+<Modal
+  animationType="fade"
+  hardwareAccelerated={false}
+  onRequestClose={[MockFunction]}
+  transparent={true}
+  visible={true}
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "rgba(0,0,0,0.5)",
+        "flex": 1,
+        "justifyContent": "center",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "white",
+          "borderRadius": 20,
+          "elevation": 5,
+          "paddingVertical": 20,
+          "shadowColor": "black",
+          "shadowOffset": Object {
+            "height": 2,
+            "width": 0,
+          },
+          "shadowOpacity": 0.25,
+          "shadowRadius": 4,
+          "width": 700,
+        }
+      }
+    >
+      <RCTScrollView
+        ItemSeparatorComponent={
+          [MockFunction] {
+            "calls": Array [
+              Array [
+                Object {
+                  "highlighted": false,
+                  "leadingItem": Object {
+                    "address": "448 TNV",
+                    "id": 0,
+                    "type": "Home",
+                  },
+                },
+                Object {},
+              ],
+            ],
+            "results": Array [
+              Object {
+                "type": "return",
+                "value": null,
+              },
+            ],
+          }
+        }
+        ListFooterComponent={[Function]}
+        ListHeaderComponent={[Function]}
+        data={
+          Array [
+            Object {
+              "address": "448 TNV",
+              "id": 0,
+              "type": "Home",
+            },
+            Object {
+              "address": "604 NT",
+              "id": 1,
+              "type": "Work",
+            },
+          ]
+        }
+        disableVirtualization={false}
+        getItem={[Function]}
+        getItemCount={[Function]}
+        horizontal={false}
+        initialNumToRender={10}
+        keyExtractor={[Function]}
+        maxToRenderPerBatch={10}
+        onContentSizeChange={[Function]}
+        onEndReachedThreshold={2}
+        onLayout={[Function]}
+        onMomentumScrollEnd={[Function]}
+        onScroll={[Function]}
+        onScrollBeginDrag={[Function]}
+        onScrollEndDrag={[Function]}
+        removeClippedSubviews={false}
+        renderItem={[Function]}
+        scrollEventThrottle={50}
+        showsVerticalScrollIndicator={false}
+        stickyHeaderIndices={Array []}
+        updateCellsBatchingPeriod={50}
+        viewabilityConfigCallbackPairs={Array []}
+        windowSize={21}
+      >
+        <View>
+          <View
+            onLayout={[Function]}
+          >
+            <Text>
+              Choose your address for delivery
+            </Text>
+          </View>
+          <View
+            onLayout={[Function]}
+            style={null}
+          >
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
+                  "paddingVertical": 10,
+                  "width": 650,
+                }
+              }
+            >
+              <View>
+                <Text
+                  style={
+                    Object {
+                      "fontWeight": "bold",
+                    }
+                  }
+                >
+                  Home
+                </Text>
+                <Text>
+                  448 TNV
+                </Text>
+              </View>
+              <View
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "opacity": 1,
+                  }
+                }
+                testID="chooseAddressBtn"
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "borderRadius": 100,
+                        "marginHorizontal": 10,
+                      },
+                      Object {
+                        "borderColor": "red",
+                        "borderWidth": 1,
+                        "paddingHorizontal": 20,
+                        "paddingVertical": 5,
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "red",
+                          "fontSize": 14,
+                          "fontWeight": "normal",
+                          "textAlign": "center",
+                        },
+                      ]
+                    }
+                  >
+                    Choose
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            onLayout={[Function]}
+            style={null}
+          >
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
+                  "paddingVertical": 10,
+                  "width": 650,
+                }
+              }
+            >
+              <View>
+                <Text
+                  style={
+                    Object {
+                      "fontWeight": "bold",
+                    }
+                  }
+                >
+                  Work
+                </Text>
+                <Text>
+                  604 NT
+                </Text>
+              </View>
+              <View
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "opacity": 1,
+                  }
+                }
+                testID="chooseAddressBtn"
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "borderRadius": 100,
+                        "marginHorizontal": 10,
+                      },
+                      Object {
+                        "borderColor": "red",
+                        "borderWidth": 1,
+                        "paddingHorizontal": 20,
+                        "paddingVertical": 5,
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "red",
+                          "fontSize": 14,
+                          "fontWeight": "normal",
+                          "textAlign": "center",
+                        },
+                      ]
+                    }
+                  >
+                    Choose
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            onLayout={[Function]}
+          >
+            <View
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "opacity": 1,
+                }
+              }
+              testID="addAddressBtn"
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "borderRadius": 100,
+                      "marginHorizontal": 10,
+                    },
+                    Object {
+                      "backgroundColor": "red",
+                      "paddingHorizontal": 30,
+                      "paddingVertical": 10,
+                    },
+                    Object {
+                      "marginTop": 20,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "white",
+                        "fontSize": 14,
+                        "fontWeight": "normal",
+                        "textAlign": "center",
+                      },
+                    ]
+                  }
+                >
+                  Add New Address
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+      </RCTScrollView>
+    </View>
+  </View>
+</Modal>
+`;

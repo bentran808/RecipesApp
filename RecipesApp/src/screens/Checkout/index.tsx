@@ -26,10 +26,6 @@ const CheckoutScreen = ({ navigation }: Props) => {
     setModalVisible(!modalVisible);
   }, [modalVisible]);
 
-  const handleChange = useCallback((text: string) => {
-    cart.setDiscountInput(text);
-  }, []);
-
   const handlePressApply = useCallback(() => {
     const coupon = cart.discountInput?.toUpperCase();
     const validCoupon = coupons.includes(coupon);
@@ -112,7 +108,7 @@ const CheckoutScreen = ({ navigation }: Props) => {
             style={styles.discountInput}
             placeholder="Enter discount code"
             value={cart.discountInput}
-            onChangeText={handleChange}
+            onChangeText={cart.setDiscountInput}
           />
           <Button
             testID="applyBtn"

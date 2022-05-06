@@ -33,6 +33,10 @@ const AddressModal = ({
     address.setItemUsing(item);
   };
 
+  const handlePressAdd = () => {
+    navigation.navigate(Screens.Address.name as 'Address');
+  };
+
   const renderHeader = () => <Text>Choose your address for delivery</Text>;
 
   const renderEmptyList = () => (
@@ -42,9 +46,7 @@ const AddressModal = ({
       title="Add New Address"
       color="red"
       paddingHorizontal={30}
-      onPress={() => {
-        navigation.navigate(Screens.Address.name as 'Address');
-      }}
+      onPress={handlePressAdd}
       style={{
         marginTop: 20
       }}

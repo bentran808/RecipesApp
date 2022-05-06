@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Ordered Item Component should render correctly 1`] = `
+<View
+  style={
+    Object {
+      "paddingBottom": 15,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+        "paddingHorizontal": 20,
+        "paddingVertical": 10,
+        "width": 750,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "maxWidth": 200,
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "fontWeight": "bold",
+          }
+        }
+      >
+        test x 2
+      </Text>
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "gray",
+            },
+            Object {
+              "fontSize": 12,
+              "marginTop": 5,
+            },
+          ]
+        }
+      >
+        
+      </Text>
+    </View>
+    <Text>
+      $
+      40.00
+    </Text>
+  </View>
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "opacity": 1,
+      }
+    }
+    testID="reorderBtn"
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "borderRadius": 100,
+            "marginHorizontal": 10,
+          },
+          Object {
+            "borderColor": "red",
+            "borderWidth": 1,
+            "paddingHorizontal": 30,
+            "paddingVertical": 5,
+          },
+          Object {
+            "borderRadius": 5,
+            "marginLeft": 20,
+            "marginTop": 10,
+            "width": 130,
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "red",
+              "fontSize": 14,
+              "fontWeight": "bold",
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        REORDER
+      </Text>
+    </View>
+  </View>
+</View>
+`;

@@ -98,6 +98,7 @@ exports[`Cart Screen Component should render correctly 1`] = `
           style={
             Object {
               "overflow": "hidden",
+              "width": "100%",
             }
           }
         >
@@ -194,7 +195,6 @@ exports[`Cart Screen Component should render correctly 1`] = `
               style={
                 Object {
                   "backgroundColor": "white",
-                  "flex": 1,
                   "flexDirection": "row",
                   "margin": 10,
                 }

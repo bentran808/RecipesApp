@@ -3,7 +3,7 @@ import { applySnapshot, destroy, getRoot, SnapshotOut, types } from 'mobx-state-
 import { RecipeModel, RecipesEntry } from 'store/RecipesStore';
 import { RootStore } from 'store/store';
 
-const CartEntry = types
+export const CartEntry = types
   .model('CartEntry', {
     item: RecipesEntry,
     quantity: types.optional(types.number, 1),
@@ -57,7 +57,7 @@ const CartStore = types
       return toJS(self.items);
     },
     get recipesInCart() {
-      return self.items.filter((item) => item.inCart);
+      return this.recipes.filter((item) => item.inCart);
     },
     get inCartCount() {
       return this.recipesInCart.length;

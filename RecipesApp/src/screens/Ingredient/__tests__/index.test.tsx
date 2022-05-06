@@ -1,4 +1,4 @@
-import { act, fireEvent, render } from '@testing-library/react-native';
+import { act, render } from '@testing-library/react-native';
 import { recipesApi } from 'api';
 import { StoreProvider } from 'context';
 import { ingredient, recipe } from 'mocks';

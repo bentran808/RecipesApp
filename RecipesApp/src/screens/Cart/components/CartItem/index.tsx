@@ -60,7 +60,7 @@ const CartItem = ({ item }: Props) => {
   };
 
   return (
-    <Swipeable renderRightActions={renderRightActions}>
+    <Swipeable renderRightActions={renderRightActions} containerStyle={{ width: '100%' }}>
       <View style={styles.container}>
         <View style={styles.photoContainer}>
           <Image

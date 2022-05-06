@@ -2,7 +2,7 @@ import { toJS } from 'mobx';
 import { applySnapshot, destroy, getRoot, SnapshotOut, types } from 'mobx-state-tree';
 import { RootStore } from 'store/store';
 
-const AddressEntry = types
+export const AddressEntry = types
   .model('AddressEntry', {
     id: types.optional(types.identifierNumber, 0),
     type: types.optional(types.string, ''),

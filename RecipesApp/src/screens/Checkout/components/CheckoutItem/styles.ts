@@ -6,7 +6,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingVertical: 10,
-    paddingHorizontal: 20
+    paddingHorizontal: 20,
+    width: '100%'
   },
   title: {
     fontWeight: 'bold'
