@@ -1,11 +1,12 @@
 import { DrawerNavigationHelpers } from '@react-navigation/drawer/lib/typescript/src/types';
+import { useIsFocused } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import Input from 'components/Input';
 import RecipeCard from 'components/RecipeCard';
 import Screens from 'constants/Screens';
 import { useStore } from 'context';
 import { observer } from 'mobx-react-lite';
-import React, { useCallback, useLayoutEffect } from 'react';
+import React, { useCallback, useEffect, useLayoutEffect } from 'react';
 import { FlatList, View } from 'react-native';
 import { RecipeModel } from 'store/RecipesStore';
 import { CloseIcon, SearchIcon } from 'theme';
@@ -18,8 +19,9 @@ interface Props {
 
 const SearchScreen = ({ navigation }: Props) => {
   const { recipes, cart } = useStore();
+  const isFocused = useIsFocused();
   const uniqueRecipes = [
-    ...new Map(recipes.recipesResultsJS.map((item: RecipeModel) => [item['id'], item])).values()
+    ...new Map(recipes.recipesJS.map((item: RecipeModel) => [item['id'], item])).values()
   ];
 
   useLayoutEffect(() => {
@@ -36,17 +38,24 @@ const SearchScreen = ({ navigation }: Props) => {
     });
   }, [recipes.keyword]);
 
+  useEffect(() => {
+    if (isFocused) {
+      recipes.setEmptyRecipes();
+    }
+  }, [isFocused]);
+
   const handleClose = useCallback(() => {
     recipes.setKeyword('');
     recipes.setEmptyRecipes();
   }, []);
 
-  const handleSearch = async (text: string) => {
+  const handleSearch = (text: string) => {
     if (!text) {
       recipes.setEmptyRecipes();
       return;
     }
 
+    recipes.setRefreshData();
     recipes.searchRecipeName(text);
     recipes.searchCategoryName(text);
   };

@@ -11,7 +11,7 @@ describe('Recipes List Screen', () => {
   const appStore = RootStore.create({
     categories: {},
     recipes: {
-      itemsOfCategory: [recipe]
+      items: [recipe]
     },
     ingredients: {},
     cart: {},

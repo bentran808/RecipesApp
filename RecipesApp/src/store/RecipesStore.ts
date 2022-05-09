@@ -28,22 +28,11 @@ const RecipesStore = types
     items: types.optional(types.array(RecipesEntry), []),
     state: types.optional(types.enumeration('State', ['pending', 'done', 'error']), 'done'),
     currentPage: types.optional(types.number, 1),
-    isEndList: types.optional(types.boolean, false),
-    itemsOfCategory: types.optional(types.array(RecipesEntry), []),
-    resultsOfSearch: types.optional(types.array(RecipesEntry), [])
+    isEndList: types.optional(types.boolean, false)
   })
   .views((self) => ({
-    get recipes() {
-      return self.items;
-    },
     get recipesJS() {
-      return toJS(this.recipes);
-    },
-    get recipesOfCategoryJS() {
-      return toJS(self.itemsOfCategory);
-    },
-    get recipesResultsJS() {
-      return toJS(self.resultsOfSearch);
+      return toJS(self.items);
     }
   }))
   .volatile(() => ({
@@ -66,39 +55,48 @@ const RecipesStore = types
           }
           self.state = 'done';
         } catch (error) {
-          console.log(error);
           self.state = 'error';
         }
       }
     }),
     fetchRecipesByCategoryId: flow(function* fetchRecipesByCategoryId(id: number) {
       self.state = 'pending';
+      if (self.isEndList) {
+        self.currentPage = 1;
+        self.isEndList = false;
+      }
       try {
         const response = yield recipesApi.fetchRecipesByCategoryIdRequest(id);
-        self.itemsOfCategory = response.data;
+        self.items = response.data;
         self.state = 'done';
       } catch (error) {
-        console.log(error);
         self.state = 'error';
       }
     }),
     searchRecipeName: flow(function* searchRecipeName(text: string) {
       self.state = 'pending';
+      if (self.isEndList) {
+        self.currentPage = 1;
+        self.isEndList = false;
+      }
       try {
         const response = yield recipesApi.searchByRecipeNameRequest(text);
 
         applySnapshot(self, {
           ...self,
-          resultsOfSearch: [...self.resultsOfSearch, ...response.data]
+          items: [...self.items, ...response.data]
         });
         self.state = 'done';
       } catch (error) {
-        console.log(error);
         self.state = 'error';
       }
     }),
     searchCategoryName: flow(function* searchCategoryName(text: string) {
       self.state = 'pending';
+      if (self.isEndList) {
+        self.currentPage = 1;
+        self.isEndList = false;
+      }
       try {
         const response = yield recipesApi.searchByCategoryNameRequest(text);
         const recipesOfCategory = (response.data || [])
@@ -116,21 +114,24 @@ const RecipesStore = types
 
         applySnapshot(self, {
           ...self,
-          resultsOfSearch: [...self.resultsOfSearch, ...recipesOfCategory]
+          items: [...self.items, ...recipesOfCategory]
         });
         self.state = 'done';
       } catch (error) {
-        console.log(error);
         self.state = 'error';
       }
     }),
     setKeyword(text: string) {
       self.keyword = text;
     },
+    setRefreshData() {
+      self.currentPage = 1;
+      self.isEndList = false;
+    },
     setEmptyRecipes() {
       applySnapshot(self, {
         ...self,
-        resultsOfSearch: []
+        items: []
       });
     }
   }));

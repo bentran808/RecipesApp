@@ -7,6 +7,10 @@ import renderer from 'react-test-renderer';
 import HomeScreen from 'screens/Home';
 import store, { RootStore } from 'store/store';
 
+jest.mock('@react-navigation/native', () => ({
+  useIsFocused: jest.fn().mockReturnValue(true)
+}));
+
 describe('Home Screen', () => {
   const appStore = RootStore.create({
     categories: {},

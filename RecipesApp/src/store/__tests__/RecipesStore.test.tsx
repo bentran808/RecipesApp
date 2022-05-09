@@ -35,7 +35,7 @@ describe('Recipes Store', () => {
     recipesApi.fetchRecipesByCategoryIdRequest = jest.fn().mockResolvedValue({ data: [recipe] });
     await store.recipes.fetchRecipesByCategoryId(0);
 
-    expect(store.recipes.recipesOfCategoryJS).toEqual([recipe]);
+    expect(store.recipes.recipesJS).toEqual([recipe]);
   });
 
   test('should call function fetchRecipesByCategoryId failed', async () => {
@@ -49,7 +49,7 @@ describe('Recipes Store', () => {
     recipesApi.searchByRecipeNameRequest = jest.fn().mockResolvedValue({ data: [recipe] });
     await store.recipes.searchRecipeName('c');
 
-    expect(store.recipes.recipesResultsJS).toEqual([recipe]);
+    expect(store.recipes.recipesJS).toEqual([recipe, recipe]);
   });
 
   test('should call function searchRecipeName failed', async () => {
@@ -65,7 +65,7 @@ describe('Recipes Store', () => {
       .mockResolvedValue({ data: [{ ...category, recipes: [recipe] }] });
     await store.recipes.searchCategoryName('c');
 
-    expect(store.recipes.recipesResultsJS).toEqual([recipe, recipe]);
+    expect(store.recipes.recipesJS).toEqual([recipe, recipe, recipe]);
   });
 
   test('should call function searchCategoryName failed', async () => {
@@ -82,6 +82,6 @@ describe('Recipes Store', () => {
 
   test('should call function setEmptyRecipes', () => {
     store.recipes.setEmptyRecipes();
-    expect(store.recipes.resultsOfSearch).toEqual([]);
+    expect(store.recipes.recipesJS).toEqual([]);
   });
 });

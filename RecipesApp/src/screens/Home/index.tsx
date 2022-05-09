@@ -1,4 +1,5 @@
 import { DrawerNavigationHelpers } from '@react-navigation/drawer/lib/typescript/src/types';
+import { useIsFocused } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import MenuButton from 'components/MenuButton';
 import RecipeCard from 'components/RecipeCard';
@@ -18,6 +19,7 @@ interface Props {
 const HomeScreen = ({ navigation }: Props) => {
   const { recipes, cart } = useStore();
   const badgeCount = cart.inCartCount;
+  const isFocused = useIsFocused();
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -33,16 +35,21 @@ const HomeScreen = ({ navigation }: Props) => {
   }, [badgeCount]);
 
   useEffect(() => {
+    if (isFocused) {
+      recipes.fetchRecipes(1);
+    }
+  }, [isFocused])
+
+  const handleRefreshing = useCallback(() => {
+    recipes.setRefreshData();
     recipes.fetchRecipes(1);
   }, []);
 
-  const handleRefreshing = useCallback(async () => {
-    recipes.fetchRecipes(1);
-  }, []);
-
-  const getRecipes = async () => {
-    recipes.fetchRecipes(recipes.currentPage);
-  };
+  const getRecipes = useCallback(() => {
+    if (isFocused) {
+      recipes.fetchRecipes(recipes.currentPage);
+    }
+  }, [isFocused]);
 
   const handlePressCart = () => {
     navigation.navigate(Screens.Cart.name);

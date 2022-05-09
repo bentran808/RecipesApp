@@ -34,7 +34,6 @@ const CategoriesStore = types
         self.lists = response.data;
         self.state = 'done';
       } catch (error) {
-        console.log(error);
         self.state = 'error';
       }
     })

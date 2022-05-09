@@ -1,16 +1,21 @@
+import { render } from '@testing-library/react-native';
 import { StoreProvider } from 'context';
 import { recipe } from 'mocks';
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import renderer from 'react-test-renderer';
-import { RootStore } from 'store/store';
+import store, { RootStore } from 'store/store';
 import SearchScreen from '..';
+
+jest.mock('@react-navigation/native', () => ({
+  useIsFocused: jest.fn().mockReturnValue(true)
+}));
 
 describe('Categories Screen', () => {
   const appStore = RootStore.create({
     categories: {},
     recipes: {
-      resultsOfSearch: [recipe]
+      items: [recipe]
     },
     ingredients: {},
     cart: {},
@@ -30,26 +35,28 @@ describe('Categories Screen', () => {
   });
 
   test('should render correctly', () => {
-    const tree = renderer
-      .create(
-        <StoreProvider value={appStore}>
-          <SearchScreen navigation={navigation} />
-        </StoreProvider>
-      )
-      .toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-
-  test('should call function handlePressRecipe', () => {
-    const component = renderer.create(
+    const tree = renderer.create(
       <StoreProvider value={appStore}>
         <SearchScreen navigation={navigation} />
       </StoreProvider>
     );
-    const button = component.root.findAllByType(TouchableOpacity)[0];
+    expect(tree.toJSON()).toMatchSnapshot();
 
+    const button = tree.root.findAllByType(TouchableOpacity)[0];
     button.props.onPress();
 
     expect(navigation.navigate).toHaveBeenCalled();
+  });
+
+  test('should call function setEmptyRecipes successful', () => {
+    store.recipes.setEmptyRecipes = jest.fn();
+
+    render(
+      <StoreProvider value={store}>
+        <SearchScreen navigation={navigation} />
+      </StoreProvider>
+    );
+
+    expect(store.recipes.setEmptyRecipes).toHaveBeenCalled();
   });
 });

@@ -38,7 +38,7 @@ const RecipesListScreen = ({ navigation, route }: Props) => {
     recipes.fetchRecipesByCategoryId(categoryId);
   }, [categoryId]);
 
-  const handleRefreshing = useCallback(async () => {
+  const handleRefreshing = useCallback(() => {
     recipes.fetchRecipesByCategoryId(categoryId);
   }, [categoryId]);
 
@@ -64,7 +64,7 @@ const RecipesListScreen = ({ navigation, route }: Props) => {
         onRefresh={handleRefreshing}
         showsVerticalScrollIndicator={false}
         numColumns={2}
-        data={recipes.recipesOfCategoryJS}
+        data={recipes.recipesJS}
         renderItem={renderRecipes}
         keyExtractor={renderKeyExtractor}
       />
