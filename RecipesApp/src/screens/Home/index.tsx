@@ -7,7 +7,8 @@ import Screens from 'constants/Screens';
 import { useStore } from 'context';
 import { observer } from 'mobx-react-lite';
 import React, { useCallback, useEffect, useLayoutEffect } from 'react';
-import { FlatList, View } from 'react-native';
+import { Alert, FlatList, View } from 'react-native';
+import Reactotron from 'reactotron-react-native'
 import { RecipeModel } from 'store/RecipesStore';
 import { BasketIcon } from 'theme';
 
@@ -38,7 +39,13 @@ const HomeScreen = ({ navigation }: Props) => {
     if (isFocused) {
       recipes.fetchRecipes(1);
     }
-  }, [isFocused])
+  }, [isFocused]);
+
+  useEffect(() => {
+    if (recipes.state === 'error') {
+      Alert.alert('Error', 'Failed to fetching recipes');
+    }
+  }, [recipes.state]);
 
   const handleRefreshing = useCallback(() => {
     recipes.setRefreshData();

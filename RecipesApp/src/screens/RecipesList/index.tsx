@@ -4,7 +4,7 @@ import Screens from 'constants/Screens';
 import { useStore } from 'context';
 import { observer } from 'mobx-react-lite';
 import React, { useCallback, useEffect, useLayoutEffect } from 'react';
-import { FlatList, View } from 'react-native';
+import { Alert, FlatList, View } from 'react-native';
 import { RecipeModel } from 'store/RecipesStore';
 
 type RootStackParamList = {
@@ -37,6 +37,12 @@ const RecipesListScreen = ({ navigation, route }: Props) => {
   useEffect(() => {
     recipes.fetchRecipesByCategoryId(categoryId);
   }, [categoryId]);
+
+  useEffect(() => {
+    if (recipes.state === 'error') {
+      Alert.alert('Error', 'Failed to fetching recipes');
+    }
+  }, [recipes.state]);
 
   const handleRefreshing = useCallback(() => {
     recipes.fetchRecipesByCategoryId(categoryId);

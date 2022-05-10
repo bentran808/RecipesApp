@@ -2,6 +2,7 @@ import { recipesApi } from 'api';
 import { toJS } from 'mobx';
 import { applySnapshot, flow, SnapshotOut, types } from 'mobx-state-tree';
 import { CategoryModel } from 'store/CategoriesStore';
+import { uniqueArray } from 'utils';
 
 export const RecipesEntry = types.model('RecipesEntry', {
   id: types.number,
@@ -70,6 +71,10 @@ const RecipesStore = types
         self.items = response.data;
         self.state = 'done';
       } catch (error) {
+        applySnapshot(self, {
+          ...self,
+          items: []
+        });
         self.state = 'error';
       }
     }),
@@ -84,7 +89,7 @@ const RecipesStore = types
 
         applySnapshot(self, {
           ...self,
-          items: [...self.items, ...response.data]
+          items: response.data.length ? uniqueArray([...self.items, ...response.data]) : []
         });
         self.state = 'done';
       } catch (error) {
@@ -114,7 +119,7 @@ const RecipesStore = types
 
         applySnapshot(self, {
           ...self,
-          items: [...self.items, ...recipesOfCategory]
+          items: response.data.length ? uniqueArray([...self.items, ...recipesOfCategory]) : []
         });
         self.state = 'done';
       } catch (error) {

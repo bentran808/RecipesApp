@@ -3,7 +3,7 @@ import Screens from 'constants/Screens';
 import { useStore } from 'context';
 import { observer } from 'mobx-react-lite';
 import React, { useCallback, useEffect, useLayoutEffect } from 'react';
-import { FlatList, View } from 'react-native';
+import { Alert, FlatList, View } from 'react-native';
 import IngredientItem from 'screens/IngredientsDetails/components/IngredientItem';
 import { mappingIngredientsDetails } from 'utils';
 
@@ -33,6 +33,12 @@ const IngredientsDetailsScreen = ({ navigation, route }: Props) => {
       lists.fetchIngredients();
     }
   }, []);
+
+  useEffect(() => {
+    if (lists.state === 'error') {
+      Alert.alert('Error', 'Failed to fetching ingredients');
+    }
+  }, [lists.state]);
 
   const handlePressIngredient = useCallback((item: IngredientsDetails) => {
     navigation.navigate(Screens.Ingredient.name as 'Ingredient', { ingredient: item[0] });

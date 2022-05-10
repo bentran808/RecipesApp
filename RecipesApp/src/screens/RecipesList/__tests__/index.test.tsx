@@ -31,14 +31,17 @@ describe('Recipes List Screen', () => {
   });
 
   test('should render correctly', () => {
-    const tree = renderer
-      .create(
-        <StoreProvider value={appStore}>
-          <RecipesListScreen navigation={navigation} route={{ params: { category } }} />
-        </StoreProvider>
-      )
-      .toJSON();
-    expect(tree).toMatchSnapshot();
+    const tree = renderer.create(
+      <StoreProvider value={appStore}>
+        <RecipesListScreen navigation={navigation} route={{ params: { category } }} />
+      </StoreProvider>
+    );
+    expect(tree.toJSON()).toMatchSnapshot();
+
+    const button = tree.root.findAllByType(TouchableOpacity)[0];
+    button.props.onPress();
+
+    expect(navigation.navigate).toHaveBeenCalled();
   });
 
   test('should call function fetchRecipesByCategoryId successful', () => {
@@ -70,18 +73,18 @@ describe('Recipes List Screen', () => {
     expect(store.recipes.fetchRecipesByCategoryId).toHaveBeenCalled();
   });
 
-  test('should call function handlePressRecipe', () => {
-    const component = renderer.create(
-      <StoreProvider value={appStore}>
-        <RecipesListScreen navigation={navigation} route={{ params: { category } }} />
-      </StoreProvider>
-    );
-    const button = component.root.findAllByType(TouchableOpacity)[0];
+  // test('should call function handlePressRecipe', () => {
+  //   const component = renderer.create(
+  //     <StoreProvider value={appStore}>
+  //       <RecipesListScreen navigation={navigation} route={{ params: { category } }} />
+  //     </StoreProvider>
+  //   );
+  //   const button = component.root.findAllByType(TouchableOpacity)[0];
 
-    button.props.onPress();
+  //   button.props.onPress();
 
-    expect(navigation.navigate).toHaveBeenCalled();
-  });
+  //   expect(navigation.navigate).toHaveBeenCalled();
+  // });
 
   // test('should call function handleAddToCart', () => {
   //   store.cart.addToCart = jest.fn().mockImplementation(() => {});

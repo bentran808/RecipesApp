@@ -61,6 +61,8 @@ const CheckoutScreen = ({ navigation }: Props) => {
           break;
       }
       cart.setDiscountInput('');
+    } else {
+      cart.isInvalidCoupon(true);
     }
   }, []);
 
@@ -123,6 +125,9 @@ const CheckoutScreen = ({ navigation }: Props) => {
             }}
           />
         </View>
+        {cart.invalidCoupon ? (
+          <Text style={styles.errorText}>Invalid coupon. Please help to check back!</Text>
+        ) : null}
         {renderSeparator()}
         <View style={styles.addressWrapper}>
           <View style={styles.addressControl}>

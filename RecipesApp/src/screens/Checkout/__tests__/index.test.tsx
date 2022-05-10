@@ -63,6 +63,35 @@ describe('Checkout Screen Component', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  test('should render correctly with error message', () => {
+    appStore.cart.isInvalidCoupon(true);
+    const tree = renderer
+      .create(
+        <StoreProvider value={appStore}>
+          <CheckoutScreen navigation={navigation} />
+        </StoreProvider>
+      )
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  test('should call function handlePressApply with invalid coupon', () => {
+    store.cart.isInvalidCoupon = jest.fn();
+    const { getByPlaceholderText, getByTestId } = render(
+      <StoreProvider value={store}>
+        <CheckoutScreen navigation={navigation} />
+      </StoreProvider>
+    );
+
+    const input = getByPlaceholderText('Enter discount code');
+    fireEvent.changeText(input, 'a');
+
+    const button = getByTestId('applyBtn');
+    fireEvent.press(button);
+
+    expect(store.cart.isInvalidCoupon).toHaveBeenCalled();
+  });
+
   test('should call function handlePressApply with coupon freeship', () => {
     store.cart.applyCoupon = jest.fn();
     const { getByPlaceholderText, getByTestId } = render(

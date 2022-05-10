@@ -49,7 +49,7 @@ describe('Recipes Store', () => {
     recipesApi.searchByRecipeNameRequest = jest.fn().mockResolvedValue({ data: [recipe] });
     await store.recipes.searchRecipeName('c');
 
-    expect(store.recipes.recipesJS).toEqual([recipe, recipe]);
+    expect(store.recipes.recipesJS).toEqual([recipe]);
   });
 
   test('should call function searchRecipeName failed', async () => {
@@ -65,7 +65,7 @@ describe('Recipes Store', () => {
       .mockResolvedValue({ data: [{ ...category, recipes: [recipe] }] });
     await store.recipes.searchCategoryName('c');
 
-    expect(store.recipes.recipesJS).toEqual([recipe, recipe, recipe]);
+    expect(store.recipes.recipesJS).toEqual([recipe]);
   });
 
   test('should call function searchCategoryName failed', async () => {

@@ -689,3 +689,703 @@ exports[`Checkout Screen Component should render correctly 1`] = `
   </View>
 </View>
 `;
+
+exports[`Checkout Screen Component should render correctly with error message 1`] = `
+<View
+  onLayout={[Function]}
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "bottom": 0,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "backgroundColor": "white",
+          "borderBottomLeftRadius": 20,
+          "borderBottomRightRadius": 20,
+        }
+      }
+    >
+      <RCTScrollView
+        ItemSeparatorComponent={[Function]}
+        data={
+          Array [
+            Object {
+              "inCart": true,
+              "item": Object {
+                "category": Object {
+                  "id": 0,
+                  "name": "Cookies",
+                  "photo_url": "https://www.telegraph.co.uk/content/dam/Travel/2019/January/france-food.jpg?imw'id'th=1400",
+                },
+                "categoryId": 0,
+                "description": "-- Start with cleaned and peeled russet potatoes that you have cut into 3/8-inch match sticks. Place in bowl of very cold water: keep rinsing and changing the water until the water is clear; drain thoroughly and dry with paper towels or a clean lint-free kitchen towel.
+
+ -- Meanwhile, you preheat your hot oil to 350 degrees F. Place prepared taters in oil and cook about 5 minutes. They will have that blond-tone color to them. 
+
+ -- Note: Once you add cold potatoes to the hot oil, the temperature of your oil is going to drop - you want it to be somewhere between 330 - 325 degrees F. 
+
+ -- Remove from oil; drain and cool. Now - either refrigerate until ready to finish cooking, or cool completely and freeze up to 3 months. To freeze properly - place completely cooled fries in single layer on tray and place in freezer until frozen. Then bag them.
+
+ -- To finish cooking - preheat your oil to 400* F. Add your cold fries (which will drop the oil temp - which is fine because you want it near the 375 degrees F. temp) and cook a few minutes until done. Lightly salt them and shake well so that the salt distributes well and they are not salty.",
+                "id": 0,
+                "ingredients": Array [
+                  Array [
+                    0,
+                    "200ml",
+                  ],
+                  Array [
+                    1,
+                    "5g",
+                  ],
+                  Array [
+                    2,
+                    "300g",
+                  ],
+                ],
+                "photo_url": "https://www.texanerin.com/content/uploads/2019/06/nobake-chocolate-cookies-1-650x975.jpg",
+                "photosArray": Array [
+                  "https://www.texanerin.com/content/uploads/2019/06/nobake-chocolate-cookies-1-650x975.jpg",
+                  "https://namelymarly.com/wp-content/uploads/2018/04/20180415_Beet_Lasagna_10.jpg",
+                  "https://advancelocal-adapter-image-uploads.s3.amazonaws.com/image.al.com/home/bama-media/width600/img/news_impact/photo/burger-fijpg-57e7e5907630c2ad.jpg",
+                  "https://img.thedailybeast.com/image/upload/c_crop,d_placeholder_euli9k,h_1439,w_2560,x_0,y_0/dpr_1.5/c_limit,w_1044/fl_lossy,q_auto/v1492718105/articles/2013/09/24/burger-king-s-new-french-fries-took-ten-years-to-develop/130923-gross-burger-tease_izz59e",
+                  "https://aht.seriouseats.com/images/2012/02/20120221-193971-fast-food-fries-Burger-King-fries-2.jpg",
+                ],
+                "time": "15",
+                "title": "Oatmeal Cookies",
+              },
+              "quantity": 1,
+            },
+          ]
+        }
+        disableVirtualization={false}
+        getItem={[Function]}
+        getItemCount={[Function]}
+        horizontal={false}
+        initialNumToRender={10}
+        keyExtractor={[Function]}
+        maxToRenderPerBatch={10}
+        onContentSizeChange={[Function]}
+        onEndReachedThreshold={2}
+        onLayout={[Function]}
+        onMomentumScrollEnd={[Function]}
+        onScroll={[Function]}
+        onScrollBeginDrag={[Function]}
+        onScrollEndDrag={[Function]}
+        removeClippedSubviews={false}
+        renderItem={[Function]}
+        scrollEventThrottle={50}
+        showsVerticalScrollIndicator={false}
+        stickyHeaderIndices={Array []}
+        testID="checkoutList"
+        updateCellsBatchingPeriod={50}
+        viewabilityConfigCallbackPairs={Array []}
+        windowSize={21}
+      >
+        <View>
+          <View
+            onLayout={[Function]}
+            style={null}
+          >
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
+                  "paddingHorizontal": 20,
+                  "paddingVertical": 10,
+                  "width": "100%",
+                }
+              }
+            >
+              <View>
+                <Text
+                  style={
+                    Object {
+                      "fontWeight": "bold",
+                    }
+                  }
+                >
+                  Oatmeal Cookies
+                </Text>
+                <Text
+                  style={
+                    Object {
+                      "color": "gray",
+                      "fontSize": 12,
+                    }
+                  }
+                >
+                  Regular
+                </Text>
+              </View>
+              <View
+                style={
+                  Object {
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "width": 150,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    Object {
+                      "borderColor": "red",
+                      "borderRadius": 5,
+                      "borderWidth": 1,
+                      "color": "red",
+                      "paddingHorizontal": 30,
+                      "paddingVertical": 5,
+                    }
+                  }
+                >
+                  1
+                </Text>
+                <Text>
+                  $
+                  20
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+      </RCTScrollView>
+      <RCTScrollView
+        style={
+          Object {
+            "paddingHorizontal": 20,
+          }
+        }
+      >
+        <View>
+          <View>
+            <Text
+              style={
+                Object {
+                  "fontSize": 18,
+                  "fontWeight": "bold",
+                  "paddingTop": 30,
+                }
+              }
+            >
+              Bill Details
+            </Text>
+            <View
+              style={
+                Object {
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
+                  "paddingVertical": 5,
+                }
+              }
+            >
+              <Text
+                style={
+                  Object {
+                    "color": "gray",
+                  }
+                }
+              >
+                Item Total
+              </Text>
+              <Text
+                style={
+                  Object {
+                    "fontWeight": "bold",
+                  }
+                }
+              >
+                
+                $
+                20.00
+              </Text>
+            </View>
+            <View
+              style={
+                Object {
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
+                  "paddingVertical": 5,
+                }
+              }
+            >
+              <Text
+                style={
+                  Object {
+                    "color": "gray",
+                  }
+                }
+              >
+                Delivery Fee
+              </Text>
+              <Text
+                style={
+                  Object {
+                    "fontWeight": "bold",
+                  }
+                }
+              >
+                
+                $
+                5.00
+              </Text>
+            </View>
+            <View
+              style={
+                Object {
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
+                  "paddingVertical": 5,
+                }
+              }
+            >
+              <Text
+                style={
+                  Object {
+                    "color": "gray",
+                  }
+                }
+              >
+                Free Ship
+              </Text>
+              <Text
+                style={
+                  Object {
+                    "fontWeight": "bold",
+                  }
+                }
+              >
+                - 
+                $
+                5.00
+              </Text>
+            </View>
+          </View>
+          <View
+            style={
+              Object {
+                "borderBottomColor": "gray",
+                "borderBottomWidth": 1,
+                "marginHorizontal": 30,
+              }
+            }
+          />
+          <View
+            style={
+              Object {
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "paddingVertical": 10,
+              }
+            }
+          >
+            <Text
+              style={
+                Object {
+                  "fontWeight": "bold",
+                }
+              }
+            >
+              To Pay
+            </Text>
+            <Text
+              style={
+                Object {
+                  "fontWeight": "bold",
+                }
+              }
+            >
+              $
+              20
+            </Text>
+          </View>
+          <View
+            style={
+              Object {
+                "borderBottomColor": "gray",
+                "borderBottomWidth": 1,
+                "marginHorizontal": 30,
+              }
+            }
+          />
+          <View
+            style={
+              Object {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "paddingLeft": 10,
+              }
+            }
+          >
+            <TextInput
+              allowFontScaling={true}
+              onChangeText={[Function]}
+              placeholder="Enter discount code"
+              rejectResponderTermination={true}
+              style={
+                Object {
+                  "borderColor": "gray",
+                  "borderRadius": 1,
+                  "borderStyle": "dashed",
+                  "borderWidth": 1,
+                  "marginVertical": 10,
+                  "paddingHorizontal": 20,
+                }
+              }
+              underlineColorAndroid="transparent"
+              value=""
+            />
+            <View
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "opacity": 1,
+                }
+              }
+              testID="applyBtn"
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "borderRadius": 100,
+                      "marginHorizontal": 10,
+                    },
+                    Object {
+                      "backgroundColor": "gray",
+                      "paddingHorizontal": 30,
+                      "paddingVertical": 7,
+                    },
+                    Object {
+                      "borderRadius": 10,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "white",
+                        "fontSize": 14,
+                        "fontWeight": "normal",
+                        "textAlign": "center",
+                      },
+                    ]
+                  }
+                >
+                  APPLY
+                </Text>
+              </View>
+            </View>
+          </View>
+          <Text
+            style={
+              Object {
+                "color": "red",
+                "marginBottom": 10,
+              }
+            }
+          >
+            Invalid coupon. Please help to check back!
+          </Text>
+          <View
+            style={
+              Object {
+                "borderBottomColor": "gray",
+                "borderBottomWidth": 1,
+                "marginHorizontal": 30,
+              }
+            }
+          />
+          <View
+            style={
+              Object {
+                "paddingVertical": 10,
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
+                }
+              }
+            >
+              <Text
+                style={
+                  Object {
+                    "fontWeight": "bold",
+                  }
+                }
+              >
+                Deliver To 
+                Work
+              </Text>
+              <View
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "opacity": 1,
+                  }
+                }
+                testID="changeAddressBtn"
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "borderRadius": 100,
+                        "marginHorizontal": 10,
+                      },
+                      Object {},
+                      undefined,
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "black",
+                          "fontSize": 12,
+                          "fontWeight": "normal",
+                          "textAlign": "center",
+                        },
+                      ]
+                    }
+                  >
+                    CHANGE
+                  </Text>
+                </View>
+              </View>
+            </View>
+            <Text
+              style={
+                Object {
+                  "color": "gray",
+                  "paddingVertical": 10,
+                }
+              }
+            >
+              604 NT
+            </Text>
+            <View
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "opacity": 1,
+                }
+              }
+              testID="paymentBtn"
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "borderRadius": 100,
+                      "marginHorizontal": 10,
+                    },
+                    Object {
+                      "backgroundColor": "red",
+                      "paddingHorizontal": 60,
+                      "paddingVertical": 10,
+                    },
+                    Object {
+                      "borderRadius": 10,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "white",
+                        "fontSize": 14,
+                        "fontWeight": "normal",
+                        "textAlign": "center",
+                      },
+                    ]
+                  }
+                >
+                  MAKE PAYMENT
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+      </RCTScrollView>
+      <Modal
+        animationType="fade"
+        hardwareAccelerated={false}
+        onRequestClose={[Function]}
+        transparent={true}
+        visible={false}
+      >
+        <View
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "rgba(0,0,0,0.5)",
+              "flex": 1,
+              "justifyContent": "center",
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "white",
+                "borderRadius": 20,
+                "elevation": 5,
+                "paddingVertical": 20,
+                "shadowColor": "black",
+                "shadowOffset": Object {
+                  "height": 2,
+                  "width": 0,
+                },
+                "shadowOpacity": 0.25,
+                "shadowRadius": 4,
+                "width": 700,
+              }
+            }
+          >
+            <RCTScrollView
+              ItemSeparatorComponent={[Function]}
+              ListFooterComponent={[Function]}
+              ListHeaderComponent={[Function]}
+              data={Array []}
+              disableVirtualization={false}
+              getItem={[Function]}
+              getItemCount={[Function]}
+              horizontal={false}
+              initialNumToRender={10}
+              keyExtractor={[Function]}
+              maxToRenderPerBatch={10}
+              onContentSizeChange={[Function]}
+              onEndReachedThreshold={2}
+              onLayout={[Function]}
+              onMomentumScrollEnd={[Function]}
+              onScroll={[Function]}
+              onScrollBeginDrag={[Function]}
+              onScrollEndDrag={[Function]}
+              removeClippedSubviews={false}
+              renderItem={[Function]}
+              scrollEventThrottle={50}
+              showsVerticalScrollIndicator={false}
+              stickyHeaderIndices={Array []}
+              updateCellsBatchingPeriod={50}
+              viewabilityConfigCallbackPairs={Array []}
+              windowSize={21}
+            >
+              <View>
+                <View
+                  onLayout={[Function]}
+                >
+                  <Text>
+                    Choose your address for delivery
+                  </Text>
+                </View>
+                <View
+                  onLayout={[Function]}
+                >
+                  <View
+                    accessible={true}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      Object {
+                        "opacity": 1,
+                      }
+                    }
+                    testID="addAddressBtn"
+                  >
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "borderRadius": 100,
+                            "marginHorizontal": 10,
+                          },
+                          Object {
+                            "backgroundColor": "red",
+                            "paddingHorizontal": 30,
+                            "paddingVertical": 10,
+                          },
+                          Object {
+                            "marginTop": 20,
+                          },
+                        ]
+                      }
+                    >
+                      <Text
+                        style={
+                          Array [
+                            Object {
+                              "color": "white",
+                              "fontSize": 14,
+                              "fontWeight": "normal",
+                              "textAlign": "center",
+                            },
+                          ]
+                        }
+                      >
+                        Add New Address
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </RCTScrollView>
+          </View>
+        </View>
+      </Modal>
+    </View>
+  </View>
+</View>
+`;

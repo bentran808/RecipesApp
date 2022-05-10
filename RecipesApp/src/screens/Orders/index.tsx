@@ -6,9 +6,7 @@ import { FlatList, View } from 'react-native';
 import OrderedItem from 'screens/Orders/components/OrderedItem';
 import { OrderedModel } from 'store/CartStore';
 
-type Props = {};
-
-const OrdersScreen = (props: Props) => {
+const OrdersScreen = () => {
   const { cart } = useStore();
 
   const renderCheckoutItem = ({ item }: { item: OrderedModel }) => <OrderedItem item={item} />;

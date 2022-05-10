@@ -47,13 +47,17 @@ export const debounce = (func: (text: string) => void, delay: number) => {
 
 export const formatDatetime = (date: Date) => {
   let dates: number | string = date.getDate();
-  let hours: number | string = date.getHours() - 1;
+  let hours: number | string = date.getHours();
   let minutes: number | string = date.getMinutes();
   hours = hours % 12;
-  hours = hours || 12;
+  hours = (hours || 12) - 1;
   hours = hours < 10 ? '0' + hours : hours;
   dates = dates < 10 ? '0' + dates : dates;
   minutes = minutes < 10 ? '0' + minutes : minutes;
-  const time = hours + ':' + minutes;
+  const time = (hours) + ':' + minutes;
   return `${dates} ${months[date.getMonth()]} ${date.getFullYear()}, ${time}`;
 };
+
+export const uniqueArray = (list: RecipeModel[]) => [
+  ...new Map(list.map((item: RecipeModel) => [item['id'], item])).values()
+];

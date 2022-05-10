@@ -38,6 +38,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     marginVertical: 10
   },
+  errorText: {
+    color: 'red',
+    marginBottom: 10
+  },
   addressWrapper: {
     paddingVertical: 10
   },

@@ -79,7 +79,8 @@ const CartStore = types
     }
   }))
   .volatile(() => ({
-    discountInput: ''
+    discountInput: '',
+    invalidCoupon: false
   }))
   .actions((self) => ({
     addToCart(item: RecipeModel, quantity?: number) {
@@ -93,6 +94,9 @@ const CartStore = types
       return self.items.find((item) => item.item.id === recipe.id);
     },
     setDiscountInput(text: string) {
+      if (!text) {
+        self.invalidCoupon = false;
+      }
       self.discountInput = text;
     },
     applyCoupon(item: BillModel) {
@@ -110,6 +114,9 @@ const CartStore = types
         items: [],
         billItems: []
       });
+    },
+    isInvalidCoupon(status: boolean) {
+      self.invalidCoupon = status;
     }
   }));
 

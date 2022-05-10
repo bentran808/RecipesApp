@@ -5,7 +5,7 @@ import Screens from 'constants/Screens';
 import { useStore } from 'context';
 import { observer } from 'mobx-react-lite';
 import React, { useCallback, useEffect } from 'react';
-import { FlatList, View } from 'react-native';
+import { Alert, FlatList, View } from 'react-native';
 import { CategoryModel } from 'store/CategoriesStore';
 
 type CategoriesNavigationProp = NativeStackNavigationProp<RootStackParamList>;
@@ -19,6 +19,12 @@ const CategoriesScreen = ({ navigation }: Props) => {
   useEffect(() => {
     categories.fetchCategories();
   }, []);
+
+  useEffect(() => {
+    if (categories.state === 'error') {
+      Alert.alert('Error', 'Failed to fetching categories');
+    }
+  }, [categories.state]);
 
   const handlePressCategory = useCallback((category: CategoryModel) => {
     navigation.navigate(Screens.RecipesList.name as 'RecipesList', { category });

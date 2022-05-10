@@ -20,9 +20,6 @@ interface Props {
 const SearchScreen = ({ navigation }: Props) => {
   const { recipes, cart } = useStore();
   const isFocused = useIsFocused();
-  const uniqueRecipes = [
-    ...new Map(recipes.recipesJS.map((item: RecipeModel) => [item['id'], item])).values()
-  ];
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -60,7 +57,7 @@ const SearchScreen = ({ navigation }: Props) => {
     recipes.searchCategoryName(text);
   };
 
-  const debounceHandleSearch = debounce(handleSearch, 1000);
+  const debounceHandleSearch = debounce(handleSearch, 500);
 
   const handleChange = useCallback((text: string) => {
     recipes.setKeyword(text);
@@ -87,7 +84,7 @@ const SearchScreen = ({ navigation }: Props) => {
         testID="recipesList"
         showsVerticalScrollIndicator={false}
         numColumns={2}
-        data={uniqueRecipes}
+        data={recipes.recipesJS}
         renderItem={renderRecipes}
         keyExtractor={renderKeyExtractor}
       />
