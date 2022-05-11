@@ -158,9 +158,12 @@ const CheckoutScreen = ({ navigation }: Props) => {
   };
 
   return (
-    <KeyboardAvoidingView behavior="position" style={{ flex: 1 }}>
+    <KeyboardAvoidingView behavior="padding" style={{ flex: 1 }}>
       <View style={styles.container}>
         <FlatList
+          style={{
+            maxHeight: 300
+          }}
           testID="checkoutList"
           showsVerticalScrollIndicator={false}
           data={cart.recipesInCart}

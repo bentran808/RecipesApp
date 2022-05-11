@@ -34,6 +34,7 @@ const AddressModal = ({
   };
 
   const handlePressAdd = () => {
+    onToggleModal();
     navigation.navigate(Screens.Address.name as 'Address');
   };
 
