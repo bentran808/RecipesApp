@@ -1,6 +1,6 @@
 # React Native practice two
 ## Overview
-* This document provides the plan for implementing an application about recipes with features that see the recipes, see the categories, see the ingredients, see the ingredient details, search for recipes and categories.
+* This document provides the plan for implementing an application about recipes with features that see the recipes, see the categories, see the ingredients, see the ingredient details, search for recipes and categories, add/remove recipes to cart, add/edit/remove address, see ordered invoices.
 
 ## Timeline
 * 5 working days (April 5th 2022 - April 12th 2022)
@@ -13,13 +13,18 @@
 - Check re-render components.
 - Learn more about app behavior and UX
 - Implement unit testing
+- Implement storybook
+- Apply Mobx-state-tree for state management
 
 ## Technologies
 * React v17.0.1
 * React Native v0.64.3
+* Expo v44.0.0
 * Typescript v4.3.5
 * Jest v26.6.3
 * Testing Library v9.1.0
+* Storybook/react-native v5.3.25
+* Mobx-state-tree v5.1.3
 
 ## Platform:
 - Android

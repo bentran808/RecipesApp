@@ -37,6 +37,7 @@ const HomeScreen = ({ navigation }: Props) => {
 
   useEffect(() => {
     if (isFocused) {
+      recipes.setRefreshData();
       recipes.fetchRecipes(1);
     }
   }, [isFocused]);
