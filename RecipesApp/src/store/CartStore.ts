@@ -85,6 +85,7 @@ const CartStore = types
   .actions((self) => ({
     addToCart(item: RecipeModel, quantity?: number) {
       const itemInCart = this.hasInCart(item);
+
       itemInCart ? itemInCart.increase(quantity) : self.items.push({ item, quantity });
     },
     removeItem(item: CartModel) {
@@ -101,6 +102,8 @@ const CartStore = types
     },
     applyCoupon(item: BillModel) {
       const existItem = self.billItems.findIndex((bill) => bill.type === 'discount');
+
+      // Add new coupon or replace exist coupon
       if (existItem > -1) {
         self.billItems.splice(existItem, 1, item);
       } else {

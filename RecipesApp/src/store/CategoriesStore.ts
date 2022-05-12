@@ -29,8 +29,10 @@ const CategoriesStore = types
   .actions((self) => ({
     fetchCategories: flow(function* fetchCategories() {
       self.state = 'pending';
+
       try {
         const response = yield recipesApi.fetchCategoriesRequest();
+
         self.lists = response.data;
         self.state = 'done';
       } catch (error) {

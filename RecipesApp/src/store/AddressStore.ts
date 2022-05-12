@@ -34,6 +34,7 @@ const AddressStore = types
     },
     addNewItem(type: string, address: string) {
       const id = self.items.reduce((maxId, item) => Math.max(item.id, maxId), -1) + 1;
+
       self.items.push({ id, type, address });
     },
     removeItem(item: AddressModel) {

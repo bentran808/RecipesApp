@@ -26,8 +26,10 @@ const IngredientsStore = types
   .actions((self) => ({
     fetchIngredients: flow(function* fetchIngredients() {
       self.state = 'pending';
+
       try {
         const response = yield recipesApi.fetchIngredientsRequest();
+
         self.lists = response.data;
         self.state = 'done';
       } catch (error) {

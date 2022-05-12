@@ -41,10 +41,14 @@ const RecipesStore = types
   }))
   .actions((self) => ({
     fetchRecipes: flow(function* fetchRecipes(page?: number) {
+
+      // Check if all the recipes are out
       if (!self.isEndList) {
         self.state = 'pending';
+
         try {
           const response = yield recipesApi.fetchRecipesRequest(page);
+
           if (response.data.length) {
             self.currentPage++;
             applySnapshot(self, {
@@ -54,6 +58,7 @@ const RecipesStore = types
           } else {
             self.isEndList = true;
           }
+
           self.state = 'done';
         } catch (error) {
           self.state = 'error';
@@ -62,12 +67,16 @@ const RecipesStore = types
     }),
     fetchRecipesByCategoryId: flow(function* fetchRecipesByCategoryId(id: number) {
       self.state = 'pending';
+
+      // Check if the recipes are all get and then reset the list
       if (self.isEndList) {
         self.currentPage = 1;
         self.isEndList = false;
       }
+
       try {
         const response = yield recipesApi.fetchRecipesByCategoryIdRequest(id);
+
         self.items = response.data;
         self.state = 'done';
       } catch (error) {
@@ -84,6 +93,7 @@ const RecipesStore = types
         self.currentPage = 1;
         self.isEndList = false;
       }
+
       try {
         const response = yield recipesApi.searchByRecipeNameRequest(text);
 
@@ -102,8 +112,11 @@ const RecipesStore = types
         self.currentPage = 1;
         self.isEndList = false;
       }
+
       try {
         const response = yield recipesApi.searchByCategoryNameRequest(text);
+
+        // Transform recipes data from categories data
         const recipesOfCategory = (response.data || [])
           .map((category: CategoryModel) =>
             (category.recipes || []).map((recipe) => ({
